@@ -1,0 +1,37 @@
+# Licensing, provenance, assets and service audit
+
+Status: initial engineering audit, not distribution clearance. Audit date: 2026-10-07.
+
+## Source provenance
+
+The root [LICENSE](../../LICENSE) and [doc/LGPL-license.txt](../../doc/LGPL-license.txt) contain LGPL 2.1. [doc/LICENSE-source.txt](../../doc/LICENSE-source.txt) describes inherited Linden code, while source headers such as [llviewerobject.h](../../indra/newview/llviewerobject.h) specify LGPL version 2.1 only. Preserve these headers, contributor notices and file-specific licenses. Do not relabel inherited C++ as newly authored Finalverse code or apply a blanket permissive license to the fork.
+
+The starting commit merges the Second Life development history; local `upstream` points at `qwy16/secondlife_viewer`, not the official upstream URL. The cached `upstream/contribute` and `origin/contribute` refs match HEAD. An anonymous live query of origin HEAD and `refs/heads/contribute` independently returned the starting commit; no fetch, merge or push was performed. Compared with local upstream commit `e15a892821`, the merge adds only `.github/workflows/sync_upstream.yml`. That is evidence of a bootstrap fork with no Finalverse runtime at this baseline, not proof that all historical contributions were individually reviewed.
+
+Alternative Firestorm-derived checkouts contain additional provenance and contributors (`FIRESTORM-SOURCE_LICENSE_HEADER.txt`). If selected or merged later, audit them independently; the direct viewer's licensing conclusion must not be blindly reused.
+
+## Distribution risk register
+
+| Surface | Evidence | Required release work |
+|---|---|---|
+| Inherited source | LGPL 2.1 and file headers | Preserve notices, supply corresponding modified source/build provenance; review linking/relink obligations for actual packaging |
+| Viewer artwork | `doc/LICENSE-logos.txt`: CC BY-SA 3.0 notice, separate trademarks | Inventory used/modified assets and carry notices; commission product-owned icons where needed |
+| Trademarks | SL/Linden names and logo references in README, assets, UI | Product identity inventory separate from source copyright |
+| Third-party libraries | `autobuild.xml` licenses, platform archives | File-level notices, actual binary SBOM, transitive license review |
+| Optional proprietary code | KDU, Havok, BugSplat, appearance utility manifest entries | Baseline excludes proprietary path; verify rights before enabling/distributing |
+| Mixed bundled tools | `slvoice` Mixed, `vlc-bin` GPL2, `dullahan` MPL, fonts/dictionaries varied | Audit actual bundled files, not only manifest summary labels |
+| Unclear labels | `jpegencoderbasic` NONE, physics extensions internal | Resolve actual notices/source provenance before release |
+| Service identity/endpoints | `LLGridManager`, viewer manifest, About/settings | Classify login/grid, updates, crash, analytics, profiles, help and assets separately |
+| Login/profile credentials | Authentication code and SL service policy | No credential forwarding to AI services; user-session and local credential isolation |
+
+Manifest license strings are metadata, not a definitive license opinion. `dependency-manifest.json` records the source manifest; the packaging audit must inspect fetched archives and bundled runtime assets too.
+
+## Service policy distinct from source licensing
+
+The official [Third Party Viewer policy](https://secondlife.com/corporate/third-party-viewers) separates access to Second Life from use of open-source code. Its viewer identity, privacy and permission constraints apply when connecting to that service. Do not infer that a Finalverse-owned simulator has the same restrictions or that LGPL grants rights to the Second Life service/trademarks. Review target-grid policy before deploying persistent agents there.
+
+Existing grid definitions deliberately protect system SL login endpoints from user-file overrides ([llviewernetwork.cpp](../../indra/newview/llviewernetwork.cpp)). Preserve that protection; generic search/replace of domains could redirect credentials. The AI metadata sidecar must not falsify creator/owner records or hide data inside inherited assets.
+
+## Before distribution
+
+Produce exact source/build/dependency revisions, artifact hashes, bundled notices, a source/relink compliance package appropriate to the actual link model, new/modified artwork attribution and a complete service endpoint inventory. Review About/login branding and privacy data flows. Native mobile packaging and store terms need a separate compatibility review. No distribution, public release or signing was performed in Phase 0.

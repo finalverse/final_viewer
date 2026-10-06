@@ -1,0 +1,24 @@
+{
+  "starting_commit": "218de297a4a2cc286aba54e5df40e5e9e69caf43",
+  "branch": "contribute",
+  "origin": "https://github.com/finalverse/final_viewer.git",
+  "upstream": "https://github.com/qwy16/secondlife_viewer.git",
+  "tracked_mode_changes": 9330,
+  "content_changes": [
+    ".gitignore: five added lines (four ignore entries and a blank line)"
+  ],
+  "untracked_at_start": [
+    "build-variables/"
+  ],
+  "staged_changes_at_start": false,
+  "submodules": [],
+  "cached_remote_refs_equal_head": true,
+  "live_remote_state_verified": true,
+  "scratch": "/var/folders/56/v6pzzwvd449dsz9wxqrt_sp40000gn/T/finalverse-phase0-a2zi86u6",
+  "external_build_variables_sha256": "8a0ff9fa0e204e19a3f1ba2f66076f262bdefb87aafe31154ea60692522cca96",
+  "remote_head_at_audit": "218de297a4a2cc286aba54e5df40e5e9e69caf43",
+  "remote_contribute_at_audit": "218de297a4a2cc286aba54e5df40e5e9e69caf43",
+  "current_repository_path": "/Users/wenyan/Finalverse/viewer",
+  "original_repository_path": "/Users/wenyan/FinalProjects/legacy/final_viewer",
+  "reorganization": "filesystem rename with old-path compatibility link; original files and Git status preserved"
+}

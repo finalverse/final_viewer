@@ -1,0 +1,154 @@
+{
+  "starting_commit": "218de297a4a2cc286aba54e5df40e5e9e69caf43",
+  "branch": "contribute",
+  "build_configuration": "RelWithDebInfoOS",
+  "target_architecture": "x86_64",
+  "build_exit_code": 0,
+  "xcode_build_succeeded": true,
+  "test_cases_reported": 1197,
+  "test_cases_passed": 1193,
+  "known_failure_skips": [
+    [
+      "LLSphere, 2",
+      "'See SNOW-620.  Neither the test nor the code being tested seem good.  Also sim-only.'"
+    ],
+    [
+      "m3math_h, 12",
+      "'This test fails depending on architecture. Need to fix comparison operation, is_approx_equal, to work on more than one platform.'"
+    ],
+    [
+      "llmainthreadtask, 2: cross-thread",
+      "'This test is prone to build-time hangs'"
+    ],
+    [
+      "LLHost, 9",
+      "'this test is irreparably flaky'"
+    ]
+  ],
+  "failed_test_summaries": [],
+  "test_group_executions": 132,
+  "packaging_python_suite": "import_failed_no_cases_executed",
+  "original_file_preservation": {
+    "files_verified": 9416,
+    "content_and_mode_changes": [],
+    "canonical_repository_path": "/Users/wenyan/Finalverse/viewer",
+    "starting_commit": "218de297a4a2cc286aba54e5df40e5e9e69caf43"
+  },
+  "simulator_protocol_probe": {
+    "login": "true",
+    "message": "Finalverse Phase 0 local development sandbox",
+    "first_name": "Finalverse",
+    "last_name": "Developer",
+    "sim_ip": "127.0.0.1",
+    "sim_port": 18090,
+    "region_x": 256000,
+    "region_y": 256000,
+    "inventory_folders_returned": 21
+  },
+  "viewer_process_launch": "passed",
+  "visual_verification": "login_screen_and_live_terrain_water_sky_owned_cube_verified_with_CUA",
+  "world_entry_in_viewer": "STATE_STARTED_and_live_scene_verified",
+  "persistent_evidence_directory": "/Users/wenyan/Finalverse/dev/evidence/phase0",
+  "evidence_sha256": {
+    "configure-first.log": "7e63d777d3e9531cb82fdd367c0e106bfa7510708fb0fb019eb31cb57577f4b7",
+    "build-first.log": "5b06becbed27c147a3910b992fe67d805eb24fddebee850d2da640f52cd883a4",
+    "manifest-tests.log": "cc10ed41f4111f1a581d11a58ee4f7ba148a939fe7467b691de06d91b4ce4bb2",
+    "preservation-verification.json": "f5e06f5ab0ca777df29d5e564ef890ca164a71f22cd59231cb6b780edb3d6143",
+    "user-files-before.json": "4904d9ed30c341f1bc8ea9ae130658400b762d9d4baa39b19be47ceff6ad57fa",
+    "reorganization-before.json": "55735816e90367f20c7a5af4b6d7026781cbab5d9b5373a4f076bfb4245f9698",
+    "sandbox-login-probe.json": "0708d52c0fc04c0b7efb479b64bfe86729b1f088fab7f29be43e22e55aeb2a72",
+    "viewer-artifact.json": "0889a7cdb654b28fa5b00cc945a2a2f6da09c1879202366e9e48acbaf8ff1fb4",
+    "viewer-launch.log": "da8fd66721851e025b5a7d2a053a6ba0e65c52a32470a0c08cf14029769b1b5d",
+    "movement-before.json": "0113050c38b82c84b1eb99e77eeb50ff7a89ab45ce391f6cbe8c811bb71b4e3c",
+    "movement-result.json": "d2e78261a46ce6e2095acc87f859ee89d360ac7026efe336db9143aeec9440e7",
+    "object-moved.json": "b6ff0234873b9e5c7e6fe635a36b2b980359e55474fa28a19cb07744653137b0",
+    "object-result.json": "4d9d6ab07f7130fe190f0932c46a9682b004b29eeb0de5969d96d7e0562703dc",
+    "sandbox-run.log": "8cfee6e6cca207d9bbc53b95ef6c6a4846c148f6857d038433342c9accd15221",
+    "viewer-runtime.log": "5844ba6efc58ee095b4cb5236edf7e210c98972564dbc1742560f8be63695138",
+    "viewer-hang-sample.txt": "3c7df2291d5223d49d22d31ab4be802811c9f8ef24bfff44f8d2aa7bab3f7db8"
+  },
+  "avatar_movement": {
+    "before": "<127.05495, 125.72421, 27>",
+    "after": "<131.17856, 124.4398, 26.85>",
+    "input": "12 Up key taps in viewer",
+    "simulator_observed_change": true
+  },
+  "object_create_move_undo": {
+    "ui_before_position": [
+      134.75,
+      119.373,
+      24.126
+    ],
+    "ui_after_position": [
+      135.75,
+      119.373,
+      24.126
+    ],
+    "persisted_rows": [
+      [
+        "3a9a0d40-2091-45fb-a9a0-1b60501de80d",
+        "Finalverse Phase0 Cube",
+        135.75,
+        119.37274932861328,
+        24.12627601623535,
+        "1743e14a-fb27-4897-8082-ca73296e6180"
+      ]
+    ],
+    "undo_persisted_rows": [
+      [
+        "3a9a0d40-2091-45fb-a9a0-1b60501de80d",
+        "Finalverse Phase0 Cube",
+        134.74960327148438,
+        119.37274932861328,
+        24.12627601623535,
+        "1743e14a-fb27-4897-8082-ca73296e6180"
+      ]
+    ],
+    "legacy_undo_restored_x": true
+  },
+  "avatar_appearance": "cloud_in_local_MutSea_fixture_not_full_validation",
+  "chat_voice": "not_verified",
+  "renderer_runtime": {
+    "API": "OpenGL",
+    "vendor": "Apple",
+    "renderer": "Apple M1",
+    "version": "4.1 Metal - 90.5",
+    "note": "driver version text does not imply a native Metal viewer backend"
+  },
+  "window_automation_limit": "intermittent noWindowsAvailable/timeout after object verification; shell process/log checks confirmed viewer remained running",
+  "fixture_repairs": [
+    "supplied shipped data/avataranimations.xml after observing simulator default-animation initialization failure"
+  ],
+  "profile_note": "Measured sandbox sessions used CFFIXED_USER_HOME. Window helper launched extra bare instance during restart; it was stopped. No pre-launch snapshot of personal viewer preferences was taken, so those are not certified unchanged.",
+  "runtime_reliability_issue": {
+    "observation": "CUA window became unavailable after object tests; UI retrieval timed out; SIGTERM did not stop the measured process",
+    "sample_timing": "after SIGTERM",
+    "sample_frames": "renderFinalize -> generateGlow -> glDrawArrays -> AppleMetalOpenGLRenderer allocator, followed by nested UNIX signal handler/logging/allocator frames",
+    "interpretation": "original trigger and cause not established; post-signal sample cannot prove a pre-signal GPU crash",
+    "cleanup": "only verified isolated test process and its verified children stopped; simulator shut down normally",
+    "evidence": "viewer-hang-sample.txt"
+  },
+  "sandbox_shutdown": "stopped_port18090_not_listening",
+  "session_password_saved_in_isolated_settings": false,
+  "retained_build_artifact": {
+    "starting_commit": "218de297a4a2cc286aba54e5df40e5e9e69caf43",
+    "source_path": "/var/folders/56/v6pzzwvd449dsz9wxqrt_sp40000gn/T/finalverse-phase0-a2zi86u6/source/build-darwin-x86_64/newview/RelWithDebInfo/Second Life Test.app",
+    "retained_path": "/Users/wenyan/Finalverse/dev/baseline-macos/Second Life Test.app",
+    "entries_compared": 6976,
+    "byte_and_mode_identical": true,
+    "inventory_sha256": "468203f419e2d3b7649263f0ad09119c0f49577a5e4b711aa2ccf3c951cbdf4e",
+    "executable_sha256": "d62c9073eab55089bbcd7d79c03737da47b4b25ca18f1fe5205f38f0f45ae264",
+    "runtime_test_note": "Measured runtime used original build location; retained copy was verified byte-for-byte, not separately launched."
+  },
+  "final_audit_validation": {
+    "required_docs": 15,
+    "created_doc_files": 26,
+    "valid_json_files": 5,
+    "original_files_verified": 9416,
+    "original_changes": [],
+    "other_repositories_verified": 29,
+    "compatibility_links_verified": 13,
+    "clean_baseline_checkout": true,
+    "issues": []
+  }
+}

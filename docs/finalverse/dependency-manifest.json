@@ -1,0 +1,1954 @@
+{
+  "starting_commit": "218de297a4a2cc286aba54e5df40e5e9e69caf43",
+  "autobuild_xml_sha256": "6d77ec736a464a3037695a1f53a433de0a51a60aae826c9b289c0059414b777a",
+  "installables": {
+    "SDL": {
+      "platforms": {
+        "linux64": {
+          "archive": {
+            "hash": "7ea2df03bfc35c06acf23dd9e734adac",
+            "url": "http://automated-builds-secondlife-com.s3.amazonaws.com/ct2/1103/2554/SDL-1.2.15-linux64-501092.tar.bz2"
+          },
+          "name": "linux64"
+        }
+      },
+      "license": "lgpl",
+      "license_file": "LICENSES/SDL.txt",
+      "copyright": "Copyright (C) 1997-2012 Sam Lantinga",
+      "version": "1.2.15",
+      "name": "SDL",
+      "description": "Simple DirectMedia Layer is a cross-platform multimedia library designed to provide low level access to audio, keyboard, mouse, joystick, 3D hardware via OpenGL, and 2D video framebuffer."
+    },
+    "apr_suite": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "579a46d77802e301856c93792d39d43bbf939987",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-apr_suite/releases/download/v1.7.4-r2/apr_suite-1.7.4-10338381102-darwin64-10338381102.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "2e5cf11f8774023408402df860d3d1f4a6668500",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-apr_suite/releases/download/v1.7.4-r2/apr_suite-1.7.4-10338381102-linux64-10338381102.tar.zst"
+          },
+          "name": "linux64"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "7eb6b8f294c4563a07fec3578be2d04af17a60cb",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-apr_suite/releases/download/v1.7.4-r2/apr_suite-1.7.4-10338381102-windows64-10338381102.tar.zst"
+          },
+          "name": "windows64"
+        }
+      },
+      "license": "apache",
+      "license_file": "LICENSES/apr_suite.txt",
+      "copyright": "Copyright \u00a9 2012 The Apache Software Foundation, Licensed under the Apache License, Version 2.0.",
+      "version": "1.7.4-10338381102",
+      "name": "apr_suite",
+      "description": "Apache portable runtime project"
+    },
+    "boost": {
+      "copyright": "(see individual source files)",
+      "description": "Boost C++ Libraries",
+      "license": "boost 1.0",
+      "license_file": "LICENSES/boost.txt",
+      "name": "boost",
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "6bf5f4afddf87d48c069d781b5ef2d44d6ddf2d5",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-boost/releases/download/v1.86.0-e2bee1e/boost-1.86-darwin64-10475904468.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "3c0ba2a87e78d76c81da95fa87579bf4964242e1",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-boost/releases/download/v1.86.0-e2bee1e/boost-1.86-linux64-10475904468.tar.zst"
+          },
+          "name": "linux64"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "d1dd5d629b254d1b361c5a0fa210b5f3283e8a20",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-boost/releases/download/v1.86.0-e2bee1e/boost-1.86-windows64-10475904468.tar.zst"
+          },
+          "name": "windows64"
+        }
+      },
+      "version": "1.86"
+    },
+    "bugsplat": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "cd1f1d55a2488657ec2253774b3a414621f81b24",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-bugsplat/releases/download/v1.1.5-71fc41e/bugsplat-1.1.1-9599607655-darwin64-9599607655.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "9fb0615d17988bd89a2e5ae6d4d19e150afb54a9",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-bugsplat/releases/download/v1.1.5-71fc41e/bugsplat-5.0.1.0-9599607655-windows64-9599607655.tar.zst"
+          },
+          "name": "windows64"
+        }
+      },
+      "license": "Proprietary",
+      "license_file": "LICENSES/BUGSPLAT_LICENSE.txt",
+      "copyright": "Copyright 2003-2017, BugSplat",
+      "version": "5.0.1.0-71fc41e",
+      "name": "bugsplat",
+      "description": "Bugsplat crash reporting package"
+    },
+    "colladadom": {
+      "copyright": "Copyright 2006 Sony Computer Entertainment Inc.",
+      "license": "SCEA",
+      "license_file": "LICENSES/collada.txt",
+      "name": "colladadom",
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "18b46ce8ebb5ae6ef6527b4e95408433e29ad3f4",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-colladadom/releases/download/v2.3-r8/colladadom-2.3.0-r8-darwin64-10476582237.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "c088fe0be9ce7e42983c3c7708abe4ac8bd5a894",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-colladadom/releases/download/v2.3-r8/colladadom-2.3.0-r8-linux64-10476582237.tar.zst"
+          },
+          "name": "linux64"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "8bfa9f1a78d077f3bd422f14ae360150b98c82f9",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-colladadom/releases/download/v2.3-r8/colladadom-2.3.0-r8-windows64-10476582237.tar.zst"
+          },
+          "name": "windows64"
+        }
+      },
+      "version": "2.3.0-r8"
+    },
+    "cubemaptoequirectangular": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "d5fb3832a338bbe4891b823c64fdb4806706568e",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-cubemap_to_eqr_js/releases/download/v1.1.0-d7afe27/cubemaptoequirectangular-1.1.0-darwin64-d7afe27.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "77c53daf558f51aec6e9f4bd9e930a103630ee7d",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-cubemap_to_eqr_js/releases/download/v1.1.0-d7afe27/cubemaptoequirectangular-1.1.0-linux64-d7afe27.tar.zst"
+          }
+        },
+        "windows64": {
+          "archive": {
+            "hash": "6c51855bcf3a8628289881fdaea08c25cf7b1b90",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-cubemap_to_eqr_js/releases/download/v1.1.0-d7afe27/cubemaptoequirectangular-1.1.0-windows64-d7afe27.tar.zst"
+          },
+          "name": "windows64"
+        }
+      },
+      "license": "MIT",
+      "license_file": "LICENSES/CUBEMAPTOEQUIRECTANGULAR_LICENSE.txt",
+      "copyright": "Copyright (c) 2017 Jaume Sanchez Elias, http://www.clicktorelease.com",
+      "version": "1.1.0",
+      "name": "cubemaptoequirectangular"
+    },
+    "curl": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "9c74adfd217fcc04869ef574078bc56a4a1380f3",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-curl/releases/download/v7.54.1-r1/curl-7.54.1-10342910827-darwin64-10342910827.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "325ad581a1ba99fbc1e74d48481e07546eaf1e0e",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-curl/releases/download/v7.54.1-r1/curl-7.54.1-10342910827-linux64-10342910827.tar.zst"
+          },
+          "name": "linux64"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "794480208e72a928552760cd048438b90aa1c80d",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-curl/releases/download/v7.54.1-r1/curl-7.54.1-10342910827-windows64-10342910827.tar.zst"
+          },
+          "name": "windows64"
+        }
+      },
+      "license": "curl",
+      "license_file": "LICENSES/curl.txt",
+      "copyright": "Copyright (c) 1996 - 2014, Daniel Stenberg, (daniel@haxx.se).",
+      "version": "7.54.1-10342910827",
+      "name": "curl",
+      "description": "Library for transferring data specified with URL syntax"
+    },
+    "dbus_glib": {
+      "platforms": {
+        "linux64": {
+          "archive": {
+            "hash": "7ee7b9aed3c0c8c09e7bf26bba7af8e1",
+            "url": "http://automated-builds-secondlife-com.s3.amazonaws.com/hg/repo/p64_3p-dbus-glib/rev/314266/arch/Linux/installer/dbus_glib-0.76-linux64-314266.tar.bz2"
+          },
+          "name": "linux64"
+        }
+      },
+      "license": "Academic Free License v. 2.1",
+      "license_file": "LICENSES/dbus-glib.txt",
+      "copyright": "Copyright (C) Red Hat Inc.",
+      "version": "0.76",
+      "name": "dbus_glib",
+      "description": "D-Bus bindings for glib"
+    },
+    "dictionaries": {
+      "platforms": {
+        "common": {
+          "archive": {
+            "hash": "e03eb77224290c875ff84f75b7fe3d0e7c162c94",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-dictionaries/releases/download/v1-a01bb6c/dictionaries-1.a01bb6c-common-a01bb6c.tar.zst"
+          },
+          "name": "common"
+        }
+      },
+      "license": "various open source",
+      "license_file": "LICENSES/dictionaries.txt",
+      "copyright": "Copyright 2014 Apache OpenOffice software",
+      "version": "1.a01bb6c",
+      "name": "dictionaries",
+      "description": "Spell checking dictionaries to bundled into the viewer"
+    },
+    "dullahan": {
+      "copyright": "Copyright (c) 2017, Linden Research, Inc.",
+      "description": "A headless browser SDK that uses the Chromium Embedded Framework (CEF). It is designed to make it easier to write applications that render modern web content directly to a memory buffer, inject synthesized mouse and keyboard events as well as interact with web based features like JavaScript or cookies.",
+      "license": "MPL",
+      "license_file": "LICENSES/LICENSE.txt",
+      "name": "dullahan",
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "7fde76e3f0e62d0e0593b6157f4d740ecef2429d",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/dullahan/releases/download/v1.14.0-r3/dullahan-1.14.0.202408091638_118.4.1_g3dd6078_chromium-118.0.5993.54-darwin64-10322607516.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "209d031ae67bc66d8e8f8509c71d259014c65ceb",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/dullahan/releases/download/v1.14.0-r3/dullahan-1.14.0.202408091637_118.4.1_g3dd6078_chromium-118.0.5993.54-linux64-10322607516.tar.zst"
+          },
+          "name": "linux64"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "4124c79d8b0e319877ffa4c12581d5c1318b4d93",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/dullahan/releases/download/v1.14.0-r3/dullahan-1.14.0.202408091639_118.4.1_g3dd6078_chromium-118.0.5993.54-windows64-10322607516.tar.zst"
+          },
+          "name": "windows64"
+        }
+      },
+      "version": "1.14.0.202408091639_118.4.1_g3dd6078_chromium-118.0.5993.54"
+    },
+    "emoji_shortcodes": {
+      "platforms": {
+        "common": {
+          "archive": {
+            "hash": "9c58108270fbad15a321f75501cdfb9c6b78a6f2",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-emoji-shortcodes/releases/download/v15.3.2-r1/emoji_shortcodes-15.3.2.10207138275-common-10207138275.tar.zst"
+          },
+          "name": "common"
+        }
+      },
+      "license": "MIT",
+      "license_file": "LICENSES/emojibase-license.txt",
+      "copyright": "Copyright 2017-2019 Miles Johnson.",
+      "version": "15.3.2.10207138275",
+      "name": "emoji_shortcodes",
+      "canonical_repo": "https://github.com/secondlife/3p-emoji-shortcodes",
+      "description": "Emoji shortcodes"
+    },
+    "expat": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "8cc4f38fd809d9ff5d8ca617d7e068eb236f4162",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-expat/releases/download/v2.6.2-r5/expat-2.6.2-r5-darwin64-10337781902.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "d7f3bbfd65fce365c3cd5be9ab72072580408dec",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-expat/releases/download/v2.6.2-r5/expat-2.6.2-r5-linux64-10337781902.tar.zst"
+          },
+          "name": "linux64"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "f11d91205bb753d7389a73e629627b200219c62f",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-expat/releases/download/v2.6.2-r5/expat-2.6.2-r5-windows64-10337781902.tar.zst"
+          },
+          "name": "windows64"
+        }
+      },
+      "license": "expat",
+      "license_file": "LICENSES/expat.txt",
+      "copyright": "Copyright (c) 1998-2000 Thai Open Source Software Center Ltd and Clark Cooper - Copyright (c) 2001-2022 Expat maintainers.",
+      "version": "2.6.2-r5",
+      "name": "expat",
+      "description": "Expat is an XML parser library written in C"
+    },
+    "fontconfig": {
+      "platforms": {
+        "linux64": {
+          "archive": {
+            "hash": "e2419d56960c160670051fbb055fb729",
+            "url": "http://automated-builds-secondlife-com.s3.amazonaws.com/hg/repo/p64_3p-fontconfig/rev/314281/arch/Linux/installer/fontconfig-2.11.0-linux64-314281.tar.bz2"
+          },
+          "name": "linux64"
+        }
+      },
+      "license": "bsd",
+      "license_file": "LICENSES/fontconfig.txt",
+      "copyright": "Copyright (C) 2000,2001,2002,2003,2004,2006,2007 Keith Packard, 2005 Patrick Lam, 2009 Roozbeh Pournader, 2008,2009 Red Hat, Inc., 2008 Danilo \u0160egan, 2012 Google, Inc.",
+      "version": "2.11.0",
+      "name": "fontconfig",
+      "description": "Fontconfig is a library for configuring and customizing font access."
+    },
+    "freetype": {
+      "copyright": "Copyright 2006, 2007, 2008, 2009, 2010 by David Turner, Robert Wilhelm, and Werner Lemberg.",
+      "description": "Font rendering library",
+      "license": "FreeType",
+      "license_file": "LICENSES/freetype.txt",
+      "name": "freetype",
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "51ad743c8943602913eedd2b6e2309abf46849d8",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-freetype/releases/download/v2.13.3-cb2e120/freetype-2.13.3-cb2e120-darwin64-10475886095.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "bc27e272e004dc2fc573550e8c1cd8b4ad07f5b2",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-freetype/releases/download/v2.13.3-cb2e120/freetype-2.13.3-cb2e120-linux64-10475886095.tar.zst"
+          },
+          "name": "linux64"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "01971b998122a17c97e3616c428cc77077a0c39a",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-freetype/releases/download/v2.13.3-cb2e120/freetype-2.13.3-cb2e120-windows64-10475886095.tar.zst"
+          },
+          "name": "windows64"
+        }
+      },
+      "version": "2.13.3-cb2e120"
+    },
+    "glext": {
+      "platforms": {
+        "common": {
+          "archive": {
+            "hash": "7cc58b3acb230a7e65ea5f0ff800be393eb4aa1b",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-glext/releases/download/v69/glext-68-common-685b36e.tar.zst"
+          },
+          "name": "common"
+        }
+      },
+      "license": "Copyright (c) 2007-2010 The Khronos Group Inc.",
+      "license_file": "LICENSES/glext.txt",
+      "copyright": "Copyright (c) 2007-2010 The Khronos Group Inc.",
+      "version": "68",
+      "name": "glext",
+      "description": "glext headers define function prototypes and constants for OpenGL extensions"
+    },
+    "glh_linear": {
+      "platforms": {
+        "common": {
+          "archive": {
+            "hash": "066625e7aa7f697a4b6cd461aad960c57181011f",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-glh_linear/releases/download/v1.0.1-dev4-984c397/glh_linear-1.0.1-dev4-common-984c397.tar.zst"
+          },
+          "name": "common"
+        }
+      },
+      "license": "BSD",
+      "license_file": "LICENSES/glh-linear.txt",
+      "copyright": "Copyright (c) 2000 Cass Everitt",
+      "version": "1.0.1-dev4",
+      "name": "glh_linear",
+      "description": "glh - is a platform-indepenedent C++ OpenGL helper library"
+    },
+    "glm": {
+      "platforms": {
+        "common": {
+          "archive": {
+            "hash": "353ae3a560143732503a8e14499ae12db1e66056",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-glm/releases/download/v1.0.1-r1/glm-v1.0.1-common-9066386153.tar.zst"
+          },
+          "name": "common"
+        }
+      },
+      "license": "MIT",
+      "license_file": "LICENSES/glm_license.txt",
+      "copyright": "Copyright (c) 2005 - G-Truc Creation",
+      "version": "v1.0.1",
+      "name": "glm",
+      "vcs_branch": "refs/tags/v1.0.1-r1",
+      "vcs_revision": "399cd5ba57a9267a560ce07e50a0f8c5fe3dc66f",
+      "vcs_url": "git://github.com/secondlife/3p-glm.git",
+      "canonical_repo": "https://github.com/secondlife/3p-glm",
+      "description": "OpenGL Mathematics",
+      "source_type": "git"
+    },
+    "gstreamer": {
+      "platforms": {
+        "linux64": {
+          "archive": {
+            "hash": "7c9d7cc88add7831a6afeedc20cad2fe",
+            "url": "http://automated-builds-secondlife-com.s3.amazonaws.com/hg/repo/p64_3p-gstreamer/rev/314267/arch/Linux/installer/gstreamer-0.10.6.314267-linux64-314267.tar.bz2"
+          },
+          "name": "linux64"
+        }
+      },
+      "license": "LGPL",
+      "license_file": "LICENSES/gstreamer.txt",
+      "copyright": "Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>",
+      "version": "0.10.6.314267",
+      "name": "gstreamer"
+    },
+    "gtk-atk-pango-glib": {
+      "platforms": {
+        "linux64": {
+          "archive": {
+            "hash": "de7bba8fd2275a11b077b124413065d0",
+            "url": "http://automated-builds-secondlife-com.s3.amazonaws.com/hg/repo/p64_3p-gtk-atk-pango-glib/rev/314220/arch/Linux/installer/gtk_atk_pango_glib-0.1-linux64-314220.tar.bz2"
+          },
+          "name": "linux64"
+        }
+      },
+      "license": "lgpl",
+      "license_file": "LICENSES/gtk-atk-pango-glib.txt",
+      "copyright": "Copyright (various, see sources)",
+      "version": "0.1",
+      "name": "gtk-atk-pango-glib"
+    },
+    "havok-source": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "creds": "github",
+            "hash": "ae2c2a215b1bc2e3f37a67e301926dc405902d1a",
+            "hash_algorithm": "sha1",
+            "url": "https://api.github.com/repos/secondlife/3p-havok-source/releases/assets/136778143"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "00d0333936a67059a43a6ec8ac38d564",
+            "url": "http://s3-proxy.lindenlab.com/private-builds-secondlife-com/ct2/748/1563/havok_source-2012.1-2-linux64-500739.tar.bz2"
+          },
+          "name": "linux64"
+        },
+        "windows64": {
+          "archive": {
+            "creds": "github",
+            "hash": "0393dd75c58f7046bed47e62a8884a78cb02a5c3",
+            "hash_algorithm": "sha1",
+            "url": "https://api.github.com/repos/secondlife/3p-havok-source/releases/assets/136778145"
+          },
+          "name": "windows64"
+        }
+      },
+      "license": "havok",
+      "license_file": "LICENSES/havok.txt",
+      "copyright": "Uses Havok (TM) Physics. (c)Copyright 1999-2010 Havok.com Inc. (and its Licensors). All Rights Reserved. See www.havok.com for details.",
+      "version": "2012.1-2",
+      "name": "havok-source",
+      "description": "Havok source code for libs and demos"
+    },
+    "jpegencoderbasic": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "f271809c0d4244128fb52a71226a4d7674e14e0a",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-jpeg_encoder_js/releases/download/v1.0-9165e47/jpegencoderbasic-1.0-darwin64-9165e47.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "35d6a617444fde9c8a5e998ef29dc43b95747637",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-jpeg_encoder_js/releases/download/v1.0-9165e47/jpegencoderbasic-1.0-linux64-9165e47.tar.zst"
+          }
+        },
+        "windows64": {
+          "archive": {
+            "hash": "8ec22e9fc8734ba3d1826f4b88171a6017cc8676",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-jpeg_encoder_js/releases/download/v1.0-9165e47/jpegencoderbasic-1.0-windows64-9165e47.tar.zst"
+          },
+          "name": "windows64"
+        }
+      },
+      "license": "NONE",
+      "license_file": "LICENSES/JPEG_ENCODER_BASIC_LICENSE.txt",
+      "copyright": "Andreas Ritter, www.bytestrom.eu, 11/2009",
+      "version": "1.0",
+      "name": "jpegencoderbasic"
+    },
+    "libjpeg-turbo": {
+      "platforms": {
+        "windows64": {
+          "archive": {
+            "hash": "34cf4fdbbc999e67b0528f7ca3c7f31f35267ecf",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-libjpeg-turbo/releases/download/v3.0.3-r2/libjpeg_turbo-3.0.3-r2-windows64-10341191820.tar.zst"
+          },
+          "name": "windows64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "5ff05a0e5ed0aba1514b84d3c2edaf70c18738b5",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-libjpeg-turbo/releases/download/v3.0.3-r2/libjpeg_turbo-3.0.3-r2-linux64-10341191820.tar.zst"
+          },
+          "name": "linux64"
+        },
+        "darwin64": {
+          "archive": {
+            "hash": "7c38eabc050b4a6bdb183a1d7a38da885341049c",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-libjpeg-turbo/releases/download/v3.0.3-r2/libjpeg_turbo-3.0.3-r2-darwin64-10341191820.tar.zst"
+          },
+          "name": "darwin64"
+        }
+      },
+      "license": "libjpeg-turbo",
+      "license_file": "LICENSES/libjpeg-turbo.txt",
+      "copyright": "Copyright (C)2009-2024 D. R. Commander. All Rights Reserved. Copyright (C)2015 Viktor Szathm\u00e1ry. All Rights Reserved.",
+      "version": "3.0.3-r2",
+      "name": "libjpeg-turbo",
+      "canonical_repo": "https://github.com/secondlife/3p-libjpeg-turbo",
+      "description": "JPEG encoding, decoding library"
+    },
+    "kdu": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "creds": "github",
+            "hash": "ad72fa1d103df777906f0d98f3e882b9916aeada",
+            "hash_algorithm": "sha1",
+            "url": "https://api.github.com/repos/secondlife/3p-kdu/releases/assets/136774118"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "creds": "github",
+            "hash": "e46e4ac93a237b5c4a14183766f76ba5d58935a2",
+            "hash_algorithm": "sha1",
+            "url": "https://api.github.com/repos/secondlife/3p-kdu/releases/assets/136774125"
+          },
+          "name": "linux64"
+        },
+        "windows64": {
+          "archive": {
+            "creds": "github",
+            "hash": "bb37557f78c72b26580a521f8b8dabfa1b34e6e6",
+            "hash_algorithm": "sha1",
+            "url": "https://api.github.com/repos/secondlife/3p-kdu/releases/assets/136774126"
+          },
+          "name": "windows64"
+        },
+        "linux": {
+          "archive": {
+            "creds": "github",
+            "hash": "711b82f9f588d3a125af7dcd8c81f93d9c343a7d",
+            "hash_algorithm": "sha1",
+            "url": "https://api.github.com/repos/secondlife/3p-kdu/releases/assets/136774121"
+          },
+          "name": "linux"
+        }
+      },
+      "license": "Kakadu",
+      "license_file": "LICENSES/kdu.txt",
+      "copyright": "Kakadu software",
+      "version": "7.10.4.4b9ec5f",
+      "name": "kdu",
+      "description": "JPEG2000 library by Kakadu"
+    },
+    "libhunspell": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "e71ae7a645603fe967a69aa5beb5b3009185e177",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-libhunspell/releases/download/v1.7.2-r1/libhunspell-1.7.2.10207243663-darwin64-10207243663.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "275ffb7f60064d8008aed8406f80f34229f651fc",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-libhunspell/releases/download/v1.7.2-r1/libhunspell-1.7.2.10207243663-linux64-10207243663.tar.zst"
+          },
+          "name": "linux64"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "89ff24e93eaeca7949ccdb5cc368f938f5b1f307",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-libhunspell/releases/download/v1.7.2-r1/libhunspell-1.7.2.10207243663-windows64-10207243663.tar.zst"
+          },
+          "name": "windows64"
+        }
+      },
+      "license": "LGPL",
+      "license_file": "LICENSES/hunspell.txt",
+      "copyright": "LGPL 2.1",
+      "version": "1.7.2.10207243663",
+      "name": "libhunspell",
+      "description": "Spell checking library"
+    },
+    "libndofdev": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "e3dd320c90e67e0c80caf4d4df23257b0196dfb6",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-libndofdev/releases/download/v0.1.8e9edc7/libndofdev-0.1.8e9edc7-darwin64-8e9edc7.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "ae9d554e8839f42230b8ed6c850445d54654a38f",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-libndofdev/releases/download/v0.1.8e9edc7/libndofdev-0.1.8e9edc7-windows64-8e9edc7.tar.zst"
+          },
+          "name": "windows64"
+        }
+      },
+      "license": "BSD",
+      "license_file": "LICENSES/libndofdev.txt",
+      "copyright": "Copyright (c) 2007, 3Dconnexion, Inc. - All rights reserved.",
+      "version": "0.1.8e9edc7",
+      "name": "libndofdev",
+      "description": "3DConnexion SDK"
+    },
+    "libpng": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "6fe46ed1e2e40616abdacf7115e510645d5f62e7",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-libpng/releases/download/v1.6.43-r2/libpng-1.6.43-r2-darwin64-10329429325.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "b54a4710d9c3ddfa044e1d29f9c38974e9fc645d",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-libpng/releases/download/v1.6.43-r2/libpng-1.6.43-r2-linux64-10329429325.tar.zst"
+          },
+          "name": "linux64"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "eddb96c73c8916bf71eaa5d0edb812d20e72c255",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-libpng/releases/download/v1.6.43-r2/libpng-1.6.43-r2-windows64-10329429325.tar.zst"
+          },
+          "name": "windows64"
+        }
+      },
+      "license": "libpng",
+      "license_file": "LICENSES/libpng.txt",
+      "copyright": "Copyright (c) 2004, 2006-2013 Glenn Randers-Pehrson",
+      "version": "1.6.43-r2",
+      "name": "libpng",
+      "description": "PNG Reference library"
+    },
+    "libuuid": {
+      "platforms": {
+        "linux64": {
+          "archive": {
+            "hash": "fb89f1281dd54d8b99b339fc5b712b27",
+            "url": "http://automated-builds-secondlife-com.s3.amazonaws.com/hg/repo/p64_3p-libuuid/rev/314269/arch/Linux/installer/libuuid-1.6.2-linux64-314269.tar.bz2"
+          },
+          "name": "linux64"
+        }
+      },
+      "license": "UUID",
+      "license_file": "LICENSES/uuid.txt",
+      "copyright": "Copyright (c) 2004-2008 The OSSP Project <http://www.ossp.org/>",
+      "version": "1.6.2",
+      "name": "libuuid",
+      "description": "OSSP uuid is a ISO-C:1999 application programming interface (API) and corresponding command line interface (CLI) for the generation of DCE 1.1, ISO/IEC 11578:1996 and RFC 4122 compliant Universally Unique Identifier (UUID). "
+    },
+    "libxml2": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "b2bf9adc84841b6fcf48d4c00787b221607cdea3",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-libxml2/releases/download/v2.13.3-r1/libxml2-2.13.3-r1-darwin64-10329675166.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "6ab8108ea0a42e0bd462568c495e5ce5c4cdc0ff",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-libxml2/releases/download/v2.13.3-r1/libxml2-2.13.3-r1-linux64-10329675166.tar.zst"
+          },
+          "name": "linux64"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "5181bd267de3ad4466227f91c7e2cbed7e8b85d9",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-libxml2/releases/download/v2.13.3-r1/libxml2-2.13.3-r1-windows64-10329675166.tar.zst"
+          },
+          "name": "windows64"
+        }
+      },
+      "license": "mit",
+      "license_file": "LICENSES/libxml2.txt",
+      "copyright": "Copyright (C) 1998-2012 Daniel Veillard.  All Rights Reserved.",
+      "version": "2.13.3-r1",
+      "name": "libxml2",
+      "description": "Libxml2 is the XML C parser and toolkit developed for the Gnome project."
+    },
+    "llappearance_utility": {
+      "platforms": {
+        "linux": {
+          "archive": {
+            "hash": "fddd634dec5ec03924d62cc774f7f8ea",
+            "url": "http://s3-proxy.lindenlab.com/private-builds-secondlife-com/hg/repo/p64_viewer-llappearance-utility/rev/317266/arch/Linux/installer/llappearance_utility-0.0.1-linux-317266.tar.bz2"
+          },
+          "name": "linux"
+        }
+      },
+      "license": "Proprietary",
+      "license_file": "LICENSES/llappearanceutility.txt",
+      "copyright": "Copyright (c) 2000-2012, Linden Research, Inc.",
+      "version": "0.0.1",
+      "name": "llappearance_utility",
+      "description": "Linden Lab appearance utility for server-side avatar baking services."
+    },
+    "llca": {
+      "copyright": "Copyright (c) 2016, Linden Research, Inc.; data provided by the Mozilla NSS Project.\n      ",
+      "license": "mit",
+      "license_file": "LICENSES/ca-license.txt",
+      "name": "llca",
+      "platforms": {
+        "common": {
+          "archive": {
+            "hash": "6d6771706a5b70caa24893ff62afc925f8d035f6",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/llca/releases/download/v202407221723.0-a0fd5b9/llca-202407221423.0-common-10042698865.tar.zst"
+          },
+          "name": "common"
+        }
+      },
+      "version": "202407221423.0"
+    },
+    "llphysicsextensions_source": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "creds": "github",
+            "hash": "9e59c93c7110e87b4ff3db330f11a23c50e5000f",
+            "hash_algorithm": "sha1",
+            "url": "https://api.github.com/repos/secondlife/llphysicsextensions_source/releases/assets/178910560"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "creds": "github",
+            "hash": "7ed994db5bafa9a7ad09a1b53da850a84715c65e",
+            "hash_algorithm": "sha1",
+            "url": "https://api.github.com/repos/secondlife/llphysicsextensions_source/releases/assets/178910561"
+          },
+          "name": "linux64"
+        },
+        "windows64": {
+          "archive": {
+            "creds": "github",
+            "hash": "66824c02e0e5eabbfbe37bfb173360195f89697c",
+            "hash_algorithm": "sha1",
+            "url": "https://api.github.com/repos/secondlife/llphysicsextensions_source/releases/assets/178910562"
+          },
+          "name": "windows64"
+        }
+      },
+      "license": "internal",
+      "license_file": "LICENSES/llphysicsextensions.txt",
+      "copyright": "Copyright (c) 2010, Linden Research, Inc.",
+      "version": "1.0.66e6919",
+      "name": "llphysicsextensions_source"
+    },
+    "llphysicsextensions_stub": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "f290b000b31f9e36f2489946cbc99f5e",
+            "url": "http://automated-builds-secondlife-com.s3.amazonaws.com/ct2/59995/563653/llphysicsextensions_stub-1.0.542456-darwin64-542456.tar.bz2"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "711f4ec769e4b5f59ba25ee43c11bcbc",
+            "url": "http://automated-builds-secondlife-com.s3.amazonaws.com/ct2/4724/14846/llphysicsextensions_stub-1.0.504712-linux64-504712.tar.bz2"
+          },
+          "name": "linux64"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "2e5f1f7046a49d8b0bc295aa878116bc",
+            "url": "http://automated-builds-secondlife-com.s3.amazonaws.com/ct2/60043/564063/llphysicsextensions_stub-1.0.542456-windows-542456.tar.bz2"
+          },
+          "name": "windows64"
+        }
+      },
+      "license": "internal",
+      "license_file": "LICENSES/llphysicsextensions.txt",
+      "copyright": "Copyright (c) 2010, Linden Research, Inc.",
+      "version": "1.0.542456",
+      "name": "llphysicsextensions_stub"
+    },
+    "llphysicsextensions_tpv": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "f09066891d5a52add50bdb14efdc86f6",
+            "url": "https://s3-proxy.lindenlab.com/private-builds-secondlife-com/ct2/84729/788142/llphysicsextensions_tpv-1.0.561752-darwin64-561752.tar.bz2"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "711f4ec769e4b5f59ba25ee43c11bcbc",
+            "url": "http://automated-builds-secondlife-com.s3.amazonaws.com/ct2/4724/14846/llphysicsextensions_stub-1.0.504712-linux64-504712.tar.bz2"
+          },
+          "name": "linux64"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "a43e360236e7c17b5823f91e4c349e60",
+            "url": "https://s3-proxy.lindenlab.com/private-builds-secondlife-com/ct2/84731/788139/llphysicsextensions_tpv-1.0.561752-windows64-561752.tar.bz2"
+          },
+          "name": "windows"
+        }
+      },
+      "license": "internal",
+      "license_file": "LICENSES/HavokSublicense.pdf",
+      "copyright": "Copyright (c) 2010, Linden Research, Inc.",
+      "version": "1.0.561752",
+      "name": "llphysicsextensions_tpv"
+    },
+    "mesa": {
+      "platforms": {
+        "linux": {
+          "archive": {
+            "hash": "22c50a5d362cad311b4f413cfcffbba2",
+            "url": "http://automated-builds-secondlife-com.s3.amazonaws.com/hg/repo/mesa_3p-update-mesa/rev/297294/arch/Linux/installer/mesa-7.11.1.297294-linux-297294.tar.bz2"
+          },
+          "name": "linux"
+        }
+      },
+      "license": "mesa",
+      "license_file": "LICENSES/mesa.txt",
+      "version": "7.11.1.297294",
+      "name": "mesa"
+    },
+    "meshoptimizer": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "d79631d845e2b5e4a9e6f6b660310795fd49023e",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-meshoptimizer/releases/download/v210-r2/meshoptimizer-210.0.0-r2-darwin64-10341021290.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "024ce689a6f13e66d0c7e431ac34071434e2365a",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-meshoptimizer/releases/download/v210-r2/meshoptimizer-210.0.0-r2-windows64-10341021290.tar.zst"
+          },
+          "name": "windows64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "c947107c0aca46e94e22f66328a3cbbd01d99b36",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-meshoptimizer/releases/download/v210-r2/meshoptimizer-210.0.0-r2-linux64-10341021290.tar.zst"
+          },
+          "name": "linux64"
+        }
+      },
+      "license": "meshoptimizer",
+      "license_file": "LICENSES/meshoptimizer.txt",
+      "copyright": "Copyright (c) 2016-2021 Arseny Kapoulkine",
+      "version": "210.0.0-r2",
+      "name": "meshoptimizer",
+      "canonical_repo": "https://bitbucket.org/lindenlab/3p-meshoptimizer",
+      "description": "Meshoptimizer. Mesh optimization library."
+    },
+    "mikktspace": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "65edf85c36a10001e32bdee582bec4732137208b",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-mikktspace/releases/download/v2-e967e1b/mikktspace-1-darwin64-8756084692.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "fa9dcee4584df7e7271fdf69c08e6fd3122a47fc",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-mikktspace/releases/download/v2-e967e1b/mikktspace-1-linux64-8756084692.tar.zst"
+          },
+          "name": "linux64"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "130b33a70bdb3a8a188376c6a91840bdb61380a8",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-mikktspace/releases/download/v2-e967e1b/mikktspace-1-windows64-8756084692.tar.zst"
+          },
+          "name": "windows64"
+        }
+      },
+      "license": "Apache 2.0",
+      "license_file": "mikktspace.txt",
+      "copyright": "Copyright (C) 2011 by Morten S. Mikkelsen, Copyright (C) 2022 Blender Authors",
+      "version": "1",
+      "name": "mikktspace",
+      "canonical_repo": "https://bitbucket.org/lindenlab/3p-mikktspace",
+      "description": "Mikktspace Tangent Generator"
+    },
+    "minizip-ng": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "6bedaa9d770ef0ae6147f49a26fc3209fde9cb80",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-minizip-ng/releases/download/v4.0.7-r1/minizip_ng-4.0.7-r1-darwin64-10324657515.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "ce2c91b8c4f89af252ce1b6a96af6985fe54f509",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-minizip-ng/releases/download/v4.0.7-r1/minizip_ng-4.0.7-r1-linux64-10324657515.tar.zst"
+          },
+          "name": "linux64"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "9cee9d85f9a7c6fb051125775f0122a926da5cc9",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-minizip-ng/releases/download/v4.0.7-r1/minizip_ng-4.0.7-r1-windows64-10324657515.tar.zst"
+          },
+          "name": "windows64"
+        }
+      },
+      "license": "minizip-ng",
+      "license_file": "LICENSES/minizip-ng.txt",
+      "copyright": "This project uses the zlib license. Copyright (C) 1995-2013 Jean-loup Gailly and Mark Adler",
+      "version": "4.0.7-r1",
+      "name": "minizip-ng",
+      "canonical_repo": "https://bitbucket.org/lindenlab/3p-minizip-ng",
+      "description": "minizip-ng is a zip manipulation library. Based on work of Gilles Vollant."
+    },
+    "nanosvg": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "32ead724319c2ea6f65fc5be0e3157cc",
+            "url": "https://automated-builds-secondlife-com.s3.amazonaws.com/ct2/115452/994130/nanosvg-2022.09.27-darwin64-580364.tar.bz2"
+          },
+          "name": "darwin64"
+        },
+        "linux": {
+          "archive": {
+            "hash": "84698f044598ff79e255965f3d1c3e80",
+            "url": "https://automated-builds-secondlife-com.s3.amazonaws.com/ct2/115397/993664/nanosvg-2022.09.27-linux-580337.tar.bz2"
+          },
+          "name": "linux"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "ee61ff8b866be04c325f1fe2db516d71",
+            "url": "https://automated-builds-secondlife-com.s3.amazonaws.com/ct2/115454/994144/nanosvg-2022.09.27-windows64-580364.tar.bz2"
+          },
+          "name": "windows64"
+        }
+      },
+      "license": "Zlib",
+      "license_file": "LICENSES/nanosvg.txt",
+      "copyright": "Copyright (c) 2013-14 Mikko Mononen",
+      "version": "2022.09.27",
+      "name": "nanosvg",
+      "canonical_repo": "https://bitbucket.org/lindenlab/3p-nanosvg",
+      "description": "NanoSVG is a simple single-header-file SVG parser and rasterizer"
+    },
+    "nghttp2": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "3f3374a5d97803bf78acf20847c2900c7d68ce2b",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-nghttp2/releases/download/v1.62.1/nghttp2-1.62.1-darwin64-10329456052.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "bd9c211f9f53c04821f0ab0e1268a691926331b6",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-nghttp2/releases/download/v1.62.1/nghttp2-1.62.1-linux64-10329456052.tar.zst"
+          },
+          "name": "linux64"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "c23e25a7c47f5233f543a90f1a9ccf4da9282379",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-nghttp2/releases/download/v1.62.1/nghttp2-1.62.1-windows64-10329456052.tar.zst"
+          },
+          "name": "windows64"
+        }
+      },
+      "license": "MIT",
+      "license_file": "LICENSES/nghttp2.txt",
+      "copyright": "Copyright (c) 2012, 2014, 2015, 2016 Tatsuhiro Tsujikawa\nCopyright (c) 2012, 2014, 2015, 2016 nghttp2 contributors",
+      "version": "1.62.1",
+      "name": "nghttp2",
+      "description": "Library providing HTTP 2 support for libcurl",
+      "source_type": "hg"
+    },
+    "nvapi": {
+      "platforms": {
+        "windows64": {
+          "archive": {
+            "hash": "bc574ea89164387a6c12bb49e1bac091c1d4da27",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-nvapi/releases/download/v560-r1/nvapi-560.0.0-r1-windows64-10390321492.tar.zst"
+          },
+          "name": "windows64"
+        }
+      },
+      "license": "MIT",
+      "license_file": "LICENSES/nvapi.txt",
+      "copyright": "Copyright (c) 2024 NVIDIA CORPORATION and AFFILIATES. All rights reserved.",
+      "version": "560.0.0-r1",
+      "name": "nvapi",
+      "description": "NVAPI provides an interface to NVIDIA devices."
+    },
+    "ogg_vorbis": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "3abb5d21655aeca9d6a4de37704e8475821c28d9",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-ogg_vorbis/releases/download/v1.3.5-1.3.7-r1/ogg_vorbis-1.3.5-1.3.7.10341271136-darwin64-10341271136.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "d89dff615c51b46ebdb3d42ac6bd9e0faae5ddf1",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-ogg_vorbis/releases/download/v1.3.5-1.3.7-r1/ogg_vorbis-1.3.5-1.3.7.10341271136-linux64-10341271136.tar.zst"
+          },
+          "name": "linux64"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "0dc0f5334d1c882d5d7bce6d2cfaecf2f7ab1ae6",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-ogg_vorbis/releases/download/v1.3.5-1.3.7-r1/ogg_vorbis-1.3.5-1.3.7.10341271136-windows64-10341271136.tar.zst"
+          },
+          "name": "windows64"
+        }
+      },
+      "license": "ogg-vorbis",
+      "license_file": "LICENSES/ogg-vorbis.txt",
+      "copyright": "Copyright (c) 2002, Xiph.org Foundation",
+      "version": "1.3.5-1.3.7.10341271136",
+      "name": "ogg_vorbis",
+      "description": "Audio encoding library"
+    },
+    "open-libndofdev": {
+      "license": "BSD",
+      "license_file": "LICENSES/libndofdev.txt",
+      "copyright": "Copyright (c) 2008, Jan Ciger (jan.ciger (at) gmail.com)",
+      "version": "0.3",
+      "name": "open-libndofdev",
+      "description": "Open Source replacement for 3DConnection SDK"
+    },
+    "openal": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "a3cc405d48a48a474d05b3de3d28da2005d80037",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-openal-soft/releases/download/v1.24.2-r1/openal-1.24.2-r1-darwin64-13245988487.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "a2b63f0f85ca156c59ee1d34ef96c8e50b89153c",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-openal-soft/releases/download/v1.24.2-r1/openal-1.24.2-r1-linux64-13245988487.tar.zst"
+          },
+          "name": "linux64"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "8ad24fba1191c9cb0d2ab36e64b04b4648a99f43",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-openal-soft/releases/download/v1.24.2-r1/openal-1.24.2-r1-windows64-13245988487.tar.zst"
+          },
+          "name": "windows64"
+        }
+      },
+      "license": "LGPL2",
+      "license_file": "LICENSES/openal-soft.txt",
+      "copyright": "Copyright (C) 1999-2007 by authors.",
+      "version": "1.23.1",
+      "name": "openal",
+      "description": "OpenAL Soft is a software implementation of the OpenAL 3D audio API."
+    },
+    "openjpeg": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "76444e37be0cfccdbb5921370ba150ded2bf3c59",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-openjpeg/releases/download/v2.5.2-r1/openjpeg-2.5.2.10604495243-darwin64-10604495243.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "6bd289a9c4564b80369ce40ecbb24a213c2732ff",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-openjpeg/releases/download/v2.5.2-r1/openjpeg-2.5.2.10604495243-linux64-10604495243.tar.zst"
+          },
+          "name": "linux64"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "5e6e0180adc01e07438cb98daec96543b5d85019",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-openjpeg/releases/download/v2.5.2-r1/openjpeg-2.5.2.10604495243-windows64-10604495243.tar.zst"
+          },
+          "name": "windows64"
+        }
+      },
+      "license": "BSD",
+      "license_file": "LICENSES/openjpeg.txt",
+      "copyright": "Copyright (c) 2002-2007, Communications and Remote Sensing Laboratory, Universite catholique de Louvain (UCL), Belgium; Copyright (c) 2002-2007, Professor Benoit Macq; Copyright (c) 2001-2003, David Janssens; Copyright (c) 2002-2003, Yannick Verschueren; Copyright (c) 2003-2007, Francois-Olivier Devaux and Antonin Descampe; Copyright (c) 2005, Herve Drolon, FreeImage Team; Copyright (c) 2006-2007, Parvatha Elangovan; Copyright (c) 2008, Jerome Fimes, Communications & Systemes <jerome.fimes@c-s.fr>; Copyright (c) 2010-2011, Kaori Hagihara; Copyright (c) 2011-2012, Centre National d'Etudes Spatiales (CNES), France; Copyright (c) 2012, CS Systemes d'Information, France;",
+      "version": "2.5.0.ea12248",
+      "name": "openjpeg",
+      "description": "The OpenJPEG library is an open-source JPEG 2000 codec written in C language."
+    },
+    "openssl": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "a20277991043a4a00fb8280a27a41fbd87c4b840",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-openssl/releases/download/v1.1.1w-r1/openssl-1.1.1w-darwin64-10329796904.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "0f2cd519431b11cacf85971c66c49e5b4d26c56f",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-openssl/releases/download/v1.1.1w-r1/openssl-1.1.1w-linux64-10329796904.tar.zst"
+          },
+          "name": "linux64"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "5e396eedf1492d18126b7281367123c1d64b89aa",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-openssl/releases/download/v1.1.1w-r1/openssl-1.1.1w-windows64-10329796904.tar.zst"
+          },
+          "name": "windows64"
+        }
+      },
+      "license": "openssl",
+      "license_file": "LICENSES/openssl.txt",
+      "copyright": "Copyright (c) 1998-2011 The OpenSSL Project.  All rights reserved; Copyright (C) 1995-1998 Eric Young (eay@cryptsoft.com)",
+      "version": "1.1.1w",
+      "name": "openssl",
+      "description": "Secure Sockets Layer (SSL v2/v3) and Transport Layer Security (TLS v1) Library"
+    },
+    "openxr": {
+      "platforms": {
+        "windows64": {
+          "archive": {
+            "hash": "3cccc3e3f3137066c286270b35abc00ee0c0bb0c",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-openxr/releases/download/v1.1.40-r1/openxr-1.1.40-r1-windows64-10710818432.tar.zst"
+          },
+          "name": "windows64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "f0ad0418a98fb8cb6e158fca3902c15ac1de9d2a",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-openxr/releases/download/v1.1.40-r1/openxr-1.1.40-r1-linux64-10710818432.tar.zst"
+          },
+          "name": "linux64"
+        },
+        "darwin64": {
+          "archive": {
+            "hash": "a9bfabec63a987bd34bcfdc295b928bd0696e1d7",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-openxr/releases/download/v1.1.40-r1/openxr-1.1.40-r1-darwin64-10710818432.tar.zst"
+          },
+          "name": "darwin64"
+        }
+      },
+      "license": "Apache 2.0",
+      "license_file": "LICENSES/openxr.txt",
+      "copyright": "Copyright 2017-2024, The Khronos Group Inc.",
+      "version": "1.1.40-r1",
+      "name": "openxr",
+      "canonical_repo": "https://github.com/secondlife/3p-openxr",
+      "description": "Generated headers and sources for OpenXR loader."
+    },
+    "slvoice": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "1e70b06fe6eb9796097010871b32d8e95167e373",
+            "hash_algorithm": "sha1",
+            "url": "https://automated-builds-secondlife-com.s3.amazonaws.com/gh/secondlife/3p-slvoice/slvoice-4.10.0000.32327.5fc3fe7c.5942f08-darwin64-5942f08.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "92b0ae08832bd0e99c34ef8f3e6346ad",
+            "url": "http://automated-builds-secondlife-com.s3.amazonaws.com/ct2/613/1289/slvoice-3.2.0002.10426.500605-linux64-500605.tar.bz2"
+          },
+          "name": "linux64"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "ddfb7c30d9756915e8b26f44e2ee3a69ee87fb9a",
+            "hash_algorithm": "sha1",
+            "url": "https://automated-builds-secondlife-com.s3.amazonaws.com/gh/secondlife/3p-slvoice/slvoice-4.10.0000.32327.5fc3fe7c.5942f08-windows64-5942f08.tar.zst"
+          },
+          "name": "windows64"
+        }
+      },
+      "license": "Mixed",
+      "license_file": "LICENSES/vivox_licenses.txt",
+      "copyright": "2010 Vivox, including audio coding using Polycom\u00a8 Siren14TM (ITU-T Rec. G.722.1 Annex C)",
+      "version": "4.10.0000.32327.5fc3fe7c.5942f08",
+      "name": "slvoice",
+      "description": "Vivox SDK components"
+    },
+    "threejs": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "cfed00d8ea7265c035c2d86a234b28efb0b23756",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-three_js/releases/download/v0.132.2-b8f6746/threejs-0.132.2-darwin64-b8f6746.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "9de1295b157c9913c28be81ff933c73493ecc132",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-three_js/releases/download/v0.132.2-b8f6746/threejs-0.132.2-linux64-b8f6746.tar.zst"
+          }
+        },
+        "windows64": {
+          "archive": {
+            "hash": "4141710fccbd1ea2b3b53d00e189bdfa2ee9d441",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-three_js/releases/download/v0.132.2-b8f6746/threejs-0.132.2-windows64-b8f6746.tar.zst"
+          },
+          "name": "windows64"
+        }
+      },
+      "license": "MIT",
+      "license_file": "LICENSES/THREEJS_LICENSE.txt",
+      "copyright": "Copyright \u00a9 2010-2021 three.js authors",
+      "version": "0.132.2",
+      "name": "threejs"
+    },
+    "tinygltf": {
+      "platforms": {
+        "common": {
+          "archive": {
+            "hash": "005d23bb2606ae2cc9e844adc1a0edf112c69812",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-tinygltf/releases/download/v2.9.3-r1/tinygltf-2.9.3-r1-common-10341018043.tar.zst"
+          },
+          "name": "common"
+        }
+      },
+      "license": "MIT",
+      "license_file": "LICENSES/tinygltf_license.txt",
+      "copyright": "// Copyright (c) 2015 - Present Syoyo Fujita, Aur\u00e9lien Chatelain and many contributors.",
+      "version": "2.9.3-r1",
+      "name": "tinygltf",
+      "canonical_repo": "https://bitbucket.org/lindenlab/3p-tinygltf",
+      "description": "tinygltf import library",
+      "source": "https://bitbucket.org/lindenlab/3p-tinygltf",
+      "source_type": "git"
+    },
+    "tracy": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "226225ec049826c35adc5e897e0398ed64d4bedb",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-tracy/releases/download/v0.11.0%2Br1/tracy-v0.11.0.10376230034-darwin64-10376230034.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "8c5429d1a1486f40cf7e5e88a232222d1fa4f78e",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-tracy/releases/download/v0.11.0%2Br1/tracy-v0.11.0.10376230034-windows64-10376230034.tar.zst"
+          },
+          "name": "windows64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "ed0664a009aba1dcf1246d845839f524e857162e",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-tracy/releases/download/v0.11.0%2Br1/tracy-v0.11.0.10376230034-linux64-10376230034.tar.zst"
+          },
+          "name": "linux64"
+        }
+      },
+      "license": "bsd",
+      "license_file": "LICENSES/tracy_license.txt",
+      "copyright": "Copyright (c) 2017-2024, Bartosz Taudul (wolf@nereid.pl)",
+      "version": "v0.11.0.10376230034",
+      "name": "tracy",
+      "canonical_repo": "https://bitbucket.org/lindenlab/3p-tracy",
+      "description": "Tracy Profiler Library",
+      "source": "https://bitbucket.org/lindenlab/3p-tracy",
+      "source_type": "git"
+    },
+    "tut": {
+      "platforms": {
+        "common": {
+          "archive": {
+            "hash": "9f0bf4545f08df5381e0f39ccce3a57c6ec4b0f4",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-tut/releases/download/v2008.11.30-409bce5/tut-2008.11.30-common-409bce5.tar.zst"
+          },
+          "name": "common"
+        }
+      },
+      "license": "bsd",
+      "license_file": "LICENSES/tut.txt",
+      "copyright": "Copyright 2002-2006 Vladimir Dyuzhev, Copyright 2007 Denis Kononenko, Copyright 2008-2009 Micha\u0142 Rzechonek",
+      "version": "2008.11.30",
+      "name": "tut",
+      "description": "TUT is a small and portable unit test framework for C++."
+    },
+    "viewer-fonts": {
+      "platforms": {
+        "common": {
+          "archive": {
+            "hash": "e88a7c97a6843d43e0093388f211299ec2892790",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-viewer-fonts/releases/download/v1.1.0-r1/viewer_fonts-1.0.0.10204976553-common-10204976553.tar.zst"
+          },
+          "name": "common"
+        }
+      },
+      "license": "Various open source",
+      "license_file": "LICENSES/fonts.txt",
+      "copyright": "Copyright 2016-2022 Brad Erickson CC-BY-4.0/MIT, Copyright 2016-2022 Twitter, Inc. CC-BY-4.0, Copyright 2013 Joe Loughry and Terence Eden MIT",
+      "version": "1.0.0.10204976553",
+      "name": "viewer-fonts",
+      "description": "Viewer fonts"
+    },
+    "viewer-manager": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "8a04e6b3c6ff7f645219955a1389035565eb10d8",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/viewer-manager/releases/download/v3.0-f14b5ec-D591/viewer_manager-3.0-f14b5ec-darwin64-f14b5ec.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "a1e467c08ecbe6ab24fc8756a815a431a9b00f62",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/viewer-manager/releases/download/v3.0-f14b5ec-D591/viewer_manager-3.0-f14b5ec-linux64-f14b5ec.tar.zst"
+          },
+          "name": "linux64"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "56b613decdd36b2a17646bf3e2cfc2fed8456b8c",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/viewer-manager/releases/download/v3.0-f14b5ec-D591/viewer_manager-3.0-f14b5ec-windows64-f14b5ec.tar.zst"
+          },
+          "name": "windows64"
+        }
+      },
+      "license": "viewerlgpl",
+      "license_file": "LICENSE",
+      "copyright": "Copyright (c) 2000-2012, Linden Research, Inc.",
+      "version": "3.0-f14b5ec",
+      "name": "viewer-manager",
+      "description": "Linden Lab Viewer Management Process suite.",
+      "source": "https://bitbucket.org/lindenlab/vmp-standalone",
+      "source_type": "hg"
+    },
+    "vlc-bin": {
+      "copyright": "Copyright (C) 1998-2016 VLC authors and VideoLAN",
+      "license": "GPL2",
+      "license_file": "LICENSES/vlc.txt",
+      "name": "vlc-bin",
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "f13c82042ef8311e57dd75a3b2bda02d70f711b5",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-vlc-bin/releases/download/v3.0.21.e60ee26/vlc_bin-3.0.21.10218721728-darwin64-10218721728.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "bd995441c1a229ed1432ddd837d7d1663b8c5548",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-vlc-bin/releases/download/v3.0.21.e60ee26/vlc_bin-3.0.21.10218721728-windows64-10218721728.tar.zst"
+          },
+          "name": "windows64"
+        }
+      },
+      "version": "3.0.21.10218721728"
+    },
+    "vulkan_gltf": {
+      "platforms": {
+        "common": {
+          "archive": {
+            "hash": "8e365eff8dcace48d91e2530f8b13e420849aefc",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-vulkan-gltf-pbr/releases/download/v1.0.0-d7c372f/vulkan_gltf-1.0.0-common-d7c372f.tar.zst"
+          },
+          "name": "common"
+        }
+      },
+      "license": "Copyright (c) 2018 Sascha Willems",
+      "license_file": "vulkan_gltf.txt",
+      "copyright": "Copyright (c) 2018 Sascha Willems",
+      "version": "1.0.0",
+      "name": "vulkan_gltf",
+      "canonical_repo": "https://bitbucket.org/lindenlab/3p-vulkan-gltf-pbr",
+      "description": "Vulkan GLTF Sample Implementation"
+    },
+    "webrtc": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "3570b6442d472cd97bad8622c2ec2571d72218a0",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-webrtc-build/releases/download/m114.5735.08.72-test/webrtc-m114.5735.08.72-test.10444682919-darwin64-10444682919.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "eadf6aa99313940ded11801d42c11375669f1628",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-webrtc-build/releases/download/m114.5735.08.72-test/webrtc-m114.5735.08.72-test.10444682919-linux64-10444682919.tar.zst"
+          },
+          "name": "linux64"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "0081fd35290adbc8e66dd366535fb6cd8a966f1e",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-webrtc-build/releases/download/m114.5735.08.72-test/webrtc-m114.5735.08.72-test.10444682919-windows64-10444682919.tar.zst"
+          },
+          "name": "windows64"
+        }
+      },
+      "license": "MIT",
+      "license_file": "LICENSES/webrtc-license.txt",
+      "copyright": "Copyright (c) 2011, The WebRTC project authors. All rights reserved.",
+      "version": "m114.5735.08.72-test.10444682919",
+      "name": "webrtc",
+      "vcs_branch": "secondlife",
+      "vcs_revision": "d3f62d32bac8694d3c7423c731ae30c113bf6a11",
+      "vcs_url": "https://github.com/secondlife/3p-webrtc-build",
+      "canonical_repo": "https://github.com/secondlife/3p-webrtc-build"
+    },
+    "xxhash": {
+      "platforms": {
+        "common": {
+          "archive": {
+            "hash": "fc9362865e33391d55c64d6101726da0a25d924e",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-xxhash/releases/download/v0.8.2-r1/xxhash-0.8.2-10285735820-common-10285735820.tar.zst"
+          },
+          "name": "common"
+        }
+      },
+      "license": "xxhash",
+      "license_file": "LICENSES/xxhash.txt",
+      "copyright": "Copyright (c) 2012-2021 Yann Collet",
+      "version": "0.8.2-10285735820",
+      "name": "xxhash",
+      "description": "xxHash Library"
+    },
+    "zlib-ng": {
+      "platforms": {
+        "darwin64": {
+          "archive": {
+            "hash": "3a6593c71c59ace76d1349483759fcde4b719a76",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-zlib-ng/releases/download/v2.2.1-r2/zlib_ng-2.2.1-r2-darwin64-10324415171.tar.zst"
+          },
+          "name": "darwin64"
+        },
+        "linux64": {
+          "archive": {
+            "hash": "fbadeb0b8c771cb06c0055c9fab6d40c6764dacd",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-zlib-ng/releases/download/v2.2.1-r2/zlib_ng-2.2.1-r2-linux64-10324415171.tar.zst"
+          },
+          "name": "linux64"
+        },
+        "windows64": {
+          "archive": {
+            "hash": "0094031715662be626f5106ff6c814f4fc3dacfa",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-zlib-ng/releases/download/v2.2.1-r2/zlib_ng-2.2.1-r2-windows64-10324415171.tar.zst"
+          },
+          "name": "windows64"
+        }
+      },
+      "license": "zlib-ng",
+      "license_file": "LICENSES/zlib-ng.txt",
+      "copyright": "Copyright (C) 1995-2013 Jean-loup Gailly and Mark Adler",
+      "version": "2.2.1-r2",
+      "name": "zlib-ng",
+      "canonical_repo": "https://bitbucket.org/lindenlab/3p-zlib-ng",
+      "description": "zlib data compression library for the next generation systems"
+    },
+    "tinyexr": {
+      "copyright": "Copyright (c) 2014 - 2021, Syoyo Fujita and many contributors.",
+      "description": "tinyexr import library",
+      "license": "3-clause BSD",
+      "license_file": "LICENSES/tinyexr_license.txt",
+      "name": "tinyexr",
+      "platforms": {
+        "common": {
+          "archive": {
+            "hash": "a9649f85e20c0b83acfd7b02ca19c1dcdd15f01e",
+            "hash_algorithm": "sha1",
+            "url": "https://github.com/secondlife/3p-tinyexr/releases/download/v1.0.9-5e8947c/tinyexr-1.0.9-5e8947c-common-10475846787.tar.zst"
+          },
+          "name": "common"
+        }
+      },
+      "source_type": "git",
+      "vcs_branch": "dependabot/github_actions/secondlife/action-autobuild-4",
+      "vcs_revision": "4dc4d1d90d82a22843e2adf5130f9ecb5ee5769e",
+      "vcs_url": "https://github.com/secondlife/3p-tinyexr",
+      "version": "1.0.9-5e8947c"
+    }
+  },
+  "build_platforms": {
+    "common": {
+      "configurations": {
+        "RelWithDebInfo": {
+          "configure": {
+            "command": "cmake",
+            "options": [
+              "-DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo",
+              "-DADDRESS_SIZE:STRING=$AUTOBUILD_ADDRSIZE",
+              "-DROOT_PROJECT_NAME:STRING=SecondLife",
+              "-DINSTALL_PROPRIETARY=TRUE",
+              "-DUSE_OPENAL:BOOL=ON"
+            ]
+          },
+          "build": {},
+          "name": "RelWithDebInfo"
+        },
+        "RelWithDebInfoOS": {
+          "configure": {
+            "command": "cmake",
+            "options": [
+              "-DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo",
+              "-DADDRESS_SIZE:STRING=$AUTOBUILD_ADDRSIZE",
+              "-DROOT_PROJECT_NAME:STRING=SecondLife",
+              "-DINSTALL_PROPRIETARY=FALSE"
+            ],
+            "arguments": [
+              "../indra"
+            ]
+          },
+          "name": "RelWithDebInfoOS"
+        },
+        "Release": {
+          "configure": {
+            "command": "cmake",
+            "options": [
+              "-DCMAKE_BUILD_TYPE:STRING=Release",
+              "-DADDRESS_SIZE:STRING=$AUTOBUILD_ADDRSIZE",
+              "-DROOT_PROJECT_NAME:STRING=SecondLife",
+              "-DINSTALL_PROPRIETARY=TRUE",
+              "-DUSE_OPENAL:BOOL=ON"
+            ]
+          },
+          "build": {},
+          "name": "Release"
+        },
+        "ReleaseOS": {
+          "configure": {
+            "command": "cmake",
+            "options": [
+              "-DCMAKE_BUILD_TYPE:STRING=Release",
+              "-DADDRESS_SIZE:STRING=$AUTOBUILD_ADDRSIZE",
+              "-DROOT_PROJECT_NAME:STRING=SecondLife",
+              "-DINSTALL_PROPRIETARY=FALSE"
+            ],
+            "arguments": [
+              "../indra"
+            ]
+          },
+          "name": "ReleaseOS"
+        }
+      },
+      "name": "common"
+    },
+    "darwin64": {
+      "configurations": {
+        "RelWithDebInfo": {
+          "configure": {
+            "options": [
+              "-G",
+              "Xcode"
+            ],
+            "arguments": [
+              "../indra"
+            ]
+          },
+          "build": {
+            "command": "cmake",
+            "options": [
+              "--build",
+              ".",
+              "--config",
+              "RelWithDebInfo",
+              "--parallel",
+              "$AUTOBUILD_CPU_COUNT"
+            ]
+          },
+          "default": "True",
+          "name": "RelWithDebInfo"
+        },
+        "RelWithDebInfoOS": {
+          "configure": {
+            "options": [
+              "-G",
+              "Xcode"
+            ]
+          },
+          "build": {
+            "command": "cmake",
+            "options": [
+              "--build",
+              ".",
+              "--config",
+              "RelWithDebInfo",
+              "--parallel",
+              "$AUTOBUILD_CPU_COUNT"
+            ]
+          },
+          "name": "RelWithDebInfoOS"
+        },
+        "Release": {
+          "configure": {
+            "options": [
+              "-G",
+              "Xcode"
+            ],
+            "arguments": [
+              "../indra"
+            ]
+          },
+          "build": {
+            "command": "cmake",
+            "options": [
+              "--build",
+              ".",
+              "--config",
+              "Release",
+              "--parallel",
+              "$AUTOBUILD_CPU_COUNT"
+            ]
+          },
+          "name": "Release"
+        },
+        "ReleaseOS": {
+          "configure": {
+            "options": [
+              "-G",
+              "Xcode"
+            ]
+          },
+          "build": {
+            "command": "cmake",
+            "options": [
+              "--build",
+              ".",
+              "--config",
+              "Release",
+              "--parallel",
+              "$AUTOBUILD_CPU_COUNT"
+            ]
+          },
+          "name": "ReleaseOS"
+        }
+      },
+      "build_directory": "build-darwin-x86_64",
+      "name": "darwin64"
+    },
+    "linux64": {
+      "configurations": {
+        "Release": {
+          "configure": {
+            "options": [
+              "-G",
+              "Ninja",
+              "-DLL_TESTS=Off"
+            ],
+            "arguments": [
+              "../indra"
+            ]
+          },
+          "build": {
+            "command": "ninja"
+          },
+          "default": "True",
+          "name": "Release"
+        },
+        "ReleaseOS": {
+          "configure": {
+            "options": [
+              "-G",
+              "Ninja",
+              "-DLL_TESTS=Off"
+            ]
+          },
+          "build": {
+            "command": "ninja"
+          },
+          "name": "ReleaseOS"
+        },
+        "default": {
+          "build": {},
+          "name": "default"
+        }
+      },
+      "build_directory": "build-linux-x86_64",
+      "name": "linux64"
+    },
+    "windows": {
+      "configurations": {
+        "RelWithDebInfo": {
+          "configure": {
+            "options": [
+              "-G",
+              "${AUTOBUILD_WIN_CMAKE_GEN|NOTWIN}",
+              "-A",
+              "${AUTOBUILD_WIN_VSPLATFORM|NOTWIN}"
+            ],
+            "arguments": [
+              "..\\indra"
+            ]
+          },
+          "build": {
+            "command": "devenv",
+            "options": [
+              "/build",
+              "RelWithDebInfo|${AUTOBUILD_WIN_VSPLATFORM|NOTWIN}"
+            ],
+            "arguments": [
+              "SecondLife.sln"
+            ]
+          },
+          "default": "True",
+          "name": "RelWithDebInfo"
+        },
+        "RelWithDebInfoOS": {
+          "configure": {
+            "options": [
+              "-G",
+              "${AUTOBUILD_WIN_CMAKE_GEN|NOTWIN}",
+              "-A",
+              "${AUTOBUILD_WIN_VSPLATFORM|NOTWIN}",
+              "-DINSTALL_PROPRIETARY=FALSE",
+              "-DUSE_KDU=FALSE",
+              "-DUSE_OPENAL:BOOL=ON"
+            ],
+            "arguments": [
+              "..\\indra"
+            ]
+          },
+          "build": {
+            "command": "msbuild.exe",
+            "options": [
+              "/p:Configuration=RelWithDebInfo",
+              "/p:Platform=${AUTOBUILD_WIN_VSPLATFORM|NOTWIN}",
+              "/t:Build",
+              "/p:useenv=true",
+              "/verbosity:minimal",
+              "/p:VCBuildAdditionalOptions= /incremental"
+            ],
+            "arguments": [
+              "SecondLife.sln"
+            ]
+          },
+          "name": "RelWithDebInfoOS"
+        },
+        "Release": {
+          "configure": {
+            "options": [
+              "-G",
+              "${AUTOBUILD_WIN_CMAKE_GEN|NOTWIN}",
+              "-A",
+              "${AUTOBUILD_WIN_VSPLATFORM|NOTWIN}"
+            ],
+            "arguments": [
+              "..\\indra"
+            ]
+          },
+          "build": {
+            "command": "devenv",
+            "options": [
+              "/build",
+              "Release|${AUTOBUILD_WIN_VSPLATFORM|NOTWIN}"
+            ],
+            "arguments": [
+              "SecondLife.sln"
+            ]
+          },
+          "name": "Release"
+        },
+        "ReleaseOS": {
+          "configure": {
+            "options": [
+              "-G",
+              "${AUTOBUILD_WIN_CMAKE_GEN|NOTWIN}",
+              "-A",
+              "${AUTOBUILD_WIN_VSPLATFORM|NOTWIN}",
+              "-DUNATTENDED:BOOL=ON",
+              "-DINSTALL_PROPRIETARY=FALSE",
+              "-DUSE_KDU=FALSE",
+              "-DUSE_OPENAL:BOOL=ON"
+            ],
+            "arguments": [
+              "..\\indra"
+            ]
+          },
+          "build": {
+            "command": "msbuild.exe",
+            "options": [
+              "/p:Configuration=Release",
+              "/p:Platform=${AUTOBUILD_WIN_VSPLATFORM|NOTWIN}",
+              "/t:Build",
+              "/p:useenv=true",
+              "/verbosity:minimal",
+              "/p:VCBuildAdditionalOptions= /incremental"
+            ],
+            "arguments": [
+              "SecondLife.sln"
+            ]
+          },
+          "name": "ReleaseOS"
+        }
+      },
+      "build_directory": "build-vc${AUTOBUILD_VSVER|170}-$AUTOBUILD_ADDRSIZE",
+      "name": "windows"
+    }
+  }
+}
