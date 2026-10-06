@@ -30,6 +30,9 @@ from indra.util import llmanifest
 import os.path
 import os
 import unittest
+import subprocess
+import sys
+import tempfile
 
 class DemoManifest(llmanifest.LLManifest):
     def construct(self):
@@ -45,7 +48,7 @@ class DemoManifest(llmanifest.LLManifest):
             self.end_prefix("dir_1")
 
 
-class Demo_ArchManifest(llmanifest.LLManifest):
+class Demo_Arch_Manifest(llmanifest.LLManifest):
         pass
 
 class TestLLManifest(unittest.TestCase):
@@ -55,9 +58,9 @@ class TestLLManifest(unittest.TestCase):
                                         'artwork':'art', 'build':'build'})
 
     def testproperwindowspath(self):
-        self.assertEqual(llmanifest.proper_windows_path("C:\Program Files", "cygwin"),"/cygdrive/c/Program Files")
-        self.assertEqual(llmanifest.proper_windows_path("C:\Program Files", "windows"), "C:\Program Files")
-        self.assertEqual(llmanifest.proper_windows_path("/cygdrive/c/Program Files/NSIS", "windows"), "C:\Program Files\NSIS")
+        self.assertEqual(llmanifest.proper_windows_path(r"C:\Program Files", "cygwin"),"/cygdrive/c/Program Files")
+        self.assertEqual(llmanifest.proper_windows_path(r"C:\Program Files", "windows"), r"C:\Program Files")
+        self.assertEqual(llmanifest.proper_windows_path("/cygdrive/c/Program Files/NSIS", "windows"), r"C:\Program Files\NSIS")
         self.assertEqual(llmanifest.proper_windows_path("/cygdrive/c/Program Files/NSIS", "cygwin"), "/cygdrive/c/Program Files/NSIS")
 
     def testpathancestors(self):
@@ -74,13 +77,13 @@ class TestLLManifest(unittest.TestCase):
         self.assertRaises(KeyError, tmp_test)
         ExtantManifest = llmanifest.LLManifestRegistry('ExtantManifest', (llmanifest.LLManifest,), {})
         self.assertEqual(llmanifest.LLManifest.for_platform('extant'), ExtantManifest)
-        self.assertEqual(llmanifest.LLManifest.for_platform('demo', 'Arch'), Demo_ArchManifest)
+        self.assertEqual(llmanifest.LLManifest.for_platform('demo', 'Arch'), Demo_Arch_Manifest)
 
 
     def testprefix(self):
         self.assertEqual(self.m.get_src_prefix(), "src")
         self.assertEqual(self.m.get_dst_prefix(), "dst")
-        self.m.prefix("level1")
+        self.m.prefix(src_dst="level1")
         self.assertEqual(self.m.get_src_prefix(), "src/level1")
         self.assertEqual(self.m.get_dst_prefix(), "dst/level1")
         self.m.end_prefix()
@@ -96,29 +99,29 @@ class TestLLManifest(unittest.TestCase):
         self.m.end_prefix()
         self.assertEqual(self.m.get_src_prefix(), "src")
         self.assertEqual(self.m.get_dst_prefix(), "dst")
-        self.m.prefix("level1")
+        self.m.prefix(src_dst="level1")
         self.m.end_prefix("level1")
         self.assertEqual(self.m.get_src_prefix(), "src")
         self.assertEqual(self.m.get_dst_prefix(), "dst")
-        self.m.prefix("level1")
+        self.m.prefix(src_dst="level1")
         def tmp_test():
             self.m.end_prefix("mismatch")
         self.assertRaises(ValueError, tmp_test)
 
     def testruncommand(self):
-        self.assertEqual("Hello\n", self.m.run_command("echo Hello"))
-        def exit_1_test():
-            self.m.run_command("exit 1")
-        self.assertRaises(RuntimeError, exit_1_test)
-        def not_found_test():
-            self.m.run_command("test_command_that_should_not_be_found")
-        self.assertRaises(RuntimeError, not_found_test)
-
+        with tempfile.TemporaryFile() as output:
+            self.m.run_command([sys.executable, "-c", "print('Hello')"], stdout=output)
+            output.seek(0)
+            self.assertEqual(output.read(), b"Hello\n")
+        with self.assertRaises(llmanifest.ManifestError):
+            self.m.run_command([sys.executable, "-c", "raise SystemExit(1)"])
+        with self.assertRaises(OSError):
+            self.m.run_command(["test_command_that_should_not_be_found"])
 
     def testpathof(self):
         self.assertEqual(self.m.src_path_of("a"), "src/a")
         self.assertEqual(self.m.dst_path_of("a"), "dst/a")
-        self.m.prefix("tmp")
+        self.m.prefix(src_dst="tmp")
         self.assertEqual(self.m.src_path_of("b/c"), "src/tmp/b/c")
         self.assertEqual(self.m.dst_path_of("b/c"), "dst/tmp/b/c")
 
