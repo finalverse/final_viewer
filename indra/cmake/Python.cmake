@@ -1,6 +1,7 @@
 # Allow explicit Python path via environment variable
-if(DEFINED ENV{PYTHON})
-    set(Python3_ROOT_DIR "$ENV{PYTHON}")
+if(DEFINED ENV{PYTHON} AND NOT Python3_EXECUTABLE)
+    # PYTHON names an executable, whereas Python3_ROOT_DIR expects a directory.
+    set(Python3_EXECUTABLE "$ENV{PYTHON}" CACHE FILEPATH "Python interpreter for builds")
 endif()
 
 # On Windows, prefer registry entries to avoid Cygwin/MSYS Python
@@ -14,5 +15,5 @@ endif()
 find_package(Python3 REQUIRED COMPONENTS Interpreter)
 
 # Set legacy variable name for compatibility with existing code
-set(PYTHON_EXECUTABLE "${Python3_EXECUTABLE}" CACHE FILEPATH "Python interpreter for builds")
+set(PYTHON_EXECUTABLE "${Python3_EXECUTABLE}" CACHE FILEPATH "Python interpreter for builds" FORCE)
 mark_as_advanced(PYTHON_EXECUTABLE)
