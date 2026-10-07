@@ -224,7 +224,7 @@ Por favor, selecione apenas um objeto e tente novamente.</notification>
 		<usetemplate name="okbutton" yestext="OK"/>
 	</notification>
 	<notification name="AllowMultipleViewers">
-		Não é possível executar múltiplos visualizadores Second Life. Pode levar a uma falha, um corrompimento, visuais alterados e falha no desempenho no cache de textura.
+		Não é possível executar múltiplos visualizadores [APP_NAME]. Pode levar a uma falha, um corrompimento, visuais alterados e falha no desempenho no cache de textura.
 		<usetemplate name="okbutton" yestext="OK"/>
 	</notification>
 	<notification name="GrantModifyRights">
@@ -570,7 +570,7 @@ Digite o nome da região na caixa 'Ponto de partida' ou selecione 'Meu último l
 O objeto pode estar fora de alcance ou ter sido deletado.</notification>
 	<notification name="CannotDownloadFile">Não foi possível baixar o arquivo.</notification>
 	<notification label="" name="MediaFileDownloadUnsupported">
-		Você solicitou o download de um arquivo que não tem suporte no [SECOND_LIFE].
+		Você solicitou o download de um arquivo que não tem suporte no [APP_NAME].
 		<usetemplate ignoretext="Avisar-me sobre downloads de arquivos sem suporte" name="okignore" yestext="OK"/>
 	</notification>
 	<notification name="CannotWriteFile">Não foi possível escrever o arquivo [[FILE]]</notification>
@@ -863,7 +863,7 @@ Unir os terrenos?
 	<notification name="CannotSaveToAssetStore">Ocorreu um problema ao salvar [NAME].  
 Em geral, essa é uma falha técnica temporária.  Personalize e volte a salvar o item novamente dentro de alguns minutos.</notification>
 	<notification name="YouHaveBeenLoggedOut">
-		Ah não! Você foi desconectado do [SECOND_LIFE].
+		Ah não! Você foi desconectado do [APP_NAME].
 
 [MESSAGE]
 		<usetemplate name="okcancelbuttons" notext="Sair" yestext="Exibir IM &amp; bate-papo"/>
@@ -1069,7 +1069,7 @@ Você chegou a uma região próxima.
 Pense em usar outra região como seu início.</notification>
 	<notification name="ClothingLoading">
 		As suas roupas estão sendo transferidas. 
-Enquando isso, use o [SECOND_LIFE] normalmente. Seu visual será exibido corretamente.
+Enquando isso, use o [APP_NAME] normalmente. Seu visual será exibido corretamente.
 		<form name="form">
 			<ignore name="ignore" text="A roupa está demorando para chegar"/>
 		</form>
@@ -1088,10 +1088,11 @@ Enquando isso, use o [SECOND_LIFE] normalmente. Seu visual será exibido correta
 		<usetemplate ignoretext="Avise-me quando a complexidade do meu HUD estiver muito alta" name="notifyignore"/>
 	</notification>
 	<notification name="FirstRun">
-		A instalação do [APP_NAME] está pronta.
 
-Se você ainda não conhece o [SECOND_LIFE], basta criar uma conta para começar.
-		<usetemplate name="okcancelbuttons" notext="Continuar" yestext="Criar conta"/>
+[APP_NAME] is ready.
+
+Sign in with an account from the selected grid. For a private world, ask its operator for access.
+    <usetemplate name="okbutton" yestext="Continuar"/>
 	</notification>
 	<notification name="LoginPacketNeverReceived">
 		Estamos detectando um problema de conexão.  Pode haver um problema com a sua conexão à internet ou com o [SECOND_LIFE_GRID].

@@ -1,3 +1,13 @@
+# Contributing to Finalverse
+
+Report Finalverse bugs and proposals through [this fork's issue tracker](https://github.com/finalverse/final_viewer/issues). Include the channel/version, platform, selected grid, reproduction steps and relevant redacted logs. Never attach passwords, session identifiers or capability URLs.
+
+Before changing a subsystem, read [the architecture](docs/finalverse/architecture.md) and establish its behavioral baseline. Preserve mature viewer functionality, maintain licensing/provenance and separate model proposals from authorized world execution. Rebranding does not permit deleting inherited attribution or changing protocol/service identity blindly.
+
+The inherited contribution guide is retained below for work intended for upstream Linden Lab; its service and issue-routing guidance applies to that upstream project.
+
+---
+
 # Contributor guidelines
 
 Thanks for your interest in contributing to Second Life! This document

@@ -1765,11 +1765,11 @@ function="World.EnvPreset"
                  parameter="http://community.secondlife.com/t5/Forums/ct-p/Forums"/>
         </menu_item_call>         
         <menu_item_call
-             label="Support portal"
+             label="Finalverse Support"
              name="Support portal">
              <menu_item_call.on_click
                  function="Advanced.ShowURL"
-                 parameter="https://support.secondlife.com/"/>         
+                 parameter="https://github.com/finalverse/final_viewer/issues"/>
         </menu_item_call>
         <menu_item_separator/>
         <menu_item_call

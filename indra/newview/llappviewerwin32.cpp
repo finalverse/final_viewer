@@ -204,7 +204,7 @@ LONG WINAPI catchallCrashHandler(EXCEPTION_POINTERS * /*ExceptionInfo*/)
     return 0;
 }
 
-const std::string LLAppViewerWin32::sWindowClass = "Second Life";
+const std::string LLAppViewerWin32::sWindowClass = "Finalverse";
 
 /*
     This function is used to print to the command line a text message
@@ -231,7 +231,7 @@ void nvapi_error(NvAPI_Status status)
 bool create_app_mutex()
 {
     bool result = true;
-    LPCWSTR unique_mutex_name = L"SecondLifeAppMutex";
+    LPCWSTR unique_mutex_name = L"FinalverseAppMutex";
     HANDLE hMutex;
     hMutex = CreateMutex(NULL, TRUE, unique_mutex_name);
     if (GetLastError() == ERROR_ALREADY_EXISTS)

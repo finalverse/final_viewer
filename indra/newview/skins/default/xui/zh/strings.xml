@@ -3,18 +3,12 @@
 	<string name="SECOND_LIFE">
 		第二人生
 	</string>
-	<string name="APP_NAME">
-		第二人生
-	</string>
-	<string name="CAPITALIZED_APP_NAME">
-		第二人生
-	</string>
+	<string name="APP_NAME">Finalverse</string>
+	<string name="CAPITALIZED_APP_NAME">FINALVERSE</string>
 	<string name="SECOND_LIFE_GRID">
 		第二人生網格
 	</string>
-	<string name="SUPPORT_SITE">
-		第二人生支援入口
-	</string>
+	<string name="SUPPORT_SITE">Finalverse project</string>
 	<string name="StartupDetectingHardware">
 		硬體偵測中...
 	</string>

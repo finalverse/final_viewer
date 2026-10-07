@@ -1499,17 +1499,17 @@ if (WINDOWS)
 
     # Replace the icons with the appropriate ones for the channel
     # ('test' is the default)
-    set(ICON_PATH "test")
+    set(ICON_PATH "finalverse")
     set(VIEWER_MACOSX_PHASE "d")
     string(TOLOWER ${VIEWER_CHANNEL} channel_lower)
-    if(channel_lower MATCHES "^second life release")
-        set(ICON_PATH "release")
+    if(channel_lower MATCHES "^finalverse release")
+        set(ICON_PATH "finalverse")
         set(VIEWER_MACOSX_PHASE "f")
-    elseif(channel_lower MATCHES "^second life beta")
-        set(ICON_PATH "beta")
+    elseif(channel_lower MATCHES "^finalverse beta")
+        set(ICON_PATH "finalverse")
         set(VIEWER_MACOSX_PHASE "b")
-    elseif(channel_lower MATCHES "^second life project")
-        set(ICON_PATH "project")
+    elseif(channel_lower MATCHES "^finalverse project")
+        set(ICON_PATH "finalverse")
         set(VIEWER_MACOSX_PHASE "a")
     endif()
     message(STATUS "Copying icons for ${ICON_PATH}")
@@ -1824,7 +1824,7 @@ if (WINDOWS)
     # the build tree (and then I share that directory) or "f:/dist/secondlife" to deploy to a network mounted drive (although this can be slow).
     # this will also create an "unpacked" tarball at build-<platform>/newview/unpacked_<platform>_7_1_11_<build num>.tar
     set(LOCAL_DIST_DIR "" CACHE PATH "Path for 'local' unpacked copy of viewer distribution to be deployed to.")
-    set(product SecondLife-${ARCH}-${VIEWER_SHORT_VERSION}.${VIEWER_VERSION_REVISION})
+    set(product Finalverse-${ARCH}-${VIEWER_SHORT_VERSION}.${VIEWER_VERSION_REVISION})
     if(IS_DIRECTORY ${LOCAL_DIST_DIR})
         add_custom_command(
             OUTPUT  ${LOCAL_DIST_DIR}/.${product}.copy_touched
@@ -2028,7 +2028,7 @@ foreach(elem ${country_codes})
 endforeach()
 
 if (LINUX)
-  set(product SecondLife-${ARCH}-${VIEWER_SHORT_VERSION}.${VIEWER_VERSION_REVISION})
+  set(product Finalverse-${ARCH}-${VIEWER_SHORT_VERSION}.${VIEWER_VERSION_REVISION})
 
   # These are the generated targets that are copied to package/
   set(COPY_INPUT_DEPENDENCIES
@@ -2112,13 +2112,22 @@ if (DARWIN)
   set(MACOSX_EXECUTABLE_NAME "${VIEWER_CHANNEL}")
   set(MACOSX_BUNDLE_INFO_STRING "${VIEWER_CHANNEL}")
   set(MACOSX_BUNDLE_ICON_FILE "secondlife.icns")
-  set(MACOSX_BUNDLE_GUI_IDENTIFIER "com.secondlife.indra.viewer")
+  set(MACOSX_BUNDLE_GUI_IDENTIFIER "com.finalverse.viewer")
   set(MACOSX_BUNDLE_LONG_VERSION_STRING "${VIEWER_CHANNEL} ${VIEWER_SHORT_VERSION}.${VIEWER_VERSION_REVISION}")
-  set(MACOSX_BUNDLE_BUNDLE_NAME "SecondLife")
+  set(MACOSX_BUNDLE_BUNDLE_NAME "Finalverse")
   set(MACOSX_BUNDLE_SHORT_VERSION_STRING "${VIEWER_SHORT_VERSION}.${VIEWER_VERSION_REVISION}")
   set(MACOSX_BUNDLE_BUNDLE_VERSION "${VIEWER_SHORT_VERSION}${VIEWER_MACOSX_PHASE}${VIEWER_REVISION}")
-  set(MACOSX_BUNDLE_COPYRIGHT "Copyright © Linden Research, Inc. 2020")
-  set(MACOSX_BUNDLE_NSMAIN_NIB_FILE "SecondLife.nib")
+  set(MACOSX_BUNDLE_COPYRIGHT "Finalverse modifications © 2026 Finalverse contributors; inherited viewer © Linden Research, Inc.")
+  set(MACOSX_BUNDLE_NSMAIN_NIB_FILE "Finalverse.nib")
+  # Build the native menu from reviewed XIB text rather than shipping the old nib.
+  execute_process(
+    COMMAND xcrun ibtool --compile "${CMAKE_CURRENT_BINARY_DIR}/Finalverse.nib"
+      "${CMAKE_CURRENT_SOURCE_DIR}/SecondLife.xib"
+    RESULT_VARIABLE FINALVERSE_NIB_RESULT
+    )
+  if(NOT FINALVERSE_NIB_RESULT EQUAL 0)
+    message(FATAL_ERROR "Could not compile Finalverse native menu")
+  endif()
   set(MACOSX_BUNDLE_NSPRINCIPAL_CLASS "LLApplication")
 
   # https://blog.kitware.com/upcoming-in-cmake-2-8-12-osx-rpath-support/

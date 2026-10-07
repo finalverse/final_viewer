@@ -49,8 +49,8 @@ LLSplashScreen *gSplashScreenp = NULL;
 bool gDebugClicks = false;
 bool gDebugWindowProc = false;
 
-const S32 gURLProtocolWhitelistCount = 5;
-const std::string gURLProtocolWhitelist[] = { "secondlife:", "http:", "https:", "data:", "mailto:" };
+const S32 gURLProtocolWhitelistCount = 6;
+const std::string gURLProtocolWhitelist[] = { "finalverse:", "secondlife:", "http:", "https:", "data:", "mailto:" };
 
 // CP: added a handler list - this is what's used to open the protocol and is based on registry entry
 //     only meaningful difference currently is that file: protocols are opened using http:

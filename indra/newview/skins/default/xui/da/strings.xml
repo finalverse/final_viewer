@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <strings>
-	<string name="CAPITALIZED_APP_NAME">
-		SECOND LIFE
-	</string>
-	<string name="SUPPORT_SITE">
-		Second Life Support Portal
-	</string>
+	<string name="CAPITALIZED_APP_NAME">FINALVERSE</string>
+	<string name="SUPPORT_SITE">Finalverse project</string>
 	<string name="StartupDetectingHardware">
 		Detekterer hardware...
 	</string>
@@ -424,9 +420,7 @@ Prøv venligst om lidt igen.
 	<string name="ReleaseNotes">
 		Noter om version
 	</string>
-	<string name="RELEASE_NOTES_BASE_URL">
-		https://releasenotes.secondlife.com/viewer/
-	</string>
+	<string name="RELEASE_NOTES_BASE_URL">https://github.com/finalverse/final_viewer/releases</string>
 	<string name="LoadingData">
 		Henter...
 	</string>

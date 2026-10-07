@@ -146,6 +146,8 @@ class ViewerManifest(LLManifest):
                 self.path("*.txt")
 
             # skins
+            self.path("branding/asset-manifest.json", "finalverse-branding.json")
+            self.path("branding/README.md", "finalverse-branding.txt")
             with self.prefix(src_dst="skins"):
                     # include the entire textures directory recursively
                     with self.prefix(src_dst="*/textures"):
@@ -173,7 +175,8 @@ class ViewerManifest(LLManifest):
                             "Channel":self.channel_with_pkg_suffix(),
                             "Platform":self.build_data_json_platform,
                             "Address Size":self.address_size,
-                            "Update Service":"https://update.secondlife.com/update",
+                            "Update Service":"",
+                            "Update Mode":"manual",
                             }
             # Only store this if it's both present and non-empty
             bugsplat_db = self.args.get('bugsplat')
@@ -256,13 +259,13 @@ class ViewerManifest(LLManifest):
         return CHANNEL_VENDOR_BASE + ' ' + app_suffix
 
     def exec_name(self):
-        return "SecondLifeViewer"
+        return "FinalverseViewer"
 
     def app_name_oneword(self):
         return ''.join(self.app_name().split())
 
     def icon_path(self):
-        return "icons/" + self.channel_type()
+        return "icons/finalverse"
 
     def extract_names(self,src):
         """Extract contributor names from source file, returns string"""
@@ -531,17 +534,7 @@ class Windows_x86_64_Manifest(ViewerManifest):
                                                 '*.bat',
                                                 '*.tar.xz')))
 
-            with self.prefix(src=os.path.join(pkgdir, "VMP")):
-                # include the compiled launcher scripts so that it gets included in the file_list
-                self.path('SLVersionChecker.exe')
-
-            with self.prefix(dst="vmp_icons"):
-                with self.prefix(src=self.icon_path()):
-                    self.path("secondlife.ico")
-                #VMP  Tkinter icons
-                with self.prefix(src="vmp_icons"):
-                    self.path("*.png")
-                    self.path("*.gif")
+            # Finalverse launches its viewer directly; inherited updater assets are omitted.
 
         # Plugin host application
         self.path2basename(os.path.join(os.pardir,
@@ -765,12 +758,14 @@ class Windows_x86_64_Manifest(ViewerManifest):
         substitution_strings['installer_file'] = installer_file
 
         version_vars = """
-        !define INSTEXE "SLVersionChecker.exe"
+        !define INSTEXE "%(final_exe)s"
         !define VERSION "%(version_short)s"
         !define VERSION_LONG "%(version)s"
         !define VERSION_DASHES "%(version_dashes)s"
         !define VERSION_REGISTRY "%(version_registry)s"
         !define VIEWER_EXE "%(final_exe)s"
+        !define INSTNAME "%(app_name_oneword)s"
+        !define SHORTCUT "%(app_name)s"
         """ % substitution_strings
 
         if self.channel_type() == 'release':
@@ -780,9 +775,7 @@ class Windows_x86_64_Manifest(ViewerManifest):
 
         inst_vars_template = """
             OutFile "%(installer_file)s"
-            !define INSTNAME   "%(app_name_oneword)s"
-            !define SHORTCUT   "%(app_name)s"
-            !define URLNAME   "secondlife"
+            !define URLNAME   "finalverse"
             Caption "%(caption)s"
             """
 
@@ -797,7 +790,7 @@ class Windows_x86_64_Manifest(ViewerManifest):
                         os.path.join(self.get_dst_prefix(), 'installers', 'windows'),
                         dirs_exist_ok=True)
 
-        tempfile = "secondlife_setup_tmp.nsi"
+        tempfile = "finalverse_setup_tmp.nsi"
         # the following replaces strings in the nsi template
         # it also does python-style % substitution
         self.replace_in("installers/windows/installer_template.nsi", tempfile, {
@@ -917,14 +910,7 @@ class Darwin_x86_64_Manifest(ViewerManifest):
                 with self.prefix(src=self.icon_path(), dst="") :
                     self.path("secondlife.icns")
 
-                # Copy in the updater script and helper modules
-                self.path(src=os.path.join(pkgdir, 'VMP'), dst="updater")
-
-                with self.prefix(src="", dst=os.path.join("updater", "icons")):
-                    self.path2basename(self.icon_path(), "secondlife.ico")
-                    with self.prefix(src="vmp_icons", dst=""):
-                        self.path("*.png")
-                        self.path("*.gif")
+                # Do not package an updater until a trusted Finalverse service exists.
 
                 with self.prefix(src=relpkgdir, dst=""):
                     self.path("libndofdev.dylib")
@@ -935,7 +921,7 @@ class Darwin_x86_64_Manifest(ViewerManifest):
                 self.path("licenses-mac.txt", dst="licenses.txt")
                 self.path("featuretable_mac.txt")
                 self.path("cube.dae")
-                self.path("SecondLife.nib")
+                self.path(src=os.path.join(self.args["build"], "Finalverse.nib"), dst="Finalverse.nib")
 
                 with self.prefix(src=pkgdir,dst=""):
                     self.path("ca-bundle.crt")
@@ -1207,7 +1193,7 @@ class LinuxManifest(ViewerManifest):
             self.path("client-readme.txt","README-linux.txt")
             self.path("client-readme-voice.txt","README-linux-voice.txt")
             self.path("client-readme-joystick.txt","README-linux-joystick.txt")
-            self.path("wrapper.sh","secondlife")
+            self.path("wrapper.sh","finalverse")
             with self.prefix(dst="etc"):
                 self.path("handle_secondlifeprotocol.sh")
                 self.path("register_secondlifeprotocol.sh")
@@ -1216,7 +1202,7 @@ class LinuxManifest(ViewerManifest):
             self.path("install.sh")
 
         with self.prefix(dst="bin"):
-            self.path("secondlife-bin","do-not-directly-run-secondlife-bin")
+            self.path("secondlife-bin","do-not-directly-run-finalverse-bin")
             self.path("../linux_crash_logger/linux-crash-logger","linux-crash-logger.bin")
             self.path2basename("../llplugin/slplugin", "SLPlugin")
             #this copies over the python wrapper script, associated utilities and required libraries, see SL-321, SL-322 and SL-323
@@ -1230,7 +1216,7 @@ class LinuxManifest(ViewerManifest):
         icon_path = self.icon_path()
         print("DEBUG: icon_path '%s'" % icon_path)
         with self.prefix(src=icon_path) :
-            self.path("secondlife_256.png","secondlife_icon.png")
+            self.path("secondlife_256.png","finalverse_icon.png")
             with self.prefix(dst="res-sdl") :
                 self.path("secondlife_256.BMP","ll_icon.BMP")
 

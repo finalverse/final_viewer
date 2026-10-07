@@ -1,7 +1,6 @@
 /* Localized versions of Info.plist keys */
 
-CFBundleName = "Second Life";
+CFBundleName = "Finalverse";
 
-CFBundleShortVersionString = "Second Life version %%VERSION%%";
-CFBundleGetInfoString = "Second Life version %%VERSION%%, Copyright 2004 Linden Research, Inc.";
-
+CFBundleShortVersionString = "Finalverse version %%VERSION%%";
+CFBundleGetInfoString = "Finalverse version %%VERSION%%, modifications Copyright 2026 Finalverse contributors; inherited Copyright 2004 Linden Research, Inc.";

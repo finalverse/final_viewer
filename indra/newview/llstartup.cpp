@@ -2593,13 +2593,6 @@ void show_first_run_dialog()
 
 bool first_run_dialog_callback(const LLSD& notification, const LLSD& response)
 {
-    S32 option = LLNotificationsUtil::getSelectedOption(notification, response);
-    if (0 == option)
-    {
-        LL_DEBUGS("AppInit") << "First run dialog cancelling" << LL_ENDL;
-        LLWeb::loadURLExternal(LLTrans::getString("create_account_url") );
-    }
-
     LLPanelLogin::giveFocus();
     return false;
 }
@@ -3908,4 +3901,3 @@ void transition_back_to_login_panel(const std::string& emsg)
     reset_login(); // calls LLStartUp::setStartupState( STATE_LOGIN_SHOW );
     gSavedSettings.setBOOL("AutoLogin", false);
 }
-

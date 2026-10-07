@@ -6,8 +6,10 @@
 			<button label="Rechercher des mises à jour" name="update_btn"/>
 		</panel>
 		<panel label="Remerciements" name="credits_panel">
-			<text name="linden_intro">Second Life vous est proposé par les Linden, 
-avec les contributions Open Source de :</text>
+			<text name="linden_intro">
+Finalverse is based on the Second Life Viewer by Linden Lab,
+with open source contributions from:
+      </text>
 			<text_editor name="contrib_names">Dummy Name remplacé au moment de l&apos;exécution</text_editor>
 		</panel>
 		<panel label="Licences" name="licenses_panel">

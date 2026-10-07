@@ -34,3 +34,9 @@ Test real permission denial, stale/deleted entity, region change, expired/wrong-
 Future CI should pin toolchains/dependency hashes and run public open configurations on Mac/Windows/Linux. Mobile CI starts with dependency-isolated contract/policy libraries on arm64, then actual native client smoke tests. Do not enable inherited publishing/signing jobs as a side effect of testing.
 
 Evidence: [LL_TESTS defaults](../../indra/cmake/Variables.cmake), [test commands](../../indra/cmake/LLAddBuildTest.cmake), [legacy suite](../../indra/test/CMakeLists.txt), [viewer suites](../../indra/newview/CMakeLists.txt), [inventory tests](../../indra/llinventory/CMakeLists.txt), [manual plans](../../doc/testplans), [packaging test](../../indra/test/test_llmanifest.py).
+
+## Phase 1 update
+
+The original Phase 0 failures above remain historical baseline evidence. The packaging test file was repaired in `5ed0cc0427`; all eight cases now execute and pass against the existing manifest APIs. The Finalverse build adds one meaningful URL-alias compatibility case: native execution reports 1,198 cases, 1,194 passed, four inherited known skips and zero failures. The branding verifier executes isolated Linux launcher/desktop fixtures and checks Windows installer ownership at source level; it also inspects the actual macOS package, artwork hashes, notices and update policy.
+
+The Finalverse app entered the same private MutSea fixture, moved the avatar with independent simulator position evidence, exited on normal user quit and persisted the last pose offline. This successful session does not establish the cause or resolution of the Phase 0 stability issue. Cloud avatar appearance remains; Phase 1 did not repeat object editing/undo, voice, chat or teleport tests. Native app identity and welcome-screen checks are detailed in [rebranding.md](rebranding.md). No AI or mobile acceptance test has been performed.

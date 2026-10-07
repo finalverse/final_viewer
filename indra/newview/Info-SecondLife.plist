@@ -33,7 +33,7 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>${MACOSX_BUNDLE_COPYRIGHT}</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>For voice chat, you must grant permission for Second Life to use the microphone.</string>
+	<string>For voice chat, you must grant permission for Finalverse to use the microphone.</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
@@ -42,13 +42,13 @@
 				<string>slurl</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>seconlife</string>
+			<string>secondlife.icns</string>
 			<key>CFBundleTypeMIMETypes</key>
 			<array>
 				<string>application/x-grid-location-info</string>
 			</array>
 			<key>CFBundleTypeName</key>
-			<string>Secondlife SLURL</string>
+			<string>Virtual world location</string>
 			<key>CFBundleTypeOSTypes</key>
 			<array>
 				<string>SLRL</string>
@@ -65,14 +65,15 @@
 	<array>
 		<dict>
 			<key>CFBundleURLName</key>
-			<string>Second Life URL</string>
+			<string>Virtual world URL</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>finalverse</string>
 				<string>secondlife</string>
 				<string>x-grid-location-info</string>
 			</array>
 			<key>LSIsAppleDefaultForScheme</key>
-			<true/>
+			<false/>
 		</dict>
 	</array>
 	<key>NSPrincipalClass</key>

@@ -3,18 +3,12 @@
 	<string name="SECOND_LIFE">
 		Second Life
 	</string>
-	<string name="APP_NAME">
-		Second Life
-	</string>
-	<string name="CAPITALIZED_APP_NAME">
-		SECOND LIFE
-	</string>
+	<string name="APP_NAME">Finalverse</string>
+	<string name="CAPITALIZED_APP_NAME">FINALVERSE</string>
 	<string name="SECOND_LIFE_GRID">
 		Second Lifeグリッド
 	</string>
-	<string name="SUPPORT_SITE">
-		Second Lifeサポートポータル
-	</string>
+	<string name="SUPPORT_SITE">Finalverse project</string>
 	<string name="StartupDetectingHardware">
 		ハードウェアの検出中です…
 	</string>
@@ -615,9 +609,7 @@ support@secondlife.com にお問い合わせください。
 	<string name="ReleaseNotes">
 		リリースノート
 	</string>
-	<string name="RELEASE_NOTES_BASE_URL" translate="false">
-		https://releasenotes.secondlife.com/viewer/
-	</string>
+	<string name="RELEASE_NOTES_BASE_URL" translate="false">https://github.com/finalverse/final_viewer/releases</string>
 	<string name="LoadingData">
 		読み込んでいます…
 	</string>

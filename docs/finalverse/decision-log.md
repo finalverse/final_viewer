@@ -24,3 +24,18 @@ Date: 2026-10-07 (Asia/Shanghai).
 | D016 | Record runtime unresponsiveness without asserting its cause | UI retrieval timed out; SIGTERM did not stop the viewer. Sample was captured after SIGTERM and cannot prove the original trigger. Verified test process was force-stopped; simulator shut down normally. |
 
 No proposed Finalverse module above is implemented by this audit. Build deviations and verification status are recorded separately in `upstream-baseline.md`.
+
+## Phase 1 decisions
+
+| ID | Decision | Reason / consequence |
+|---|---|---|
+| D017 | Implement deeper product identity following the user's explicit instruction | Distinct channel, artwork, native menus, local welcome, profile and packaging; no AI or renderer replacement |
+| D018 | Develop on `codex/finalverse-branding`, then integrate verified local commits by fast-forward | Preserve the original checkout's unrelated edits and restore its original modes; retain a runnable app separately |
+| D019 | Use Finalverse profile and protocol ownership | No automatic profile migration, upstream process closure or shared URL-handler takeover by installers |
+| D020 | Disable the inherited updater and use manual GitHub release discovery | No trusted Finalverse signed-update service exists at this phase |
+| D021 | Keep service-specific Second Life identity and source attribution accurate | Credentials, network compatibility, legal notices and supplier provenance must not be relabeled |
+| D022 | Make upstream synchronization a manual read-only inspection | Product releases require reviewed integration; automated merge/push is unsuitable |
+| D023 | Repair packaging tests against current library APIs | Preserve actual library semantics while restoring executable regression coverage |
+| D024 | Use supplied Finalverse logo/icons/Lumi; preserve MutSea server identity | User explicitly selected existing brand materials and confirmed server naming; record asset hashes, preserve original files and existing rights |
+
+See [rebranding.md](rebranding.md) for actual implementation and measured verification.

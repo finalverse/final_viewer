@@ -25,6 +25,7 @@
  */
 
 #include "linden_common.h"
+#include "finalversebrand.h"
 
 #if !LL_WINDOWS
 #include <sys/stat.h>
@@ -387,7 +388,7 @@ std::string LLDir::buildSLOSCacheDir() const
     }
     else
     {
-        res = add(getOSCacheDir(), "SecondLife");
+        res = add(getOSCacheDir(), FinalverseBrand::PROFILE_NAME);
     }
     return res;
 }

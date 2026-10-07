@@ -6,7 +6,7 @@
   name="panel_login"
   focus_root="true"
   background_visible="true"
-  bg_opaque_color="0.16 0.16 0.16 1"
+  bg_opaque_color="0.027 0.063 0.094 1"
   background_opaque="true"
   width="1024">
   <panel.string
@@ -40,14 +40,23 @@
       height="172">
   <icon
     height="73"
-    width="165"
-    image_name="login_sl_logo"
+    width="73"
+    image_name="login_sl_logo_small"
     left="0"
     top="25"
     name="sl_logo_small" />
+  <text
+    left="80"
+    top="49"
+    width="85"
+    height="24"
+    font="SansSerifMedium"
+    font.style="BOLD"
+    text_color="White"
+    name="finalverse_title">[APP_NAME]</text>
   <combo_box
-    left_pad="22"
-    bottom_delta="-7"
+    left="187"
+    top="59"
     allow_text_entry="true"
     follows="left|top"
     height="32"

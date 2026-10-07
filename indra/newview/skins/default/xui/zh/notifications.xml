@@ -245,7 +245,7 @@
 		<usetemplate name="okbutton" yestext="確定"/>
 	</notification>
 	<notification name="AllowMultipleViewers">
-		不支援同時執行多個Second Life瀏覽器。 這麼做可能導致材質快取相互碰撞、毀損，並降低視覺效果及性能。
+		不支援同時執行多個[APP_NAME]瀏覽器。 這麼做可能導致材質快取相互碰撞、毀損，並降低視覺效果及性能。
 		<usetemplate name="okbutton" yestext="確定"/>
 	</notification>
 	<notification name="GrantModifyRights">
@@ -674,7 +674,7 @@
 		無法下載檔案
 	</notification>
 	<notification label="" name="MediaFileDownloadUnsupported">
-		你要求下載檔案，在 [SECOND_LIFE] 裡未支援這動作。
+		你要求下載檔案，在 [APP_NAME] 裡未支援這動作。
 		<usetemplate ignoretext="如果下載的檔案不受支援，給我提醒" name="okignore" yestext="確定"/>
 	</notification>
 	<notification name="CannotWriteFile">
@@ -1167,7 +1167,7 @@
 這異常狀況通常只是暫時的。 請稍待幾分鐘後，再自訂並儲存可穿裝扮。
 	</notification>
 	<notification name="YouHaveBeenLoggedOut">
-		糟糕！ 你已被登出 [SECOND_LIFE]。
+		糟糕！ 你已被登出 [APP_NAME]。
 
 [MESSAGE]
 		<usetemplate name="okcancelbuttons" notext="結束退出" yestext="察看 IM 和聊天內容"/>
@@ -1405,7 +1405,7 @@
 	</notification>
 	<notification name="ClothingLoading">
 		你的服裝仍在下載中。
-你可以正常使用 [SECOND_LIFE]，而且其他人看到你也是正常的。
+你可以正常使用 [APP_NAME]，而且其他人看到你也是正常的。
 		<form name="form">
 			<ignore name="ignore" text="服裝花太多時間下載"/>
 		</form>
@@ -1424,10 +1424,11 @@
 		<usetemplate ignoretext="警告我HUD的複雜度是否可能過高" name="notifyignore"/>
 	</notification>
 	<notification name="FirstRun">
-		[APP_NAME] 安裝完成。
 
-如果你是第一次使用 [SECOND_LIFE]，你將需要建立新帳號才可登入。
-		<usetemplate name="okcancelbuttons" notext="繼續" yestext="建立帳號…"/>
+[APP_NAME] is ready.
+
+Sign in with an account from the selected grid. For a private world, ask its operator for access.
+    <usetemplate name="okbutton" yestext="繼續"/>
 	</notification>
 	<notification name="LoginPacketNeverReceived">
 		連線出現問題。 問題可能出在你的網路連線或 [SECOND_LIFE_GRID]。

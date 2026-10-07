@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "finalversebrand.h"
 
 #include "llappviewer.h"
 
@@ -367,14 +368,14 @@ WorkQueue gMainloopWork("mainloop", 1024*1024);
 // Internal globals... that should be removed.
 static std::string gArgs;
 const int MAX_MARKER_LENGTH = 1024;
-const std::string MARKER_FILE_NAME("SecondLife.exec_marker");
-const std::string START_MARKER_FILE_NAME("SecondLife.start_marker");
-const std::string ERROR_MARKER_FILE_NAME("SecondLife.error_marker");
-const std::string LOGOUT_MARKER_FILE_NAME("SecondLife.logout_marker");
+const std::string MARKER_FILE_NAME("Finalverse.exec_marker");
+const std::string START_MARKER_FILE_NAME("Finalverse.start_marker");
+const std::string ERROR_MARKER_FILE_NAME("Finalverse.error_marker");
+const std::string LOGOUT_MARKER_FILE_NAME("Finalverse.logout_marker");
 static std::string gLaunchFileOnQuit;
 
 // Used on Win32 for other apps to identify our window (eg, win_setup)
-const char* const VIEWER_WINDOW_CLASSNAME = "Second Life";
+const char* const VIEWER_WINDOW_CLASSNAME = "Finalverse";
 
 //----------------------------------------------------------------------------
 
@@ -655,7 +656,7 @@ LLAppViewer::LLAppViewer()
 
     // Need to do this initialization before we do anything else, since anything
     // that touches files should really go through the lldir API
-    gDirUtilp->initAppDirs("SecondLife");
+    gDirUtilp->initAppDirs(FinalverseBrand::PROFILE_NAME);
     //
     // IMPORTANT! Do NOT put anything that will write
     // into the log files during normal startup until AFTER
@@ -1088,7 +1089,7 @@ bool LLAppViewer::init()
 
 #if LL_RELEASE_FOR_DOWNLOAD
     // Skip updater if this is a non-interactive instance
-    if (!gSavedSettings.getBOOL("CmdLineSkipUpdater") && !gNonInteractive)
+    if (FinalverseBrand::UPDATER_ENABLED && !gSavedSettings.getBOOL("CmdLineSkipUpdater") && !gNonInteractive)
     {
         LLProcess::Params updater;
         updater.desc = "updater process";
@@ -2291,12 +2292,12 @@ void LLAppViewer::initLoggingAndGetLastDuration()
     {
         // Remove the last ".old" log file.
         std::string old_log_file = gDirUtilp->getExpandedFilename(LL_PATH_LOGS,
-            "SecondLife.old");
+            "Finalverse.old");
         LLFile::remove(old_log_file);
 
         // Get name of the log file
         std::string log_file = gDirUtilp->getExpandedFilename(LL_PATH_LOGS,
-            "SecondLife.log");
+            "Finalverse.log");
         /*
         * Before touching any log files, compute the duration of the last run
         * by comparing the ctime of the previous start marker file with the ctime
@@ -2527,15 +2528,15 @@ bool LLAppViewer::initConfiguration()
         if (gDirUtilp->fileExists(settings_file_list))
         {
             LL_ERRS() << "Cannot load default configuration file settings_files.xml. "
-                << "Please reinstall viewer from https://secondlife.com/support/downloads/ "
-                << "and contact https://support.secondlife.com if issue persists after reinstall."
+                << "Please reinstall viewer from https://github.com/finalverse/final_viewer/releases "
+                << "and contact https://github.com/finalverse/final_viewer/issues if issue persists after reinstall."
                 << LL_ENDL;
         }
         else
         {
             LL_ERRS() << "Default configuration file settings_files.xml not found. "
-                << "Please reinstall viewer from https://secondlife.com/support/downloads/ "
-                << "and contact https://support.secondlife.com if issue persists after reinstall."
+                << "Please reinstall viewer from https://github.com/finalverse/final_viewer/releases "
+                << "and contact https://github.com/finalverse/final_viewer/issues if issue persists after reinstall."
                 << LL_ENDL;
         }
     }
@@ -2903,7 +2904,7 @@ bool LLAppViewer::initConfiguration()
     // crash as this dialog is always frontmost.
     std::string splash_msg;
     LLStringUtil::format_map_t args;
-    args["[APP_NAME]"] = LLTrans::getString("SECOND_LIFE");
+    args["[APP_NAME]"] = LLTrans::getString("APP_NAME");
     splash_msg = LLTrans::getString("StartupLoading", args);
     LLSplashScreen::show();
     LLSplashScreen::update(splash_msg);
@@ -3261,7 +3262,7 @@ LLSD LLAppViewer::getViewerInfo() const
         url = LLTrans::getString("RELEASE_NOTES_BASE_URL");
         if (!LLStringUtil::endsWith(url, "/"))
             url += "/";
-        url += LLURI::escape(versionInfo.getVersion()) + ".html";
+        // Finalverse uses the project release index until per-version notes exist.
     }
     info["VIEWER_RELEASE_NOTES_URL"] = url;
 
@@ -3579,10 +3580,10 @@ void LLAppViewer::writeSystemInfo()
         gDebugInfo["Dynamic"] = LLSD::emptyMap();
 
 #if LL_WINDOWS && !LL_BUGSPLAT
-    gDebugInfo["SLLog"] = gDirUtilp->getExpandedFilename(LL_PATH_DUMP,"SecondLife.log");
+    gDebugInfo["SLLog"] = gDirUtilp->getExpandedFilename(LL_PATH_DUMP,"Finalverse.log");
 #else
     //Not ideal but sufficient for good reporting.
-    gDebugInfo["SLLog"] = gDirUtilp->getExpandedFilename(LL_PATH_LOGS,"SecondLife.old");  //LLError::logFileName();
+    gDebugInfo["SLLog"] = gDirUtilp->getExpandedFilename(LL_PATH_LOGS,"Finalverse.old");  //LLError::logFileName();
 #endif
 
     gDebugInfo["ClientInfo"]["Name"] = LLVersionInfo::instance().getChannel();
@@ -4510,7 +4511,7 @@ void LLAppViewer::badNetworkHandler()
         "the issue. \n"
         " \n"
         "If the problem continues, see the Tech Support FAQ at: \n"
-        "www.secondlife.com/support";
+        "github.com/finalverse/final_viewer/issues";
     forceDisconnect(message.str());
 
     LLApp::instance()->writeMiniDump();

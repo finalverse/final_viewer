@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src 'self' file: data:; base-uri 'none'; form-action 'none'">
+<title>Welcome to Finalverse</title>
+<style>
+:root { color-scheme:dark; font-family:system-ui,-apple-system,"Segoe UI",sans-serif; }
+* { box-sizing:border-box; }
+body { margin:0; background:#071018; color:#f8fbff; }
+main { max-width:1080px; margin:auto; padding:clamp(28px,5vw,64px); }
+.brand { display:flex; align-items:center; gap:14px; color:#f8fbff; font-size:24px; font-weight:650; }
+.brand img { width:56px; height:56px; object-fit:contain; }
+.hero { display:grid; grid-template-columns:1fr 300px; align-items:center; gap:32px; }
+.lumi { width:100%; max-width:300px; border-radius:32px; }
+.eyebrow { color:#ba9fe2; font-size:12px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; }
+h1 { margin:24px 0 18px; max-width:720px; font-size:clamp(36px,5.8vw,70px); line-height:1.05; letter-spacing:-.055em; font-weight:650; }
+.lead { color:#c6d5de; font-size:clamp(16px,2vw,20px); line-height:1.65; max-width:640px; }
+.line { width:70px; height:3px; margin:28px 0; background:#84ccc2; }
+.steps { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin:40px 0 32px; border-top:1px solid #29404c; padding-top:28px; }
+.number { color:#ba9fe2; font:12px ui-monospace,monospace; }
+h2 { font-size:18px; margin:14px 0 10px; font-weight:600; }
+.steps p { color:#a8becb; font-size:14px; line-height:1.65; margin:0; }
+footer { border-top:1px solid #29404c; padding-top:22px; font-size:12px; line-height:1.7; color:#90a8b7; }
+a { color:#ba9fe2; text-decoration:none; border-bottom:1px solid #355f71; }
+a:focus-visible { outline:2px solid #84ccc2; outline-offset:4px; }
+@media(max-width:760px) { .hero { grid-template-columns:1fr; } .lumi { display:none; } .steps { grid-template-columns:1fr; gap:20px; } }
+</style>
+</head>
+<body><main>
+<div class="brand"><img src="../../../textures/finalverse/mark.png" alt="">Finalverse</div>
+<div class="hero"><div>
+<div class="eyebrow">Persistent worlds</div>
+<h1>A world you can<br>make your own.</h1>
+<p class="lead">Explore, connect and create in a shared 3D world.<br>Your avatar. Your ideas. A place to bring them to life.</p>
+<div class="line"></div>
+</div><img class="lumi" src="../../../textures/finalverse/lumi.png" alt="Lumi"></div>
+<section class="steps" aria-label="Getting started">
+<article><span class="number">01 / CONNECT</span><h2>Choose your world</h2><p>Select a grid above and sign in with an account from that grid. For a private world, ask its operator for access.</p></article>
+<article><span class="number">02 / EXPLORE</span><h2>Be there</h2><p>Move with the arrow keys, look around with the camera controls and meet others through chat.</p></article>
+<article><span class="number">03 / CREATE</span><h2>Shape your space</h2><p>Use your inventory and the build tools to create where the world allows it. Ownership and permissions stay in your control.</p></article>
+</section>
+<footer>Finalverse is evolving toward an AI-native world client. AI world tools are in development.<br>
+Built on the open-source Second Life Viewer by Linden Lab and its contributors. Finalverse is an independent project.<br>
+<a href="https://github.com/finalverse/final_viewer">Project</a> &nbsp; / &nbsp; <a href="https://github.com/finalverse/final_viewer/issues">Support</a>
+</footer>
+</main></body></html>

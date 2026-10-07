@@ -6,8 +6,10 @@
 			<button label="Проверить наличие обновлений" name="update_btn"/>
 		</panel>
 		<panel label="Создатели" name="credits_panel">
-			<text name="linden_intro">Игра Second Life разработана лабораторией Lindens, 
-в написании открытого кода участвовали:</text>
+			<text name="linden_intro">
+Finalverse is based on the Second Life Viewer by Linden Lab,
+with open source contributions from:
+      </text>
 			<text_editor name="contrib_names">Псевдо-имя изменено при запуске</text_editor>
 		</panel>
 		<panel label="Лицензии" name="licenses_panel">

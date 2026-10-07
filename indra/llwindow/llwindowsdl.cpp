@@ -662,10 +662,10 @@ bool LLWindowSDL::createContext(int x, int y, int width, int height, int bits, b
     {
         close();
         setupFailure(
-            "Second Life requires True Color (32-bit) to run in a window.\n"
+            "Finalverse requires True Color (32-bit) to run in a window.\n"
             "Please go to Control Panels -> Display -> Settings and\n"
             "set the screen to 32-bit color.\n"
-            "Alternately, if you choose to run fullscreen, Second Life\n"
+            "Alternately, if you choose to run fullscreen, Finalverse\n"
             "will automatically adjust the screen each time it runs.",
             "Error",
             OSMB_OK);
@@ -677,7 +677,7 @@ bool LLWindowSDL::createContext(int x, int y, int width, int height, int bits, b
     {
         close();
         setupFailure(
-            "Second Life is unable to run because it can't get an 8 bit alpha\n"
+            "Finalverse is unable to run because it can't get an 8 bit alpha\n"
             "channel.  Usually this is due to video card driver issues.\n"
             "Please make sure you have the latest video card drivers installed.\n"
             "Also be sure your monitor is set to True Color (32-bit) in\n"

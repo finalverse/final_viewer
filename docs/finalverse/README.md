@@ -1,4 +1,8 @@
-# Finalverse Phase 0 audit
+# Finalverse engineering record
+
+[Phase 1 product identity](rebranding.md) records the subsequent Finalverse branding implementation, profile and update isolation, build and runtime checks. Phase 0 findings below describe the inherited starting revision and remain historical evidence.
+
+## Phase 0 audit
 
 Audit date: 2026-10-07. Baseline repository: `finalverse/final_viewer`, branch `contribute`, commit `218de297a4a2cc286aba54e5df40e5e9e69caf43`. Canonical local location: `/Users/wenyan/Finalverse/viewer`.
 

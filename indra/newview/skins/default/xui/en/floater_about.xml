@@ -51,20 +51,20 @@
       name="credits_panel">
       <text
           follows="top|left|right"
-          height="20"
+          height="46"
           layout="topleft"
           left="5"
           name="linden_intro"
           top="10"
           width="465"
           wrap="true">
-Second Life is brought to you by the Lindens, 
+Finalverse is based on the Second Life Viewer by Linden Lab,
 with open source contributions from:
       </text>
       <text_editor
        enabled="false" 
        follows="top|left"
-       height="340"
+       height="314"
        bg_readonly_color="Transparent"
        left="5"
        text_color="LtGray"

@@ -224,7 +224,7 @@ La inicialización del mercado ha fallado por un error del sistema o de la red. 
 		<usetemplate name="okbutton" yestext="OK"/>
 	</notification>
 	<notification name="AllowMultipleViewers">
-		No es posible ejecutar varios visores Second Life ya que esta funcionalidad no es compatible. Puede provocar problemas de caché en la textura, imágenes degradadas o alteradas y un bajo rendimiento.
+		No es posible ejecutar varios visores [APP_NAME] ya que esta funcionalidad no es compatible. Puede provocar problemas de caché en la textura, imágenes degradadas o alteradas y un bajo rendimiento.
 		<usetemplate name="okbutton" yestext="OK"/>
 	</notification>
 	<notification name="GrantModifyRights">
@@ -572,7 +572,7 @@ Por favor, escribe el nombre de la región en el cuadro de Posición inicial o e
 El objeto debe de haber sido borrado o estar fuera de rango ('out of range')..</notification>
 	<notification name="CannotDownloadFile">No se ha podido descargar el archivo.</notification>
 	<notification label="" name="MediaFileDownloadUnsupported">
-		Has solicitado descargar un archivo, pero [SECOND_LIFE] no lo admite.
+		Has solicitado descargar un archivo, pero [APP_NAME] no lo admite.
 		<usetemplate ignoretext="Avisarme si las descargas de archivos no se admiten" name="okignore" yestext="OK"/>
 	</notification>
 	<notification name="CannotWriteFile">No se ha podido escribir el archivo [[FILE]]</notification>
@@ -873,7 +873,7 @@ Deberás reconfigurar el nombre y las opciones de la nueva parcela.
 	<notification name="CannotSaveToAssetStore">No se ha podido guardar [NAME] en la base central de almacenamiento.
 Generalmente, esto es un fallo pasajero. Por favor, personaliza y guarda el ítem de aquí a unos minutos.</notification>
 	<notification name="YouHaveBeenLoggedOut">
-		Vaya, has sido desconectado de [SECOND_LIFE].
+		Vaya, has sido desconectado de [APP_NAME].
 
 [MESSAGE]
 		<usetemplate name="okcancelbuttons" notext="Salir" yestext="Ver MI y Chat"/>
@@ -1080,7 +1080,7 @@ Se te ha llevado a una región cercana.
 Quizá quieras configurar una nueva posición para tu Base.</notification>
 	<notification name="ClothingLoading">
 		Aún está descargándose tu ropa.
-Puedes usar [SECOND_LIFE] de forma normal; los demás residentes te verán correctamente.
+Puedes usar [APP_NAME] de forma normal; los demás residentes te verán correctamente.
 		<form name="form">
 			<ignore name="ignore" text="La ropa está tardando mucho en descargarse"/>
 		</form>
@@ -1099,10 +1099,11 @@ Puedes usar [SECOND_LIFE] de forma normal; los demás residentes te verán corre
 		<usetemplate ignoretext="Avisarme si la complejidad de mi HUD es excesiva" name="notifyignore"/>
 	</notification>
 	<notification name="FirstRun">
-		Se ha completado la instalación de [SECOND_LIFE].
 
-Si es la primera vez que usas [SECOND_LIFE], debes crear una cuenta para poder iniciar una sesión.
-		<usetemplate name="okcancelbuttons" notext="Continuar" yestext="Crear cuenta..."/>
+[APP_NAME] is ready.
+
+Sign in with an account from the selected grid. For a private world, ask its operator for access.
+    <usetemplate name="okbutton" yestext="Continuar"/>
 	</notification>
 	<notification name="LoginPacketNeverReceived">
 		Tenemos problemas de conexión. Puede deberse a un problema de tu conexión a Internet o de [SECOND_LIFE_GRID].

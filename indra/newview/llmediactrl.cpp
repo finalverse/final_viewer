@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "lluri.h"
 #include "lltooltip.h"
 
 #include "llmediactrl.h"
@@ -642,9 +643,17 @@ void LLMediaCtrl::navigateToLocalPage( const std::string& subdir, const std::str
     }
     if (ensureMediaSourceExists())
     {
-        mCurrentNavUrl = expanded_filename;
+        // CEF needs a file URI, including escaped spaces in the app's path.
+        LLStringUtil::replaceChar(expanded_filename, '\\', '/');
+        if (expanded_filename.front() != '/')
+        {
+            expanded_filename.insert(0, "/");
+        }
+        const std::string file_uri = "file://" + LLURI::escape(expanded_filename,
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~/:");
+        mCurrentNavUrl = file_uri;
         mMediaSource->setSize(mTextureWidth, mTextureHeight);
-        mMediaSource->navigateTo(expanded_filename, HTTP_CONTENT_TEXT_HTML, false);
+        mMediaSource->navigateTo(file_uri, HTTP_CONTENT_TEXT_HTML, false);
     }
 }
 

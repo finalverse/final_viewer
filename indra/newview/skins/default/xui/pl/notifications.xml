@@ -187,7 +187,7 @@ Wybierz pojedynczy obiekt i spróbuj jeszcze raz.
 		Pamiętaj: kiedy włączysz tą opcję to każdy kto używa tego komputera będzie mógł zobaczyć Twoją listę ulubionych miejsc.
 	</notification>
 	<notification name="AllowMultipleViewers">
-		Uruchamianie kilku przeglądarek Second Life nie podlega wsparciu. Może prowadzić do kolizji pamięci podręcznej tekstur, jej uszkodzeń, pogorszenia efektów wizualnych oraz wydajności.
+		Uruchamianie kilku przeglądarek [APP_NAME] nie podlega wsparciu. Może prowadzić do kolizji pamięci podręcznej tekstur, jej uszkodzeń, pogorszenia efektów wizualnych oraz wydajności.
 	</notification>
 	<notification name="GrantModifyRights">
 		Udzielenie praw modyfikacji innemu Rezydentowi umożliwia modyfikację, usuwanie lub wzięcie JAKIEGOKOLWIEK z Twoich obiektów. Używaj tej opcji z rozwagą!
@@ -608,7 +608,7 @@ Obiekt może znajdować się zbyt daleko albo został usunięty.
 		Nie można pobrać pliku
 	</notification>
 	<notification name="MediaFileDownloadUnsupported">
-		Zażądano pobrania pliku, jaki nie jest obsługiwany w [SECOND_LIFE].
+		Zażądano pobrania pliku, jaki nie jest obsługiwany w [APP_NAME].
 		<usetemplate ignoretext="Ostrzegaj o pobieraniu nieobsługiwanych typów plików" name="okignore" />
 	</notification>
 	<notification name="CannotWriteFile">
@@ -1097,7 +1097,7 @@ Połączyć działki?
 Zazwyczaj jest to tymczasowy problem. Możesz kontynuować modyfikacje i zapisać strój ponownie za kilka minut.
 	</notification>
 	<notification name="YouHaveBeenLoggedOut">
-		Nastąpiło wylogowanie z [SECOND_LIFE]
+		Nastąpiło wylogowanie z [APP_NAME]
 [MESSAGE]
 		<usetemplate name="okcancelbuttons" notext="Zakończ" yestext="Pokaż IM/czat" />
 	</notification>
@@ -1341,7 +1341,7 @@ Możesz ustawić nowe miejsce startu.
 	</notification>
 	<notification name="ClothingLoading">
 		Twoje ubranie wciąż się ładuje.
-Możesz normalnie używać [SECOND_LIFE], inni użytkownicy będą Cię widzieli poprawnie.
+Możesz normalnie używać [APP_NAME], inni użytkownicy będą Cię widzieli poprawnie.
 		<form name="form">
 			<ignore name="ignore" text="Ładowanie ubrań nadal trwa" />
 		</form>
@@ -1360,10 +1360,11 @@ Możesz normalnie używać [SECOND_LIFE], inni użytkownicy będą Cię widzieli
 		<usetemplate ignoretext="Ostrzegaj mnie, gdy stopień złożoności moich dodatków HUD jest zbyt wysoki" name="notifyignore"/>
 	</notification>
 	<notification name="FirstRun">
-		Instalacja [APP_NAME] zakończona.
 
-Jeżeli używasz [SECOND_LIFE] po raz pierwszy to musisz stworzyć konto żeby móc się zalogować.
-		<usetemplate name="okcancelbuttons" notext="Kontynuuj" yestext="Stwórz konto..." />
+[APP_NAME] is ready.
+
+Sign in with an account from the selected grid. For a private world, ask its operator for access.
+    <usetemplate name="okbutton" yestext="Kontynuuj"/>
 	</notification>
 	<notification name="LoginCantRemoveUsername">
 		Zapamiętany użytkownik może zostać zapomniany w Awatar &gt; Ustawienia &gt; Zaawansowane &gt; Zapamiętani użytkownicy.

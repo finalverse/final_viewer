@@ -1,11 +1,7 @@
 <?xml version="1.0" ?>
 <strings>
-	<string name="CAPITALIZED_APP_NAME">
-		SECOND LIFE
-	</string>
-	<string name="SUPPORT_SITE">
-		Portal de Soporte de Second Life
-	</string>
+	<string name="CAPITALIZED_APP_NAME">FINALVERSE</string>
+	<string name="SUPPORT_SITE">Finalverse project</string>
 	<string name="StartupDetectingHardware">
 		Identificando el hardware...
 	</string>
@@ -660,9 +656,7 @@ pueden adjuntarse a las notas.
 	<string name="ReleaseNotes">
 		Notas de la versión
 	</string>
-	<string name="RELEASE_NOTES_BASE_URL">
-		https://releasenotes.secondlife.com/viewer/
-	</string>
+	<string name="RELEASE_NOTES_BASE_URL">https://github.com/finalverse/final_viewer/releases</string>
 	<string name="LoadingData">
 		Cargando...
 	</string>

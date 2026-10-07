@@ -337,4 +337,26 @@ namespace tut
         ensure_equals("position", slurl.getPosition(), LLVector3(1, 2, 3));
 
     }
+    // Finalverse owns its scheme while preserving the mature location/app grammar.
+    template<> template<>
+    void slurlTestObject::test<4>()
+    {
+        llofstream gridfile(TEST_FILENAME);
+        gridfile << gSampleGridFile;
+        gridfile.close();
+        LLGridManager::getInstance()->initialize(TEST_FILENAME);
+        LLGridManager::getInstance()->setGridChoice("my.grid.com");
+        for (const char* suffix : {
+                 "//my.grid.com/secondlife/My%20Region/10/20/30",
+                 "///app/teleport/My%20Region/10/20/30",
+                 "///app/agent/00000000-0000-0000-0000-000000000000/about?name=test"})
+        {
+            const LLSLURL inherited(std::string("secondlife:") + suffix);
+            const LLSLURL branded(std::string("finalverse:") + suffix);
+            ensure_equals("same parsed type", branded.getType(), inherited.getType());
+            ensure_equals("same grid", branded.getGrid(), inherited.getGrid());
+            ensure_equals("same canonical link", branded.getSLURLString(), inherited.getSLURLString());
+        }
+    }
+
 }

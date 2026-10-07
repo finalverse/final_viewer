@@ -225,7 +225,7 @@ Veuillez ne sélectionner qu'un seul objet.</notification>
 		<usetemplate name="okbutton" yestext="OK"/>
 	</notification>
 	<notification name="AllowMultipleViewers">
-		L'exécution de plusieurs visualiseurs Second Life n'est pas prise en charge. Cela peut entraîner des collisions de cache de texture, une corruption et une dégradation des visuels et des performances.
+		L'exécution de plusieurs visualiseurs [APP_NAME] n'est pas prise en charge. Cela peut entraîner des collisions de cache de texture, une corruption et une dégradation des visuels et des performances.
 		<usetemplate name="okbutton" yestext="OK"/>
 	</notification>
 	<notification name="GrantModifyRights">
@@ -574,7 +574,7 @@ Saisissez le nom de la région voulue dans la case Lieu de départ ou choisissez
 L'objet est peut-être inaccessible ou a peut-être été supprimé.</notification>
 	<notification name="CannotDownloadFile">Impossible de télécharger le fichier</notification>
 	<notification label="" name="MediaFileDownloadUnsupported">
-		Vous avez demandé un téléchargement de fichier, qui n’est pas pris en charge dans [SECOND_LIFE].
+		Vous avez demandé un téléchargement de fichier, qui n’est pas pris en charge dans [APP_NAME].
 		<usetemplate ignoretext="M’avertir des téléchargements de fichiers non pris en charge" name="okignore" yestext="OK"/>
 	</notification>
 	<notification name="CannotWriteFile">Impossible d'écrire le fichier [[FILE]]</notification>
@@ -869,7 +869,7 @@ Fusionner le terrain ?
 	<notification name="CannotSaveToAssetStore">Impossible de sauvegarder le fichier [NAME] dans la base de données centrale.
 Cette erreur est généralement temporaire. Veuillez modifier et sauvegarder l'élément endossable à nouveau d'ici quelques minutes.</notification>
 	<notification name="YouHaveBeenLoggedOut">
-		Zut. Vous avez été déconnecté(e) de [SECOND_LIFE].
+		Zut. Vous avez été déconnecté(e) de [APP_NAME].
 
 [MESSAGE]
 		<usetemplate name="okcancelbuttons" notext="Quitter" yestext="Afficher IM et chat"/>
@@ -1070,7 +1070,7 @@ Vous avez été téléporté vers une région voisine.
 Nous vous conseillons de définir votre domicile ailleurs.</notification>
 	<notification name="ClothingLoading">
 		Vos habits sont en cours de téléchargement.
-Vous pouvez utiliser [SECOND_LIFE] normalement, les autres résidents vous voient correctement.
+Vous pouvez utiliser [APP_NAME] normalement, les autres résidents vous voient correctement.
 		<form name="form">
 			<ignore name="ignore" text="Vos habits prennent du temps à télécharger"/>
 		</form>
@@ -1089,10 +1089,11 @@ Vous pouvez utiliser [SECOND_LIFE] normalement, les autres résidents vous voien
 		<usetemplate ignoretext="M’avertir quand la complexité de mon HUD est trop élevée" name="notifyignore"/>
 	</notification>
 	<notification name="FirstRun">
-		L'installation de [APP_NAME] est terminée.
 
-Si vous utilisez [SECOND_LIFE] pour la première fois, vous devez ouvrir un compte avant de pouvoir vous connecter.
-		<usetemplate name="okcancelbuttons" notext="Continuer" yestext="Créer un compte..."/>
+[APP_NAME] is ready.
+
+Sign in with an account from the selected grid. For a private world, ask its operator for access.
+    <usetemplate name="okbutton" yestext="Continuer"/>
 	</notification>
 	<notification name="LoginPacketNeverReceived">
 		Nous avons des difficultés à vous connecter. Il y a peut-être un problème avec votre connexion Internet ou la [SECOND_LIFE_GRID].

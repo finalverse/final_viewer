@@ -112,7 +112,7 @@ LLSLURL::LLSLURL(const std::string& slurl)
 
         // At the end of this if/else block, we'll have determined the grid,
         // and the slurl type (APP or LOCATION)
-        if (slurl_uri.scheme() == LLSLURL::SLURL_SECONDLIFE_SCHEME)
+        if (slurl_uri.scheme() == LLSLURL::SLURL_SECONDLIFE_SCHEME || slurl_uri.scheme() == "finalverse")
         {
             if (path_array.size() == 0
                 && slurl_uri.authority().empty()

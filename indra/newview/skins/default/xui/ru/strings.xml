@@ -3,18 +3,12 @@
 	<string name="SECOND_LIFE">
 		Second Life
 	</string>
-	<string name="APP_NAME">
-		Second Life
-	</string>
-	<string name="CAPITALIZED_APP_NAME">
-		SECOND LIFE
-	</string>
+	<string name="APP_NAME">Finalverse</string>
+	<string name="CAPITALIZED_APP_NAME">FINALVERSE</string>
 	<string name="SECOND_LIFE_GRID">
 		Сетка Second Life
 	</string>
-	<string name="SUPPORT_SITE">
-		Портал поддержки Second Life
-	</string>
+	<string name="SUPPORT_SITE">Finalverse project</string>
 	<string name="StartupDetectingHardware">
 		Проверка оборудования...
 	</string>

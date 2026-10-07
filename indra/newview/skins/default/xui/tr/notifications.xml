@@ -245,7 +245,7 @@ Lütfen sadece bir nesne seçin ve tekrar deneyin.
 		<usetemplate name="okbutton" yestext="Tamam"/>
 	</notification>
 	<notification name="AllowMultipleViewers">
-		Birden çok Second Life görüntüleyiciyi çalıştırma özelliği desteklenmiyor. Bu durum doku önbelleği çakışmalarına, görsellerin bozulmasına ve performansın düşmesine yol açabilir.
+		Birden çok [APP_NAME] görüntüleyiciyi çalıştırma özelliği desteklenmiyor. Bu durum doku önbelleği çakışmalarına, görsellerin bozulmasına ve performansın düşmesine yol açabilir.
 		<usetemplate name="okbutton" yestext="Tamam"/>
 	</notification>
 	<notification name="GrantModifyRights">
@@ -681,7 +681,7 @@ Nesne aralık dışında ya da silinmiş olabilir.
 		Dosya karşıdan yüklenemiyor.
 	</notification>
 	<notification label="" name="MediaFileDownloadUnsupported">
-		[SECOND_LIFE] içinde desteklenmeyen bir dosya indirmeyi talep ettiniz.
+		[APP_NAME] içinde desteklenmeyen bir dosya indirmeyi talep ettiniz.
 		<usetemplate ignoretext="Desteklenmeyen dosya indirme işlemleri hakkında uyar" name="okignore" yestext="Tamam"/>
 	</notification>
 	<notification name="CannotWriteFile">
@@ -1174,7 +1174,7 @@ Arazi birleştirilsin mi?
 Bu genellikle geçici bir arızadır. Lütfen giyilebilir öğeyi birkaç dakika sonra yeniden özelleştirip kaydedin.
 	</notification>
 	<notification name="YouHaveBeenLoggedOut">
-		Üzgünüz. [SECOND_LIFE] oturumunuz kapandı.
+		Üzgünüz. [APP_NAME] oturumunuz kapandı.
 
 [MESSAGE]
 		<usetemplate name="okcancelbuttons" notext="Çık" yestext="Anlık İleti ve Sohbeti Görüntüle"/>
@@ -1419,7 +1419,7 @@ Yeni bir ana konum ayarlamak isteyebilirsiniz.
 	</notification>
 	<notification name="ClothingLoading">
 		Giysileriniz hala karşıdan yükleniyor.
-[SECOND_LIFE]&apos;ı normal şekilde kullanmaya devam edebilirsiniz, diğer insanlar sizi düzgün bir şekilde görecektir.
+[APP_NAME]&apos;ı normal şekilde kullanmaya devam edebilirsiniz, diğer insanlar sizi düzgün bir şekilde görecektir.
 		<form name="form">
 			<ignore name="ignore" text="Giysilerin karşıdan yüklenmesi uzun zaman alıyor"/>
 		</form>
@@ -1438,10 +1438,11 @@ Yeni bir ana konum ayarlamak isteyebilirsiniz.
 		<usetemplate ignoretext="BÜG karmaşıklık seviyem çok yükselince beni uyar" name="notifyignore"/>
 	</notification>
 	<notification name="FirstRun">
-		[APP_NAME] yüklemesi tamamlandı.
 
-[SECOND_LIFE]&apos;ı ilk kez kullanıyorsanız, oturum açmadan önce bir hesap oluşturmalısınız.
-		<usetemplate name="okcancelbuttons" notext="Devam" yestext="Hesap Oluştur..."/>
+[APP_NAME] is ready.
+
+Sign in with an account from the selected grid. For a private world, ask its operator for access.
+    <usetemplate name="okbutton" yestext="Devam"/>
 	</notification>
 	<notification name="LoginPacketNeverReceived">
 		Bağlantıda sorun yaşıyoruz. İnternet bağlantınızda ya da [SECOND_LIFE_GRID] uygulamasında bir problem olabilir.

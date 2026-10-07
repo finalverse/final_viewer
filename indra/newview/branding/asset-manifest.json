@@ -1,0 +1,162 @@
+{
+  "origin": "User-supplied Finalverse/Images brand materials",
+  "pixel_changes": false,
+  "license": "Existing asset rights; no new artwork license asserted",
+  "assets": [
+    {
+      "path": "icons/finalverse/secondlife.icns",
+      "source": "finalviewer_icon.icns",
+      "sha256": "5ce8f0cc3362761c202d751de72339eda0d6e1fbe142955f2bbb6867a23631f6"
+    },
+    {
+      "path": "branding/source/Finalverse_logo_07.svg",
+      "source": "Finalverse_logo_07.svg",
+      "sha256": "0334ae2589c291f6c2dd18d16f396c3ed5a84109ab9289b7b05e4b0c8306c511"
+    },
+    {
+      "path": "skins/default/textures/finalverse/login.png",
+      "source": "Finalverse_logo_07@3x.png",
+      "sha256": "74a49f14f8c25319af5d81608075073539b8f4f6d771b3fe05a9ecce336807c7"
+    },
+    {
+      "path": "skins/default/textures/finalverse/login-small.png",
+      "source": "Finalverse_logo_07@3x.png",
+      "sha256": "74a49f14f8c25319af5d81608075073539b8f4f6d771b3fe05a9ecce336807c7"
+    },
+    {
+      "path": "skins/default/textures/finalverse/mark.png",
+      "source": "Finalverse_logo_07@3x.png",
+      "sha256": "74a49f14f8c25319af5d81608075073539b8f4f6d771b3fe05a9ecce336807c7"
+    },
+    {
+      "path": "skins/default/textures/finalverse/lumi.png",
+      "source": "Lumi-logo.png",
+      "sha256": "5aacbd6c02f84b689960cba9c674fd83ab5ca109ecff0baef84b0310d6874cc8"
+    },
+    {
+      "path": "icons/finalverse/secondlife_256.BMP",
+      "source": "finalviewer_256.bmp",
+      "sha256": "3aa6d898d3f54342782c72527ee323569d563e596029c6d2e31f847fb2decda5"
+    },
+    {
+      "path": "installers/windows/install_icon.BMP",
+      "source": "finalviewer_256.bmp",
+      "sha256": "3aa6d898d3f54342782c72527ee323569d563e596029c6d2e31f847fb2decda5"
+    },
+    {
+      "path": "installers/windows/uninstall_icon.BMP",
+      "source": "finalviewer_256.bmp",
+      "sha256": "3aa6d898d3f54342782c72527ee323569d563e596029c6d2e31f847fb2decda5"
+    },
+    {
+      "path": "icons/finalverse/finalverse.iconset/icon_128x128.png",
+      "source": "finalviewer_icon.icns:icon_128x128.png",
+      "sha256": "1eb792bff6103ac73a5b4a0c48801d1c45ca71bf2588f60a8971ace5e29e21d2"
+    },
+    {
+      "path": "icons/finalverse/finalverse.iconset/icon_128x128@2x.png",
+      "source": "finalviewer_icon.icns:icon_128x128@2x.png",
+      "sha256": "0d58626dbb28b9bca30192498083c2b49e3a70da15a5cf4a6d02ccc2f1fea1be"
+    },
+    {
+      "path": "icons/finalverse/finalverse.iconset/icon_16x16.png",
+      "source": "finalviewer_icon.icns:icon_16x16.png",
+      "sha256": "4b33e26303fdf9cd113fddbf52f33acc4598161c561f316993246c9f3f92bc01"
+    },
+    {
+      "path": "icons/finalverse/finalverse.iconset/icon_16x16@2x.png",
+      "source": "finalviewer_icon.icns:icon_16x16@2x.png",
+      "sha256": "01261c34b2bb18fb7637df85cd904282eb2f43e271b03f65e40c2fee4be8c7ce"
+    },
+    {
+      "path": "icons/finalverse/finalverse.iconset/icon_256x256.png",
+      "source": "finalviewer_icon.icns:icon_256x256.png",
+      "sha256": "0d58626dbb28b9bca30192498083c2b49e3a70da15a5cf4a6d02ccc2f1fea1be"
+    },
+    {
+      "path": "icons/finalverse/finalverse.iconset/icon_256x256@2x.png",
+      "source": "finalviewer_icon.icns:icon_256x256@2x.png",
+      "sha256": "b4843387c1d4f7e9530c4824c379aedc07e7eb620aa16176ec41b815146bd592"
+    },
+    {
+      "path": "icons/finalverse/finalverse.iconset/icon_32x32.png",
+      "source": "finalviewer_icon.icns:icon_32x32.png",
+      "sha256": "01261c34b2bb18fb7637df85cd904282eb2f43e271b03f65e40c2fee4be8c7ce"
+    },
+    {
+      "path": "icons/finalverse/finalverse.iconset/icon_32x32@2x.png",
+      "source": "finalviewer_icon.icns:icon_32x32@2x.png",
+      "sha256": "3ad1665ccc643cd29a1e2c90c7b8e0b703c0a389e8f121be4627ec423960167c"
+    },
+    {
+      "path": "icons/finalverse/finalverse.iconset/icon_512x512.png",
+      "source": "finalviewer_icon.icns:icon_512x512.png",
+      "sha256": "b4843387c1d4f7e9530c4824c379aedc07e7eb620aa16176ec41b815146bd592"
+    },
+    {
+      "path": "icons/finalverse/finalverse.iconset/icon_512x512@2x.png",
+      "source": "finalviewer_icon.icns:icon_512x512@2x.png",
+      "sha256": "777015e32caf6b979b6c04682ab2ccb0403b11e990ac7b96549a3fe5e7ed1aec"
+    },
+    {
+      "path": "icons/finalverse/secondlife_16.png",
+      "source": "finalviewer_icon.icns:icon_16x16.png",
+      "sha256": "4b33e26303fdf9cd113fddbf52f33acc4598161c561f316993246c9f3f92bc01"
+    },
+    {
+      "path": "icons/finalverse/secondlife_32.png",
+      "source": "finalviewer_icon.icns:icon_32x32.png",
+      "sha256": "01261c34b2bb18fb7637df85cd904282eb2f43e271b03f65e40c2fee4be8c7ce"
+    },
+    {
+      "path": "icons/finalverse/secondlife_128.png",
+      "source": "finalviewer_icon.icns:icon_128x128.png",
+      "sha256": "1eb792bff6103ac73a5b4a0c48801d1c45ca71bf2588f60a8971ace5e29e21d2"
+    },
+    {
+      "path": "icons/finalverse/secondlife_256.png",
+      "source": "finalviewer_icon.icns:icon_256x256.png",
+      "sha256": "0d58626dbb28b9bca30192498083c2b49e3a70da15a5cf4a6d02ccc2f1fea1be"
+    },
+    {
+      "path": "icons/finalverse/secondlife_512.png",
+      "source": "finalviewer_icon.icns:icon_512x512.png",
+      "sha256": "b4843387c1d4f7e9530c4824c379aedc07e7eb620aa16176ec41b815146bd592"
+    },
+    {
+      "path": "icons/finalverse/secondlife_1024.png",
+      "source": "finalviewer_icon.icns:icon_512x512@2x.png",
+      "sha256": "777015e32caf6b979b6c04682ab2ccb0403b11e990ac7b96549a3fe5e7ed1aec"
+    },
+    {
+      "path": "icons/finalverse/secondlife_48.png",
+      "source": "finalviewer_48.png",
+      "sha256": "75c077a5e5b6bdb378b140a49e53e14c982358e8e0cfbfb33979a07bb61f24a5"
+    },
+    {
+      "path": "skins/default/textures/finalverse/startup.png",
+      "source": "finalviewer_icon.icns:icon_512x512@2x.png",
+      "sha256": "777015e32caf6b979b6c04682ab2ccb0403b11e990ac7b96549a3fe5e7ed1aec"
+    },
+    {
+      "path": "skins/default/textures/finalverse/notification.png",
+      "source": "finalviewer_icon.icns:icon_32x32.png",
+      "sha256": "01261c34b2bb18fb7637df85cd904282eb2f43e271b03f65e40c2fee4be8c7ce"
+    },
+    {
+      "path": "icons/finalverse/secondlife.ico",
+      "source": "finalviewer_icon.icns:PNG payloads in ICO container",
+      "sha256": "5f6008827b1b60fa818203e0875cdfbd73e9c33b5baab490b41310ceb4a6314c"
+    },
+    {
+      "path": "installers/windows/install_icon.ico",
+      "source": "finalviewer_icon.icns:PNG payloads in ICO container",
+      "sha256": "5f6008827b1b60fa818203e0875cdfbd73e9c33b5baab490b41310ceb4a6314c"
+    },
+    {
+      "path": "installers/windows/uninstall_icon.ico",
+      "source": "finalviewer_icon.icns:PNG payloads in ICO container",
+      "sha256": "5f6008827b1b60fa818203e0875cdfbd73e9c33b5baab490b41310ceb4a6314c"
+    }
+  ]
+}

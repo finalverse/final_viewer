@@ -345,7 +345,7 @@ static bool isDefault(const std::string& scheme, U16 port)
 void LLURI::parseAuthorityAndPathUsingOpaque()
 {
     if (mScheme == "http" || mScheme == "https" ||
-        mScheme == "ftp" || mScheme == "secondlife" ||
+        mScheme == "ftp" || mScheme == "secondlife" || mScheme == "finalverse" ||
         mScheme == "x-grid-location-info")
     {
         if (mEscapedOpaque.substr(0,2) != "//")

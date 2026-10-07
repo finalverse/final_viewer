@@ -245,7 +245,7 @@
 		<usetemplate name="okbutton" yestext="OK"/>
 	</notification>
 	<notification name="AllowMultipleViewers">
-		Запуск нескольких приложений Second Life Viewer не поддерживается. Это может привести к конфликтам кэша текстур, повреждению и снижению производительности и визуального отображения.
+		Запуск нескольких приложений [APP_NAME] Viewer не поддерживается. Это может привести к конфликтам кэша текстур, повреждению и снижению производительности и визуального отображения.
 		<usetemplate name="okbutton" yestext="ОК"/>
 	</notification>
 	<notification name="GrantModifyRights">
@@ -680,7 +680,7 @@
 		Невозможно загрузить файл
 	</notification>
 	<notification label="" name="MediaFileDownloadUnsupported">
-		Вы запросили загрузку файла, который не поддерживается в [SECOND_LIFE].
+		Вы запросили загрузку файла, который не поддерживается в [APP_NAME].
 		<usetemplate ignoretext="Предупреждать о загрузке неподдерживаемых файлов" name="okignore" yestext="OK"/>
 	</notification>
 	<notification name="CannotWriteFile">
@@ -1173,7 +1173,7 @@
 Обычно это временная неполадка. Исправьте настройки и сохраните одежду снова через несколько минут.
 	</notification>
 	<notification name="YouHaveBeenLoggedOut">
-		Черт! Вас выкинуло из [SECOND_LIFE].
+		Черт! Вас выкинуло из [APP_NAME].
 
 [MESSAGE]
 		<usetemplate name="okcancelbuttons" notext="Выйти" yestext="Просмотреть IM и чат"/>
@@ -1418,7 +1418,7 @@
 	</notification>
 	<notification name="ClothingLoading">
 		Ваша одежда все еще загружается.
-Вы можете использовать [SECOND_LIFE] как обычно, другие пользователи будут видеть вас нормально.
+Вы можете использовать [APP_NAME] как обычно, другие пользователи будут видеть вас нормально.
 		<form name="form">
 			<ignore name="ignore" text="Загрузка одежды занимает значительное время"/>
 		</form>
@@ -1437,10 +1437,11 @@
 		<usetemplate ignoretext="Предупреждать о чрезмерной сложности данных в игре" name="notifyignore"/>
 	</notification>
 	<notification name="FirstRun">
-		Установка [APP_NAME] завершена.
 
-Если вы используете [SECOND_LIFE] впервые, для входа в программу вам потребуется создать аккаунт.
-		<usetemplate name="okcancelbuttons" notext="Продолжить" yestext="Создать аккаунт..."/>
+[APP_NAME] is ready.
+
+Sign in with an account from the selected grid. For a private world, ask its operator for access.
+    <usetemplate name="okbutton" yestext="Продолжить"/>
 	</notification>
 	<notification name="LoginPacketNeverReceived">
 		Возникли неполадки при подключении. Возможно, проблема с вашим подключением к интернету или [SECOND_LIFE_GRID] временно недоступна.

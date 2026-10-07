@@ -7,8 +7,9 @@
 		</panel>
 		<panel label="クレジット" name="credits_panel">
 			<text name="linden_intro">
-				Second Life は Lindens によって開発され、以下のオープンソースの貢献があります：
-			</text>
+Finalverse is based on the Second Life Viewer by Linden Lab,
+with open source contributions from:
+      </text>
 			<text_editor name="contrib_names">
 				Dummy Nameは実行時間に置き換えられます。
 			</text_editor>

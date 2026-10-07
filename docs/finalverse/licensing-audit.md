@@ -35,3 +35,7 @@ Existing grid definitions deliberately protect system SL login endpoints from us
 ## Before distribution
 
 Produce exact source/build/dependency revisions, artifact hashes, bundled notices, a source/relink compliance package appropriate to the actual link model, new/modified artwork attribution and a complete service endpoint inventory. Review About/login branding and privacy data flows. Native mobile packaging and store terms need a separate compatibility review. No distribution, public release or signing was performed in Phase 0.
+
+## Phase 1 provenance additions
+
+The user supplied existing Finalverse logo/icon and Lumi materials. [branding/README.md](../../indra/newview/branding/README.md) and the asset manifest record their provenance and hashes; pixels remain unchanged and no new artwork authorship/license is asserted. Confirm applicable asset rights before redistribution. The format-packaging script is LGPL-2.1-only. Existing source licenses, contributor lists and third-party notices remain. The inherited viewer is explicitly credited on the local welcome page and About screen. Product support and update identity are separated from grid/service identity, and the server continues to use MutSea branding. This documents the changes; it does not close the binary SBOM, redistribution, trademark or signing gates above.

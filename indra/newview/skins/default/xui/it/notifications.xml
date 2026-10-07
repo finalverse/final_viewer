@@ -225,7 +225,7 @@ Scegli solo un oggetto e riprova.</notification>
 		<usetemplate name="okbutton" yestext="OK"/>
 	</notification>
 	<notification name="AllowMultipleViewers">
-		Non è possibile utilizzare più di un viewer Second Life contemporaneamente. L’utilizzo simultaneo potrebbe portare a collisioni o corruzione della cache texture, e ad un peggioramento nelle immagini e nella performance.
+		Non è possibile utilizzare più di un viewer [APP_NAME] contemporaneamente. L’utilizzo simultaneo potrebbe portare a collisioni o corruzione della cache texture, e ad un peggioramento nelle immagini e nella performance.
 		<usetemplate name="okbutton" yestext="OK"/>
 	</notification>
 	<notification name="GrantModifyRights">
@@ -574,7 +574,7 @@ Per scegliere il luogo dove vuoi trovarti all'accesso, digita il nome della regi
 L'oggetto potrebbe essere troppo lontano oppure essere stato cancellato.</notification>
 	<notification name="CannotDownloadFile">Non è stato possibile scaricare il file</notification>
 	<notification label="" name="MediaFileDownloadUnsupported">
-		Hai richiesto il download di un file, cosa che non è supportata in [SECOND_LIFE].
+		Hai richiesto il download di un file, cosa che non è supportata in [APP_NAME].
 		<usetemplate ignoretext="Avvisa in caso di download di file non supportati" name="okignore" yestext="OK"/>
 	</notification>
 	<notification name="CannotWriteFile">Non è stato possibile scrivere il file [[FILE]]</notification>
@@ -869,7 +869,7 @@ Unisci il terreno?
 	<notification name="CannotSaveToAssetStore">Non è possibile salvare [NAME] nel database centrale degli asset.
 In genere si tratta di un problema temporaneo. Attendi alcuni minuti per modificare e salvare nuovamente gli elementi indossabili.</notification>
 	<notification name="YouHaveBeenLoggedOut">
-		Accidenti. Sei stato scollegato da [SECOND_LIFE].
+		Accidenti. Sei stato scollegato da [APP_NAME].
 
 [MESSAGE]
 		<usetemplate name="okcancelbuttons" notext="Esci" yestext="Vedi IM &amp; Chat"/>
@@ -1076,7 +1076,7 @@ Sei stato trasferito in una regione vicina.
 Ti consigliamo di impostare una nuova posizione iniziale.</notification>
 	<notification name="ClothingLoading">
 		Gli abiti sono in corso di scaricamento.
-Puoi comunque usare [SECOND_LIFE] normalmente e gli altri residenti ti vedranno correttamente.
+Puoi comunque usare [APP_NAME] normalmente e gli altri residenti ti vedranno correttamente.
 		<form name="form">
 			<ignore name="ignore" text="Lo scaricamento sta richiedendo parecchio tempo"/>
 		</form>
@@ -1095,10 +1095,11 @@ Puoi comunque usare [SECOND_LIFE] normalmente e gli altri residenti ti vedranno 
 		<usetemplate ignoretext="Avvisami quando la complessità del mio HUD è eccessiva" name="notifyignore"/>
 	</notification>
 	<notification name="FirstRun">
-		L'installazione di [APP_NAME] è terminata.
 
-Se questa è la prima volta che usi [SECOND_LIFE], devi creare un account prima che tu possa effettuare l'accesso.
-		<usetemplate name="okcancelbuttons" notext="Continua" yestext="Crea account..."/>
+[APP_NAME] is ready.
+
+Sign in with an account from the selected grid. For a private world, ask its operator for access.
+    <usetemplate name="okbutton" yestext="Continua"/>
 	</notification>
 	<notification name="LoginPacketNeverReceived">
 		Ci sono problemi di connessione. È possibile che ci siano problemi con la tua connessione Internet oppure sulla [SECOND_LIFE_GRID].

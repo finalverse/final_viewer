@@ -27,6 +27,7 @@
 #if LL_DARWIN
 
 #include "linden_common.h"
+#include "finalversebrand.h"
 
 #include "lldir_mac.h"
 #include "llerror.h"
@@ -64,7 +65,7 @@ LLDir_Mac::LLDir_Mac()
 {
     mDirDelimiter = "/";
 
-    const std::string     secondLifeString = "SecondLife";
+    const std::string productDirectory = FinalverseBrand::PROFILE_NAME;
 
     std::string executablepathstr = getSystemExecutableFolder();
 
@@ -114,7 +115,7 @@ LLDir_Mac::LLDir_Mac()
         std::string rootdir;
 
         //Create root directory
-        if (CreateDirectory(appdir, secondLifeString, &rootdir))
+        if (CreateDirectory(appdir, productDirectory, &rootdir))
         {
 
             // Save the full path to the folder
@@ -133,7 +134,7 @@ LLDir_Mac::LLDir_Mac()
         {
             mOSCacheDir = cachedir;
             //TODO:  This changes from ~/Library/Cache/Secondlife to ~/Library/Cache/com.app.secondlife/Secondlife.  Last dir level could go away.
-            CreateDirectory(mOSCacheDir, secondLifeString, NULL);
+            CreateDirectory(mOSCacheDir, productDirectory, NULL);
         }
 
         // mOSUserAppDir
@@ -144,7 +145,7 @@ LLDir_Mac::LLDir_Mac()
         std::string tmpdir = getSystemTempFolder();
         if (!tmpdir.empty())
         {
-            CreateDirectory(tmpdir, secondLifeString, &mTempDir);
+            CreateDirectory(tmpdir, productDirectory, &mTempDir);
         }
 
         mWorkingDir = getCurPath();
@@ -169,6 +170,7 @@ void LLDir_Mac::initAppDirs(const std::string &app_name,
         mAppRODataDir = app_read_only_data_dir;
         mSkinBaseDir = add(mAppRODataDir, "skins");
     }
+    mAppName = app_name;
     mCAFile = add(mAppRODataDir, "ca-bundle.crt");
 }
 

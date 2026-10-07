@@ -3,15 +3,9 @@
 	<string name="SECOND_LIFE">
 		Second Life
 	</string>
-	<string name="APP_NAME">
-		Second Life
-	</string>
-	<string name="CAPITALIZED_APP_NAME">
-		SECOND LIFE
-	</string>
-	<string name="SUPPORT_SITE">
-		Portale di supporto di Second Life
-	</string>
+	<string name="APP_NAME">Finalverse</string>
+	<string name="CAPITALIZED_APP_NAME">FINALVERSE</string>
+	<string name="SUPPORT_SITE">Finalverse project</string>
 	<string name="StartupDetectingHardware">
 		Ricerca hardware...
 	</string>
@@ -665,9 +659,7 @@ possono essere allegati ai biglietti.
 	<string name="ReleaseNotes">
 		Note sulla versione
 	</string>
-	<string name="RELEASE_NOTES_BASE_URL">
-		https://releasenotes.secondlife.com/viewer/
-	</string>
+	<string name="RELEASE_NOTES_BASE_URL">https://github.com/finalverse/final_viewer/releases</string>
 	<string name="LoadingData">
 		In caricamento...
 	</string>

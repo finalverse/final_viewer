@@ -384,7 +384,7 @@ Kan ikke finde den region landet ligger i.
 Dette er typisk en midlertidig fejl. Venligst rediger og gem igen om et par minutter.
 	</notification>
 	<notification name="YouHaveBeenLoggedOut">
-		Du er blevet logget af [SECOND_LIFE]
+		Du er blevet logget af [APP_NAME]
             [MESSAGE]
 		<usetemplate name="okcancelbuttons" notext="Afslut" yestext="Se PB &amp; Chat"/>
 	</notification>
@@ -466,16 +466,17 @@ Du kan måske ønske at sætte en ny hjemme lokation.
 	</notification>
 	<notification name="ClothingLoading">
 		Dit tøj hentes stadig ned.
-Du kan bruge [SECOND_LIFE] normalt og andre personer vil se dig korrekt.
+Du kan bruge [APP_NAME] normalt og andre personer vil se dig korrekt.
 		<form name="form">
 			<ignore name="ignore" text="Det tager lang tid at hente tøj"/>
 		</form>
 	</notification>
 	<notification name="FirstRun">
-		[APP_NAME] installationen er færdig.
 
-Hvis det er første gang du bruger [SECOND_LIFE], skal du først oprette en konto for at logge på.
-	</notification>
+[APP_NAME] is ready.
+
+Sign in with an account from the selected grid. For a private world, ask its operator for access.
+    </notification>
 	<notification name="LoginPacketNeverReceived">
 		Der er problemer med at koble på.  Der kan være et problem med din Internet forbindelse eller [SECOND_LIFE_GRID].
 

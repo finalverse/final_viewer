@@ -1,3 +1,23 @@
+![Finalverse](indra/newview/branding/finalverse-mark.svg)
+
+# Finalverse Viewer
+
+Finalverse is evolving the mature open-source Second Life Viewer into an AI-native persistent 3D world client. This is an incremental transformation: world streaming, avatars, communication, inventory, editing and rendering remain the bootstrap runtime.
+
+The current milestone establishes Finalverse product identity, artwork, native menus, independent settings/cache directories and desktop packaging. AI world actions and the World Kernel are planned; they are not implemented by rebranding.
+
+Start with [the architecture and measured baseline](docs/finalverse/README.md), [branding and verification](docs/finalverse/rebranding.md), and [building on macOS](docs/finalverse/upstream-baseline.md). Windows and Linux source/packaging paths are retained; current runtime verification is on macOS through Rosetta.
+
+Use an account on the grid you select. Finalverse does not replace grid identity, permissions, inventory or server authority. The default welcome page is bundled locally; grid-provided login pages can be enabled with `UseGridLoginPage`. Updates are manual until a trusted Finalverse update service exists.
+
+## Contributing and provenance
+
+Use [the project issue tracker](https://github.com/finalverse/final_viewer/issues) for Finalverse feedback. Keep changes small, tested and compatible with upstream. Preserve source copyrights, the [LGPL license](LICENSE), [third-party notices](indra/newview/licenses-mac.txt), and [artwork attribution](doc/LICENSE-logos.txt).
+
+Inherited code is authored by Linden Lab and upstream contributors. Finalverse branding modifications and newly created artwork are recorded in [the branding provenance ledger](indra/newview/branding/README.md). This is an independent fork, not the official Second Life client.
+
+<details><summary>Verbatim upstream README retained for provenance</summary>
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="doc/sl-logo-dark.png">
   <source media="(prefers-color-scheme: light)" srcset="doc/sl-logo.png">
@@ -42,3 +62,5 @@ pull requests and more. See the [CONTRIBUTING][] and the [open source portal][] 
 [tpv]: http://wiki.secondlife.com/wiki/Third_Party_Viewer_Directory
 [open source portal]: http://wiki.secondlife.com/wiki/Open_Source_Portal
 [contributing]: https://github.com/secondlife/viewer/blob/main/CONTRIBUTING.md
+
+</details>

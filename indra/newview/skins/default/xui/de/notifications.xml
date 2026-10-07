@@ -225,7 +225,7 @@ Wählen Sie ein einzelnes Objekt aus und versuchen Sie es erneut.</notification>
 		<usetemplate name="okbutton" yestext="OK"/>
 	</notification>
 	<notification name="AllowMultipleViewers">
-		Das Starten mehrerer Second Life Viewer wird nicht unterstützt. Dies kann zu Kollisionen des Textur-Caches, Fehlern sowie verschlechterter Grafik und Leistung führen.
+		Das Starten mehrerer [APP_NAME] Viewer wird nicht unterstützt. Dies kann zu Kollisionen des Textur-Caches, Fehlern sowie verschlechterter Grafik und Leistung führen.
 		<usetemplate name="okbutton" yestext="OK"/>
 	</notification>
 	<notification name="GrantModifyRights">
@@ -582,7 +582,7 @@ Geben Sie den Namen der Region im Feld „Startposition“ ein oder wählen Sie 
 Das Objekt ist möglicherweise außer Reichweite oder wurde gelöscht.</notification>
 	<notification name="CannotDownloadFile">Dateidownload nicht möglich</notification>
 	<notification label="" name="MediaFileDownloadUnsupported">
-		Sie haben einen Datei-Download angefordert, der in [SECOND_LIFE] nicht unterstützt wird.
+		Sie haben einen Datei-Download angefordert, der in [APP_NAME] nicht unterstützt wird.
 		<usetemplate ignoretext="Warnung anzeigen, wenn ein Datei-Download nicht unterstützt wird" name="okignore" yestext="OK"/>
 	</notification>
 	<notification name="CannotWriteFile">Datei [[FILE]] kann nicht geschrieben werden</notification>
@@ -881,7 +881,7 @@ Land zusammenlegen?
 	<notification name="CannotSaveToAssetStore">[NAME] kann nicht in Zentral-Asset-Speicher geladen werden.
 Dies ist ein temporärer Fehler. Bitte passen Sie das Kleidungsstück in einigen Minuten noch einmal an und speichern Sie es erneut.</notification>
 	<notification name="YouHaveBeenLoggedOut">
-		Es tut uns leid! Sie wurden von [SECOND_LIFE] abgemeldet.
+		Es tut uns leid! Sie wurden von [APP_NAME] abgemeldet.
 
 [MESSAGE]
 		<usetemplate name="okcancelbuttons" notext="Beenden" yestext="IM &amp; Chat anzeigen"/>
@@ -1088,7 +1088,7 @@ Sie wurden zur nächstgelegenen Region teleportiert.
 Sie müssen eventuell ein neues Zuhause festlegen.</notification>
 	<notification name="ClothingLoading">
 		Ihre Kleidung wird noch heruntergeladen.
-Sie können [SECOND_LIFE] normal verwenden. Andere Benutzer können Sie korrekt dargestellt sehen.
+Sie können [APP_NAME] normal verwenden. Andere Benutzer können Sie korrekt dargestellt sehen.
 		<form name="form">
 			<ignore name="ignore" text="Das Herunterladen der Kleidung dauert lange"/>
 		</form>
@@ -1107,10 +1107,11 @@ Sie können [SECOND_LIFE] normal verwenden. Andere Benutzer können Sie korrekt 
 		<usetemplate ignoretext="Warnung anzeigen, wenn die Komplexität meines HUD zu hoch ist" name="notifyignore"/>
 	</notification>
 	<notification name="FirstRun">
-		Installation von [APP_NAME] vollständig abgeschlossen.
 
-Falls Sie [SECOND_LIFE] zum ersten Mal verwenden, müssen Sie zuerst ein Konto erstellen, bevor Sie sich anmelden können.
-		<usetemplate name="okcancelbuttons" notext="Weiter" yestext="Konto erstellen..."/>
+[APP_NAME] is ready.
+
+Sign in with an account from the selected grid. For a private world, ask its operator for access.
+    <usetemplate name="okbutton" yestext="Weiter"/>
 	</notification>
 	<notification name="LoginPacketNeverReceived">
 		Es gibt Probleme mit der Verbindung. Möglicherweise besteht ein Problem mit Ihrer Internetverbindung oder dem [SECOND_LIFE_GRID].

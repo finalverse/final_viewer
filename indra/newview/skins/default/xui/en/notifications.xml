@@ -651,7 +651,7 @@ Save all changes to clothing/body parts?
    icon="alertmodal.tga"
    name="AllowMultipleViewers"
    type="alertmodal">
-    Running multiple Second Life viewers is not supported. It can lead to texture cache collisions, corruption and degraded visuals and performance.
+    Running multiple [APP_NAME] viewers is not supported. It can lead to texture cache collisions, corruption and degraded visuals and performance.
     <usetemplate
      name="okbutton"
      yestext="OK"/>
@@ -1829,7 +1829,7 @@ The object may be out of range or may have been deleted.
   type="alert">
     <unique/>
     <tag>confirm</tag>
-    You have requested a file download, which is not supported within [SECOND_LIFE].
+    You have requested a file download, which is not supported within [APP_NAME].
     <usetemplate
      ignoretext="Warn about unsupported file downloads"
      name="okignore"
@@ -3074,7 +3074,7 @@ The system is out of disk space. You will need to free up some space on your com
    icon="alertmodal.tga"
    name="YouHaveBeenLoggedOut"
    type="alertmodal">
-Darn. You have been logged out of [SECOND_LIFE].
+Darn. You have been logged out of [APP_NAME].
 
 [MESSAGE]
     <usetemplate
@@ -3718,7 +3718,7 @@ You may want to set a new home location.
    type="alertmodal">
    <tag>fail</tag>
 Your clothing is still downloading.
-You can use [SECOND_LIFE] normally and other people will see you correctly.
+You can use [APP_NAME] normally and other people will see you correctly.
     <form name="form">
       <ignore name="ignore"
        text="Clothing is taking a long time to download"/>
@@ -3773,14 +3773,11 @@ Your [https://community.secondlife.com/t5/English-Knowledge-Base/Avatar-Renderin
    name="FirstRun"
    type="alertmodal">
 
-[APP_NAME] installation is complete.
+[APP_NAME] is ready.
 
-If this is your first time using [SECOND_LIFE], you will need to create an account before you can log in.
+Sign in with an account from the selected grid. For a private world, ask its operator for access.
     <tag>confirm</tag>
-    <usetemplate
-     name="okcancelbuttons"
-     notext="Continue"
-     yestext="Create Account..."/>
+    <usetemplate name="okbutton" yestext="Continue"/>
   </notification>
 
   <notification

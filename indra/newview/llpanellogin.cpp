@@ -184,7 +184,8 @@ LLPanelLogin::LLPanelLogin(const LLRect &rect,
     mCallback(callback),
     mCallbackData(cb_data),
     mListener(new LLPanelLoginListener(this)),
-    mFirstLoginThisInstall(gSavedSettings.getBOOL("FirstLoginThisInstall")),
+    mFirstLoginThisInstall(gSavedSettings.getBOOL("FirstLoginThisInstall") &&
+                          LLGridManager::getInstance()->isSystemGrid()),
     mUsernameLength(0),
     mPasswordLength(0),
     mLocationLength(0),
@@ -872,6 +873,21 @@ void LLPanelLogin::loadLoginPage()
 {
     if (!sInstance) return;
 
+    const bool system_grid = LLGridManager::getInstance()->isSystemGrid();
+    if (LLView* links = sInstance->findChildView("links"))
+    {
+        links->setVisible(system_grid);
+    }
+    sInstance->getChildView("forgot_password_text")->setVisible(system_grid);
+    sInstance->getChildView("sign_up_text")->setVisible(system_grid);
+
+    if (!gSavedSettings.getBOOL("UseGridLoginPage") && gSavedSettings.getString("ForceLoginURL").empty())
+    {
+        gViewerWindow->setMenuBackgroundColor(false, !LLGridManager::getInstance()->isInProductionGrid());
+        sInstance->getChild<LLMediaCtrl>("login_html")->navigateToLocalPage("welcome", "index.html");
+        return;
+    }
+
     LLURI login_page = LLURI(LLGridManager::getInstance()->getLoginPage());
     LLSD params(login_page.queryMap());
 
@@ -1169,14 +1185,6 @@ void LLPanelLogin::updateServer()
                 sInstance->populateUserList(credential);
             }
 
-            // update the login panel links
-            bool system_grid = LLGridManager::getInstance()->isSystemGrid();
-
-            // Want to vanish not only create_new_account_btn, but also the
-            // title text over it, so turn on/off the whole layout_panel element.
-            sInstance->getChild<LLLayoutPanel>("links")->setVisible(system_grid);
-            sInstance->getChildView("forgot_password_text")->setVisible(system_grid);
-
             // grid changed so show new splash screen (possibly)
             loadLoginPage();
         }
@@ -1366,4 +1374,3 @@ std::string LLPanelLogin::getUserName(LLPointer<LLCredential> &cred)
 
     return "unknown";
 }
-

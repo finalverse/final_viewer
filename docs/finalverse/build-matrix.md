@@ -20,3 +20,7 @@ Host observed: macOS 26.6.2, arm64, 16 GiB RAM, 8 CPUs; Xcode 26.3 (17C529), App
 The external flag file declares macOS minimum version 11 and `-std=c++17` while root CMake selects C++20; actual compiler arguments/toolchain are part of the baseline evidence. Native ARM support must be an explicit build-enablement effort, not an architecture claim inferred from the host.
 
 Source: [Variables](../../indra/cmake/Variables.cmake), [SIMD math](../../indra/llmath/llsimdmath.h), [common flags](../../indra/cmake/00-Common.cmake), [Autobuild configurations](dependency-manifest.json), [workflow](../../.github/workflows/build.yaml).
+
+## Phase 1 update
+
+The Finalverse identity build uses the same pinned open Intel configuration, version `7.1.14`, build ID `262800001`. Configure/full build, actual bundle inspection, local MutSea login, avatar movement and normal logout passed on this Apple Silicon host through Rosetta. Supplied Finalverse artwork, native menu and inherited notices are packaged; the inherited updater is omitted. No native ARM or additional platform build has been performed. The retained development app and detailed limits are recorded in [rebranding.md](rebranding.md).

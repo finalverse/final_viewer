@@ -4382,6 +4382,13 @@
       <key>Value</key>
       <string>last</string>
     </map>
+    <key>UseGridLoginPage</key>
+    <map>
+      <key>Comment</key><string>Show the selected grid's web login page instead of the Finalverse welcome page.</string>
+      <key>Persist</key><integer>1</integer>
+      <key>Type</key><string>Boolean</string>
+      <key>Value</key><integer>0</integer>
+    </map>
     <key>LoginPage</key>
     <map>
       <key>Comment</key>
@@ -10028,7 +10035,7 @@
 			<key>Type</key>
 			<string>String</string>
 			<key>Value</key>
-			<string>https://feedback.secondlife.com/</string>
+			<string>https://github.com/finalverse/final_viewer/issues</string>
 		</map>
 	<key>RevokePermsOnStopAnimation</key>
     <map>

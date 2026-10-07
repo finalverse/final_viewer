@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Install the Second Life Viewer. This script can install the viewer both
+# Install the Finalverse Viewer. This script can install the viewer both
 # system-wide and for an individual user.
 
 VT102_STYLE_NORMAL='\E[0m'
@@ -48,8 +48,8 @@ function warn()
 function homedir_install()
 {
     warn "You are not running as a privileged user, so you will only be able"
-    warn "to install the Second Life Viewer in your home directory. If you"
-    warn "would like to install the Second Life Viewer system-wide, please run"
+    warn "to install the Finalverse Viewer in your home directory. If you"
+    warn "would like to install the Finalverse Viewer system-wide, please run"
     warn "this script as the root user, or with the 'sudo' command."
     echo
 
@@ -58,13 +58,13 @@ function homedir_install()
 	exit 0
     fi
 
-    install_to_prefix "$HOME/.secondlife-install"
-    $HOME/.secondlife-install/etc/refresh_desktop_app_entry.sh
+    install_to_prefix "$HOME/.finalverse-install"
+    "$HOME/.finalverse-install/etc/refresh_desktop_app_entry.sh"
 }
 
 function root_install()
 {
-    local default_prefix="/opt/secondlife-install"
+    local default_prefix="/opt/finalverse-install"
 
     echo -n "Enter the desired installation directory [${default_prefix}]: ";
     read
@@ -77,7 +77,7 @@ function root_install()
     install_to_prefix "$install_prefix"
 
     mkdir -p /usr/local/share/applications
-    ${install_prefix}/etc/refresh_desktop_app_entry.sh
+    "${install_prefix}/etc/refresh_desktop_app_entry.sh"
 }
 
 function install_to_prefix()

@@ -6,8 +6,10 @@
 			<button label="Güncellemeleri kontrol et" name="update_btn"/>
 		</panel>
 		<panel label="Katkıda Bulunanlar" name="credits_panel">
-			<text name="linden_intro">Second Life, Lindens tarafından geliştirilmiştir ve 
-açık kaynak kod katkısında bulunanlar şunlardır:</text>
+			<text name="linden_intro">
+Finalverse is based on the Second Life Viewer by Linden Lab,
+with open source contributions from:
+      </text>
 			<text_editor name="contrib_names">Geçici Ad çalıştırma sırasında değiştirilir</text_editor>
 		</panel>
 		<panel label="Lisanslar" name="licenses_panel">
