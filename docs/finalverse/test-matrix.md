@@ -1,6 +1,6 @@
 # Test coverage and product verification matrix
 
-Phase 2 adds 38 kernel tests, 14 planner/schema tests and real model/capability/UDP restart/undo probes. The final macOS build reports 678 passes and four inherited skips; the visual Create workflow remains blocked by a locked Mac. See [the measured Phase 2 report](phase2-ai-world-creation.md) for evidence and the remaining release gate. The original matrix below remains the broader programme target.
+Phase 2 now has 40 kernel tests and 26 gateway tests, all passing. The continuation full macOS build reports 1,199 cases: 1,195 passed and four inherited known-failure skips. The actual Create UI inspection/move/stale/History/undo/home/restart/cleanup workflow passes on the unlocked Mac. Real Ollama inference, authenticated capability calls, UDP transforms and semantic API retrieval complement unit tests; injected faults remain unit evidence. See [the measured Phase 2 report](phase2-ai-world-creation.md). The original matrix below remains historical baseline/programme context.
 
 ## Existing test architecture
 
@@ -42,3 +42,10 @@ Evidence: [LL_TESTS defaults](../../indra/cmake/Variables.cmake), [test commands
 The original Phase 0 failures above remain historical baseline evidence. The packaging test file was repaired in `5ed0cc0427`; all eight cases now execute and pass against the existing manifest APIs. The Finalverse build adds one meaningful URL-alias compatibility case: native execution reports 1,198 cases, 1,194 passed, four inherited known skips and zero failures. The branding verifier executes isolated Linux launcher/desktop fixtures and checks Windows installer ownership at source level; it also inspects the actual macOS package, artwork hashes, notices and update policy.
 
 The Finalverse app entered the same private MutSea fixture, moved the avatar with independent simulator position evidence, exited on normal user quit and persisted the last pose offline. This successful session does not establish the cause or resolution of the Phase 0 stability issue. Cloud avatar appearance remains; Phase 1 did not repeat object editing/undo, voice, chat or teleport tests. Native app identity and welcome-screen checks are detailed in [rebranding.md](rebranding.md). No AI or mobile acceptance test has been performed.
+
+
+## Phase 2 visual acceptance update
+
+Actual selected-object preview/apply, Edit-tool stale-plan rejection, visible movement, History and guarded Undo were verified. A rejected overlapping site and an accepted clear site used unchanged placement policy. The UI-created 17-component home retained exact UUIDs, positions, rotations, scales, full semantic metadata, Lumi identity/home/memory and WorldLine after normal logout/server restart. The viewer then removed the complete home through Undo; another normal restart preserved absence and semantic cleanup.
+
+The gateway's 26 tests include missing/ambiguous destinations, selection/destination substitution, missing selection, read-only enforcement, malformed output, provider unavailability and timeout with sanitized HTTP errors. Kernel tests cover permissions, stale/expired/session-bound proposals, bounds, level/dry placement, overlap including linked extents, idempotence, guarded undo, partial failure compensation and interrupted/durability write locks. Fake-world fault injection does not establish live crash recovery. Full snapshot/cross-service tracing, legacy semantic reconciliation, avatar appearance and multi-platform acceptance remain gaps.

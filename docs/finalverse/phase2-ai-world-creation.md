@@ -20,68 +20,139 @@ Viewer: `indra/newview/llviewerregion.cpp` Seed capability list; `llselectmgr.*`
 
 Live read → selected-object move → approved Lumi home → authoritative visible geometry → logout/server restart → home/semantics/Lumi/WorldLine retained → guarded undo. Compilation alone does not pass the gate. Unsupported actions must fail explicitly. Avatar appearance, platform ports and production/public deployment remain separate gaps.
 
-## Implemented candidate — 2026-10-07
+## Visual acceptance — 2026-10-07–08 (Asia/Shanghai)
 
-**Phase 2 is not complete.** The live backend/model/protocol loop passes. The human-facing Create demonstration remains blocked because computer-use reports the Mac is locked and cannot unlock it. No Phase 2 screenshot, user-clicked Build or visual home verification is claimed. Unlocking the Mac is the remaining external dependency for that gate.
+The previously blocked Mac was unlocked. Actual Finalverse UI inspection, selected-object preview/apply, stale-plan rejection, History, move undo, valid home creation, post-restart viewing and composite home undo have now executed. All 15 practical release gates pass. The final packaged app entered Harbor and displayed live Nearby objects; its branding/metadata verification passed. This is a bounded development slice, not a production/public release.
 
-Source and artifact locations:
+Active sources:
 
-- Viewer: `~/Finalverse/dev/worktrees/viewer-ai-world`, branch `codex/finalverse-ai-world`; one C++/XUI Create floater, capability registration, explicit-grid login guard and regression coverage.
-- MutSea: `~/Finalverse/dev/worktrees/mutsea-worldops`, branch `codex/mutsea-worldops`; separate `Finalverse/World` module/kernel, `tools/Finalverse.WorldTests`, `tools/Finalverse.WorldSmoke`, and reproducible `deploy/worldops/Dockerfile`.
-- Planner: separate local Git repository `~/Finalverse/services/ai-gateway`, branch `main`, no remote. Provider protocol, Ollama adapter, strict schemas, scoped context and deterministic CI tests.
-- App: `~/Finalverse/dev/phase2/Finalverse Test.app`, Intel x86-64 macOS build through Rosetta. Native ARM64 viewer remains unverified.
-- Fixture: `mutsea-finalverse-phase2`, native ARM64 server, isolated persistent volume, ports bound only to `127.0.0.1:18092` TCP/UDP. Existing Harbor/source checkouts remain separate.
+| Component | Path | Branch | Continuation starting HEAD |
+|---|---|---|---|
+| Viewer | `~/Finalverse/dev/worktrees/viewer-ai-world` | `codex/finalverse-ai-world` | `bdd81b196e6663a11668cf646324a06fb8c5fb27` |
+| MutSea | `~/Finalverse/dev/worktrees/mutsea-worldops` | `codex/mutsea-worldops` | `4a2374e47292d36a3405da2ccf4599d41ecc70ba` |
+| Gateway | `~/Finalverse/services/ai-gateway` | `main` | `cec43c6aff05bf0108487ce90710771d857ab54a` |
 
-MutSea starting commit: `13c546ce413e49e957e387547d97e79800cf33ca`. Local runtime/deployment baseline: `6bdfe1c46c`; ignored-project tracking repair: `a4a6686641`; kernel/module: `eb719c4be1`; stronger live grounding/memory assertions: `4a2374e472`. Planner root milestone: `cec43c6`. Viewer implementation-map milestone: `c22f1e4f83`; shell/security milestone: `8939d1f47f`. The final documentation commit is reported in Git history and the delivery report. No push or primary integration was performed.
+Gateway repository name is **ai-gateway**, intended future location **finalverse/ai-gateway**, with no remote configured or created. Viewer origin is `finalverse/final_viewer`, with `qwy16/secondlife_viewer` as upstream. MutSea origin is `finalverse/mutsea-o`. All milestones are local; no push or integration into the original checkouts was performed. Continuation code commits are viewer `ab6f822682`, MutSea `ffab4ba878`, and gateway `07b9d45`/`7652282`. The documentation milestone and final full HEADs are recorded in the delivery report and Git history.
 
-## Measured verification
+Client copy: `~/Finalverse/dev/phase2/Finalverse AI.app`, Intel x86-64 macOS through Rosetta. The executable retains the build-channel name `Finalverse Test`. Development bundle ID is `com.finalverse.viewer.phase2`; production default stays `com.finalverse.viewer`. Both Info.plist and packaging metadata must carry the same identifier. Native ARM64 viewer remains unverified.
+
+Fixture: `mutsea-finalverse-phase2`, native ARM64 server, persistent `finalverse-phase2-data` volume, only loopback TCP/UDP port 18092. Local grid alias is `MutSeaHarborAI`, login URI `http://127.0.0.1:18092/`, region **MutSea Harbor**, account **MutSea Developer**. Private credentials, logs, screenshots and receipts remain outside Git.
+
+## Measured tests and builds
 
 | Check | Result / limit |
 |---|---|
-| Kernel policy, generator, compensation, recovery | 38 passed on host and native .NET 8 ARM64 image build |
-| Planner/schema/context tests | 14 passed; explicitly mocked providers, no paid inference |
-| macOS build | `RelWithDebInfoOS`, Xcode 26.3, pinned autobuild 3.10.2; succeeded |
-| Viewer C++ test groups in final build | 682 cases: 678 passed, 4 inherited known-failure skips, zero failures |
-| Packaging tests | 8 passed; inherited manifest compatibility repair retained |
-| Bundle/provenance | Actual final app identity/artwork/notices/update isolation passed; changed XML parses |
-| Real model read/move/home | Ollama `llama3.2:3b`; grounded read, selected UUID, two-meter relative move/undo, 17-component home, idempotent retry, Lumi ownership and WorldLine passed |
-| Independent API families | Creation, rotation, scaling, name, description, color, restricted clone/delete and restoration passed against real capability/UDP |
-| Normal server restart | All 17 home components/positions/scales, semantic owner, Lumi home/memory and WorldLine retained |
-| Guarded home undo | Passed after restart, removal observed over UDP |
-| Restart after undo | All 17 remained absent; Lumi/semantic relationship removed; undo history retained |
-| Client login/world entry | Explicit local grid reached `STATE_STARTED`; Create UI workflow remains unverified |
-| Visual release acceptance | **Blocked: locked Mac** |
+| Current kernel suite | 40 passed, zero failures; explicit fake-world policy/generator/compensation/recovery tests |
+| Previously built native .NET 8 ARM64 image | 38 passed before the two new bounds cases; deployed module code is unchanged |
+| Gateway | 26 passed, zero failures; self-contained mocked inference and temporary loopback HTTP peers |
+| Full macOS viewer build | 1,199 cases: 1,195 passed, four inherited known-failure skips, zero failures; build succeeded |
+| Packaging unit suite | Eight passed, zero failures in the final continuation run |
+| Final package/identity | Package-only step succeeded; generated CMake copy/package commands forward the same bundle ID; seven branding/provenance check groups passed |
+| Final packaged viewer | Actual Harbor entry and live Nearby panel verified visually |
+| WorldSmoke probe build | Succeeded with zero warnings/errors; references the separately built protocol SDK |
+| Actual local inference | Ollama `llama3.2:3b`: grounded read, relative move, valid home; no paid/cloud provider |
+| UI-created home capture | 17 exact IDs observed over UDP, reciprocal Lumi semantics retrieved through capability API |
+| Normal simulator restart | IDs, positions, rotations, scales, every semantic scalar, Lumi ID/home/memory and WorldLine retained |
+| Composite UI undo | All components disappear visibly; API/protocol cleanup survived a second normal restart |
 
-The four skips are inherited `llmainthreadtask` hang, flaky `LLHost`, `LLSphere` SNOW-620 and architecture-sensitive `m3math_h` cases. Counts are from the final build, not sums of repeated builds. The probe independently observes UDP existence/position/scale; rotation/color/name execution is checked against authoritative simulator snapshots rather than every independently decoded UDP attribute.
+The four inherited skips are `llmainthreadtask` build-time hang, flaky `LLHost`, `LLSphere` SNOW-620 and architecture-sensitive `m3math_h`. Counts describe one full build, not sums of repeated builds. The earlier delivery's 682 cases came from an incremental run; the continuation full build executed 1,199. No static analyzer, native ARM64 viewer or Windows/Linux/mobile build is claimed.
 
-The live read answer named eight actual starter entities, including Workshop Walk, Arrival Marker and Welcome Plaza. Read output proposes no action. Explicit move/home requests narrow tool choice; the model resolves IDs and parameters. Trusted code computes direction, dry-ground elevation and the 17 components. Invalid provider results fail without mutation. This is a bounded command slice, not general language understanding.
+The first identity verification caught an upstream fallback in `build_data.json`: the Darwin packaging target omitted the bundle-ID argument. The source now forwards it for both copy and package paths; the verifier compares actual app and metadata IDs. After the full C++ build passed, a redundant direct-CMake rebuild was deliberately interrupted (exit 130). The final package-only command ran in the CMake build/newview working directory against the completed executable and succeeded; no C++ feature source changed afterward. The final executable SHA-256 is `4b4e036fc92898adece7697ccc37fe8fdfd5b574bd6f54c5b3fbb6c6fd5e9c2f`. A development-specific ID and isolated profile avoid selecting the regular viewer during UI automation.
 
-The add-on image inherits the verified base runtime/user/entrypoint, runs native kernel tests and copies one disabled-by-default DLL. Base image ID: `bf75cb36aa53f09b0e1ccce14ebfab91a0c9a2f7cbb3897a78a98386ffb9c559`; world-ops ARM64 image ID: `e8d8c16ace7df9162ba5e6ad47f207699c104ecc0bf84d649ac2e75d5d4df568`. Deployed module SHA-256: `c3175e0ee900d26d530bd9c591eefb7d2dfde14f8b2c5b043d8d4ed560c33694`. Final client executable SHA-256: `4b4e036fc92898adece7697ccc37fe8fdfd5b574bd6f54c5b3fbb6c6fd5e9c2f`. These are development artifacts, not signed releases.
+## Runtime evidence
 
-## Finish the visual gate
+**Inspection.** “What objects are around me?” answered using eight actual Harbor starter entities, with no write plan. The visible panel named real nearby objects. Named Pavilion Floor was outside 64m; a small model initially substituted an unrelated tree in a preview. That proposal was never applied. The gateway now resolves unique exact inspected names, binds selected/destination IDs in the output schema, and rejects substitutions at the provider boundary. The UI then displayed a clear unavailable-target response without enabling Build.
 
-Use the server's `Finalverse/World/README.md` for the image/module and protocol probe. Use the planner README for the private virtual environment, local Ollama model and loopback endpoint. No cloud key is required.
+**Stale state and move.** Practice Cube ID `77a0db68-744a-a75d-8015-256136336a8c` was manually edited using the inherited Edit tool from Y=128 to Y=129.898 while an AI preview was pending. Build rejected it with “The target changed since this plan was prepared. Please plan again.” The human edit survived. Replanning “Move this two meters toward the Practice Sphere.” moved `[64,129.898,26.3]` to `[65.907,129.295,26.3]`, visibly and in the Edit inspector. Commit `7ec34ac3-206a-4b80-ae22-8b7d15466686` appeared in History. UI undo `4351ab41-00bc-4fc2-8267-c559156af9fb` restored the pre-AI position, including the human's Y edit.
 
-1. Start the owned local fixture and planner. Use its generated development account privately. Launch the isolated client profile with the verified `MutSeaHarborAI` grid. Source-compatible grid fields are `keyname`, `grid_login_id`, `login_uri`, `helper_uri`.
-2. Bootstrap using a private one-session `--sessionsettings` file and remove it after successful entry. Do not persist a password with `--settings`.
-3. With the Mac unlocked, move near the practice objects. Open **Finalverse → Ask / Create**, inspect Nearby, ask “What objects are around me?”, and verify names in the visible panel.
-4. Select Practice Cube; ask “Move this two meters toward the Harbor Pavilion Floor.” Review ID and exact before/after values, click Build / Apply, observe the change, inspect History and safely undo.
-5. Stand on dry clear ground near `(172,154)`. If a backend test home remains, use its guarded undo before creating a replacement. Ask “Create a small lakeside home for Lumi here.” Review 17 primitives, approve and capture the visible result.
-6. Query the authenticated semantic/Lumi API. Log out before using the same account in a protocol probe. Shut down the owned simulator normally, restart, relaunch/login, visually verify retained geometry/history, then verify guarded undo/restoration.
-7. Record screenshots and behavioral results. Repair any selection/panel/async errors before primary integration or a completion claim.
+**Placement.** “Create a small lakeside home for Lumi here.” at `[172,153.454376,25]` was correctly refused by conservative lake-path clearance. The inspected anchor was copied exactly by the model. No overlap/radius/permission rule was weakened. The avatar was moved to `(172,156,27)` and settled on clear dry terrain. The approved proposal used anchor `[172,156,25]`, width 6m, depth 5m, height 3m, yaw zero, Lumi owner ID and 17 deterministic components. The readable UI preview preceded an explicit Build / Apply click.
 
-During initial launch verification an incorrectly keyed custom grid entry was ignored and inherited fallback login was attempted. The generated development credential was rotated in both affected isolated fixtures and tokens revoked. The unknown-grid auto-login regression now prevents fallback credential transmission. No user/cloud credential was changed. Log-based world entry is separate from the pending visual demonstration.
+**Home.** Commit `9d6dee15-e688-42ea-82df-9649438019f5`, plan `8ac56a65-1001-40d8-8d21-6f9859487652`, created a floor, walls with a door and window openings, roof, table, pedestal and seat. Structure/floor UUID is `d8ad7327-b8e4-5a2a-6e4f-ac1a3964aaab`. The whole house was visible from `(172,146,27)`; History showed the committed request. The house is primitive based, not externally generated mesh content.
 
-## Evidence and preserved work
+**Semantic API.** A read-only WorldSmoke `capture` mode was added so the viewer-created home can be verified without creating a replacement. It uses actual login/Seed capability, `lumi`, `semantic`, `journal` and independent UDP observations. It never prepares, commits or undoes a world edit. Both links passed:
 
-Private evidence under `~/Finalverse/dev/phase2`: `worldops-image-build-final.log`, `kernel-tests-final.log`, `gateway-tests-final.log`, `viewer-build-delivery.log`, `manifest-tests.log`, `branding-check-delivery.log`, `live-apply-final.log`, `acceptance-final.json`, `restart-verify-final.log`, `restart-undo-final.log`, `undo-persistence-final.log`, `live-restore-demo.log`, `restart-verify-demo.log`, model traces and the isolated profile's viewer log. Account data, raw logs, journals, database backups and binaries are excluded from Git. No Phase 2 screenshot is available while the Mac is locked.
+```text
+Lumi.agent_id       = b151468b-cbcc-4af2-ae2d-6967e8938bb4
+Lumi.home_entity_id = d8ad7327-b8e4-5a2a-6e4f-ac1a3964aaab
+home.owner_agent_id = b151468b-cbcc-4af2-ae2d-6967e8938bb4
+home.semantic_type = home
+provider/model     = ollama / llama3.2:3b
+```
 
-Primary viewer remains `contribute` at `cb7e386cd5`, preserving 9,332 status entries and porcelain SHA-256 `3c3986254ed6e78a948e9a4905c879ed9cf1e998e06e404b8437a4f7786d028c`. Deferred Linux work retains 27 changes and hash `4ced83584b82b79c62473b5e03008d362b82f86f5f5000af4af83a4484a5210b`. Primary MutSea remains clean at its starting commit.
+Human ownership remains the actual simulator permission owner; Lumi's ownership is a semantic relationship. Creation-request memory is retained; `avatar_binding` remains null.
+
+**Persistence.** The viewer logged out normally, the probe captured the exact UI operation and logged out, and MutSea received its normal `shutdown` console command and exited with status zero. The same container/volume was started again. The probe observed all 17 original UUIDs and position/rotation/scale values, compared every semantic scalar, Lumi identity/home/memory and the committed WorldLine operation. No identity remapping was needed. The viewer re-entered Harbor and the same home remained visible; Nearby and History stayed queryable. A probe comparison initially compared escaped raw JSON timestamp text; decoded values were unchanged and the assertion was corrected.
+
+**Composite undo.** After restart, Nearby loaded the last reversible plan and the viewer's Undo last removed all 17 components. UI reported reversal `3ef27b6b-13dc-4d9a-994b-e3566e329ef7`; the site visibly cleared. A second normal logout/shutdown/restart passed: all 17 stayed absent over UDP and inspection, Lumi.home_entity_id was null, semantic retrieval reported found=false and undo history remained. The acceptance home was deliberately undone; the site is clear for another build.
+
+## Release gates
+
+| Gate | Result | Evidence |
+|---|---|---|
+| 1 Enter MutSea Harbor | PASS | Actual original and final packaged viewer entry |
+| 2 Grounded nearby-object question | PASS | Real local inference and visible scene-object names |
+| 3 Selected cube AI proposal | PASS | Selected UUID and exact approved before/after preview |
+| 4 Visible move | PASS | Scene and inherited Edit inspector |
+| 5 History records move | PASS | UI History and authoritative journal |
+| 6 Undo restores cube | PASS | Visible pre-AI position, human edit retained |
+| 7 Reject stale preview | PASS | Manual Edit after preview, clear refusal |
+| 8 Reject invalid home placement | PASS | Lake-path overlap refused without policy changes |
+| 9 Valid home build | PASS | 17-component UI preview and explicit Build |
+| 10 Visible home | PASS | External entrance view |
+| 11 Lumi semantic relationship | PASS | Authenticated semantic/Lumi API, reciprocal UUIDs |
+| 12 Restart persistence | PASS | Original UUIDs/full transforms/semantics/history and visible home |
+| 13 Gateway tests | PASS | 26 self-contained tests plus real local inference |
+| 14 Relevant viewer/server tests | PASS | Full viewer 1,195 passes/four known skips, kernel 40, packaging eight, live probes |
+| 15 Reproducible local instructions | PASS | Source-matched guide; build/package/test, launch/grid, gateway sample and normal server/account-console workflow |
+
+The scope is the development vertical slice. A PASS does not claim production hardening, public registration, full avatar appearance or cross-platform release readiness.
+
+## Failure-mode coverage
+
+| Failure | Evidence |
+|---|---|
+| Named target outside scope / ambiguous name | Actual UI refusal plus gateway and kernel tests |
+| No selected object for “this” | Gateway test: no provider call and no plan |
+| Manual edit after preview / stale target | Actual Edit-tool change, UI rejection, preserved human edit; kernel test |
+| Missing/invalid destination | Gateway missing/ambiguous/substitution tests; kernel missing/out-of-radius reference tests |
+| Overlap/path clearance | Actual rejected home site; kernel tests including linked-child extents |
+| Excessive structure dimensions / bounds | Kernel dimensions, scale, volume, counts and region-bound tests |
+| Unauthorized edits/rez | Kernel permission/actor/session tests; inherited simulator policy is authoritative |
+| Malformed/invalid provider output | Schema unit tests and injected HTTP errors with sanitized 502, no plan |
+| Provider unavailable / timeout | Injected HTTP tests; no world execution or paid fallback |
+| Mid-structure operation failure | Fake-world injection verifies compensation; concurrent edits are preserved and failed compensation locks writes |
+| Interrupted intent / journal write failure | Kernel recovery/write-lock tests; not a deliberately crashed live simulator |
+
+These distinguish unit fault injection from real runtime evidence. Fault tests do not claim a live simulator crash or production outage recovery. Existing API-family checks also cover create/rotate/scale/name/description/color/restricted clone/delete/restoration and idempotent commit.
+
+## Evidence and reproducibility
+
+See [local-development.md](local-development.md), gateway `README.md`, and MutSea `Finalverse/World/README.md` for actual build/run/test/grid/account commands. Public signup is not implemented. Accounts are operator managed through `create user`, `show account`, and `reset user password`; password prompts are hidden. Use Ctrl-P then Ctrl-Q to detach Docker without stopping the world. Credentials never enter Git examples or command arguments.
+
+Private evidence directory: `~/Finalverse/dev/phase2`.
+
+| Evidence | Files |
+|---|---|
+| Inspection, target refusal, stale rejection | `ui-world-read.png`, `ui-target-unavailable.png`, `ui-stale-rejected.png` |
+| Move/History/undo | `ui-move-preview-current.png`, `ui-move-committed.png`, `ui-move-history.png`, `ui-move-undone.png` |
+| Invalid/clear site and preview | `ui-home-proposal.json`, `ui-home-clear-156.png`, `ui-home-preview.png` |
+| Home committed/visible/history | `ui-home-committed.png`, `ui-home-visible.png`, `ui-home-history.png` |
+| Semantic/protocol capture | `ui-acceptance.json`, `ui-capture.log` |
+| Restart verification and visible result | `ui-restart-verify-full-transform.log`, `ui-home-post-restart.png`, `ui-home-history-post-restart.png` |
+| Final packaged app | `ui-final-package-nearby.png`, `ui-final-package-launch.log` |
+| UI undo and visible cleanup | `ui-home-undone.png`, `ui-home-cleanup-visible.png`, `ui-undo-persistence.log` |
+| Tests/builds | `kernel-tests-visual.log`, `gateway-tests-visual.log`, `viewer-build-identity.log`, `viewer-package-identity.log`, `world-smoke-build-visual.log`, `viewer-package-source-final.log`, `branding-check-visual-final.log`, `manifest-tests-visual.log` |
+
+Raw logs may contain inherited ephemeral capability URLs and remain private. Screenshot files, receipts, account files, databases, journals, model traces and app bundles are not committed. Gateway tracked-file/ignore checks and the workspace credential guard pass; no credential-bearing remote exists.
+
+Primary viewer remains `contribute` at `cb7e386cd5ec3e14b9bb602ac1dd4a689b094724`, preserving 9,332 status entries and porcelain SHA-256 `3c3986254ed6e78a948e9a4905c879ed9cf1e998e06e404b8437a4f7786d028c`. Deferred Linux work retains 27 changes and hash `4ced83584b82b79c62473b5e03008d362b82f86f5f5000af4af83a4484a5210b`. Primary MutSea remains clean at `13c546ce413e49e957e387547d97e79800cf33ca`.
 
 ## Limits and next milestone
 
-Intent/compensation are logical transactions; simulator database and journal are not atomic, and legacy edits do not share the module lock. Recovery requires administrator review. Clone/delete/undo support restricted primitive state. Existing-object transforms do not include a general collision solver. Regional snapshots/journals need production indexing and quotas. The loopback planner lacks production authentication/rate limits; capability theft retains inherited user authority. Provider claims are unsigned.
+Intent/compensation are logical transactions. Simulator SQLite and WorldLine are separate stores, and legacy edits do not share the module lock. Interrupted or uncertain operations block AI writes and need administrator review. Clone/delete/undo support restricted primitives; moving existing objects has no general collision solver. Manual legacy deletion is not reconciled into Lumi's projection. WorldLine retains actor, region scope, proposed/approved plan, provider/model assertions, before/after/observed entities and reversals; it does not retain the full inspection snapshot or a complete cross-service correlation chain. Provider claims remain unsigned.
 
-Lumi has semantic identity, a home and creation-request memory; no avatar, navigation, voice, visitor memory or autonomous citizen runtime. Manual legacy deletion is not reconciled into Lumi's projection. Avatar cloud appearance, native Apple Silicon viewer, other platform clients, public simulator deployment and distribution clearance remain separate gaps. Renderer, economy and geography work were deferred.
+The loopback planner has no production authentication, TLS, quotas, streaming, retries or cloud adapter. Its provider interface remains vendor neutral and credentials stay out of the client. Inspection/edit scope is 64m; prepared approvals expire after two minutes. Homes are bounded dry-level-ground composites. General furniture/environment generation is not supported.
 
-Finish visual acceptance, then harden recovery and semantic reconciliation before persistent Lumi memory/navigation through the same authorized API.
+Lumi has semantic identity, home and creation-request memory, but no avatar/navigation/voice/goals/visitor memory or autonomous runtime. The inherited avatar remains a cloud, and local login shows inherited benefits/home-location warnings. Those limitations do not prevent the scoped world-operation demonstration, but prevent a production-client claim. Native Apple Silicon viewer, Windows/Linux/mobile, public deployment/registration and distribution clearance are unverified or deferred. Renderer, economy and geography were not changed.
+
+All 15 gates pass. Recommend Phase 3 — persistent AI citizens: first reconcile legacy edits and harden recovery, then bind Lumi to an avatar, retain bounded episodic memory, and implement “Lumi, go home” through the same authorized actions with human override. No Phase 3 code was started.

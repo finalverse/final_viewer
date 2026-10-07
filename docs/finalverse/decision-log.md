@@ -52,4 +52,9 @@ See [rebranding.md](rebranding.md) for actual implementation and measured verifi
 | D030 | Project semantics/Lumi from private WorldLine | Keep object layouts compatible; human owns geometry, Lumi has a semantic binding; citizen autonomy deferred |
 | D031 | Isolate Phase 2 in viewer/server worktrees | Preserve 9,332 primary viewer status entries and 27 deferred Linux changes; no primary integration before visual gate |
 | D032 | Disable automatic login for unknown explicit grids | Source-verified grid keys and one-session settings prevent generated credentials falling back to another service |
-| D033 | Keep visual acceptance as a separate required gate | Real model/capability/UDP/restart tests and compilation pass; a locked Mac prevents claiming a completed UI demonstration |
+| D033 | Keep visual acceptance as a separate required gate | Compilation/protocol checks alone were insufficient. The Mac was subsequently unlocked; the actual UI workflow and normal restart/cleanup verification now pass |
+
+| D034 | Bind exact unique inspected destinations before relative-move inference | Actual preview exposed a local model substituting an unrelated tree for an unavailable pavilion; refuse missing/ambiguous names and reject substituted IDs without weakening radius policy |
+| D035 | Bypass system proxies for local Ollama | This Mac has HTTP/SOCKS proxies without a loopback bypass; the local-only adapter must contact its loopback inference endpoint directly |
+| D036 | Use a separate development macOS bundle identifier | App selection confused regular/test copies. Cache-configurable Finalverse namespace and consistent copy/package metadata distinguish the development app; isolated profile still required |
+| D037 | Capture UI-created operations through the authenticated probe | Read-only capture avoids replacing the accepted house with a separately created fixture; UDP full transforms and semantic API records verify that same operation after restart |
