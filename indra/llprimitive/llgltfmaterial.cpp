@@ -107,7 +107,9 @@ bool LLGLTFMaterial::TextureTransform::operator==(const TextureTransform& other)
 }
 
 LLGLTFMaterial::LLGLTFMaterial(const LLGLTFMaterial& rhs)
+    : LLGLTFMaterial()
 {
+    // getHash includes padding; initialize it just as in the default constructor.
     *this = rhs;
 }
 

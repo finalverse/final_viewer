@@ -404,6 +404,19 @@ namespace tut
 #define ENSURE_HASH_NOT_CHANGED(HASH_MAT, SOURCE_MAT, FIELD) ensure_material_hash_not_changed(HASH_MAT, HASH_MAT.FIELD, SOURCE_MAT.FIELD, #FIELD)
 #define ENSURE_HASH_CHANGED(HASH_MAT, SOURCE_MAT, FIELD) ensure_material_hash_changed(HASH_MAT, HASH_MAT.FIELD, SOURCE_MAT.FIELD, #FIELD)
 
+    // Copies must retain cache identity, including materials with local textures.
+    template<> template<>
+    void llgltfmaterial_object_t::test<13>()
+    {
+        LLGLTFMaterial source = create_test_material();
+        const LLGLTFMaterial copy(source);
+        ensure_equals("material copy retains hash", copy.getHash(), source.getHash());
+
+        source.addLocalTextureTracking(LLUUID::generateNewID(), LLUUID::generateNewID());
+        const LLGLTFMaterial local_copy(source);
+        ensure_equals("local texture material copy retains hash", local_copy.getHash(), source.getHash());
+    }
+
     // Test LLGLTFMaterial::getHash, which is very sensitive to the ordering of fields
     template<> template<>
     void llgltfmaterial_object_t::test<12>()

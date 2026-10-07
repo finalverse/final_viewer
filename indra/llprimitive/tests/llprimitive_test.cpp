@@ -29,6 +29,8 @@
 #include "../test/lltut.h"
 
 #include "../llprimitive.h"
+#include "../llprimtexturelist.h"
+#include "../lltextureentry.h"
 
 #include "../../llmath/llvolumemgr.h"
 
@@ -217,6 +219,18 @@ namespace tut
 
         // Ensure that we now have a different volume
         ensure(new_volume != primitive.getVolume());
+    }
+
+    template<> template<>
+    void llprimitive_object_t::test<7>()
+    {
+        set_test_name("Texture entry self-copy preserves the owned entry");
+        LLPrimTextureList textures;
+        textures.setSize(1);
+        const LLUUID id = LLUUID::generateNewID();
+        textures.setID(0, id);
+        ensure_equals(textures.copyTexture(0, *textures.getTexture(0)), TEM_CHANGE_TEXTURE);
+        ensure_equals(textures.getTexture(0)->getID(), id);
     }
 
     template<> template<>
