@@ -2114,7 +2114,12 @@ if (DARWIN)
   set(MACOSX_EXECUTABLE_NAME "${VIEWER_CHANNEL}")
   set(MACOSX_BUNDLE_INFO_STRING "${VIEWER_CHANNEL}")
   set(MACOSX_BUNDLE_ICON_FILE "secondlife.icns")
-  set(MACOSX_BUNDLE_GUI_IDENTIFIER "com.finalverse.viewer")
+  set(FINALVERSE_BUNDLE_ID "com.finalverse.viewer" CACHE STRING
+      "macOS bundle identifier; use a distinct identifier for an isolated development app")
+  if(NOT FINALVERSE_BUNDLE_ID MATCHES "^com\\.finalverse\\.viewer(\\.[a-zA-Z0-9-]+)*$")
+    message(FATAL_ERROR "FINALVERSE_BUNDLE_ID must use the com.finalverse.viewer namespace")
+  endif()
+  set(MACOSX_BUNDLE_GUI_IDENTIFIER "${FINALVERSE_BUNDLE_ID}")
   set(MACOSX_BUNDLE_LONG_VERSION_STRING "${VIEWER_CHANNEL} ${VIEWER_SHORT_VERSION}.${VIEWER_VERSION_REVISION}")
   set(MACOSX_BUNDLE_BUNDLE_NAME "Finalverse")
   set(MACOSX_BUNDLE_SHORT_VERSION_STRING "${VIEWER_SHORT_VERSION}.${VIEWER_VERSION_REVISION}")
@@ -2207,6 +2212,7 @@ if (DARWIN)
               "--channel=${VIEWER_CHANNEL}"
               --configuration=${CMAKE_CFG_INTDIR}
               --dest=${VIEWER_APP_BUNDLE}
+              --bundleid=${MACOSX_BUNDLE_GUI_IDENTIFIER}
               --grid=${GRID}
               --source=${CMAKE_CURRENT_SOURCE_DIR}
               --touch=${CMAKE_CURRENT_BINARY_DIR}/$<IF:$<BOOL:${LL_GENERATOR_IS_MULTI_CONFIG}>,$<CONFIG>,>/.${product}.bat

@@ -25,7 +25,7 @@ def require(condition, description):
         raise RuntimeError(description)
 
 
-def verify(bundle):
+def verify(bundle, bundle_id="com.finalverse.viewer"):
     checks = []
     # Every translated product name must resolve to the same independent client.
     locales = []
@@ -118,7 +118,8 @@ def verify(bundle):
     if bundle:
         resources = bundle / "Contents/Resources"
         info = plistlib.loads((bundle / "Contents/Info.plist").read_bytes())
-        require(info["CFBundleIdentifier"] == "com.finalverse.viewer", "Bundle identifier collides with upstream")
+        require(re.fullmatch(r"com\.finalverse\.viewer(?:\.[A-Za-z0-9-]+)*", bundle_id) and
+                info["CFBundleIdentifier"] == bundle_id, "Unexpected Finalverse bundle identifier")
         require(info["CFBundleName"] == "Finalverse", "Bundle display name")
         localized = (resources / "English.lproj/InfoPlist.strings").read_text()
         require('CFBundleName = "Finalverse";' in localized,
@@ -129,6 +130,7 @@ def verify(bundle):
         require("finalverse" in schemes["CFBundleURLSchemes"], "Finalverse URL scheme absent")
         require(not schemes.get("LSIsAppleDefaultForScheme", False), "Bundle forces an existing scheme default")
         data = json.loads((resources / "build_data.json").read_text())
+        require(data["Bundle Id"] == bundle_id, "Build metadata bundle identifier differs from app")
         require(data["Channel Base"] == "Finalverse" and data["Channel"].startswith("Finalverse"), "Package channel identity")
         require(data["Update Service"] == "" and data["Update Mode"] == "manual", "Wrong update service")
         require(not (resources / "updater").exists(), "Inherited updater shipped")
@@ -149,5 +151,6 @@ def verify(bundle):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--bundle", type=Path)
+    parser.add_argument("--bundle-id", default="com.finalverse.viewer")
     args = parser.parse_args()
-    print(json.dumps(verify(args.bundle), indent=2))
+    print(json.dumps(verify(args.bundle, args.bundle_id), indent=2))
