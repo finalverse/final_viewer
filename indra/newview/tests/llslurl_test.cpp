@@ -102,6 +102,8 @@ LLPointer<LLControlVariable> LLControlGroup::getControl(std::string_view name)
     return iter == mNameTable.end() ? LLPointer<LLControlVariable>() : iter->second;
 }
 
+void LLControlGroup::setLLSD(std::string_view name, const LLSD& value) {}
+void LLControlGroup::setBOOL(std::string_view name, bool value) {}
 LLControlGroup gSavedSettings("test");
 const char *gSampleGridFile =
     "<?xml version=\"1.0\"?>"

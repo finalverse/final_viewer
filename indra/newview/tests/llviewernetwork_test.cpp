@@ -80,6 +80,10 @@ std::string gCmdLineGridChoice;
 std::string gCmdLineHelperURI;
 std::string gLoginPage;
 std::string gCurrentGrid;
+LLSD gUserLoginInfo;
+bool gAutoLogin = false;
+void LLControlGroup::setLLSD(std::string_view name, const LLSD& value) { if (name == "UserLoginInfo") gUserLoginInfo = value; }
+void LLControlGroup::setBOOL(std::string_view name, bool value) { if (name == "AutoLogin") gAutoLogin = value; }
 std::string LLControlGroup::getString(std::string_view name)
 {
     if (name == "CmdLineGridChoice")
@@ -95,6 +99,7 @@ std::string LLControlGroup::getString(std::string_view name)
 
 LLSD LLControlGroup::getLLSD(std::string_view name)
 {
+    if (name == "UserLoginInfo") return gUserLoginInfo;
     if (name == "CmdLineLoginURI")
     {
         if(!gCmdLineLoginURI.empty())
@@ -445,6 +450,19 @@ namespace tut
                !LLGridManager::getInstance()->isSystemGrid());
         ensure("alternative grid is not a production grid",
                !LLGridManager::getInstance()->isInProductionGrid());
+    }
+
+    template<> template<>
+    void viewerNetworkTestObject::test<8>()
+    {
+        gCmdLineGridChoice = "missing-finalverse-development-grid";
+        gCmdLineLoginURI.clear();
+        gUserLoginInfo = LLSD::emptyArray();
+        gUserLoginInfo.append("Fixture"); gUserLoginInfo.append("Developer");
+        gUserLoginInfo.append("never-send-this-fixture"); gAutoLogin = true;
+        LLGridManager::getInstance()->initialize("");
+        ensure("unknown explicit grid clears supplied credentials", gUserLoginInfo.size() == 0);
+        ensure("unknown explicit grid disables saved automatic login", !gAutoLogin);
     }
 
 }

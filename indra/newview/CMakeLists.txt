@@ -177,6 +177,7 @@ set(viewer_SOURCE_FILES
     llfirstuse.cpp
     llflexibleobject.cpp
     llfloater360capture.cpp
+    llfloaterfinalverseai.cpp
     llfloaterabout.cpp
     llfloaterbvhpreview.cpp
     llfloateraddpaymentmethod.cpp
@@ -848,6 +849,7 @@ set(viewer_HEADER_FILES
     llfirstuse.h
     llflexibleobject.h
     llfloater360capture.h
+    llfloaterfinalverseai.h
     llfloaterabout.h
     llfloaterbvhpreview.h
     llfloateraddpaymentmethod.h

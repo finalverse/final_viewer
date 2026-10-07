@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<floater name="finalverse_ai" title="FINALVERSE · CREATE" width="470" height="470" layout="topleft" positioning="centered" save_rect="true">
+  <text name="heading" left="20" top="34" width="430" height="30" font="SansSerifLarge" text_color="White">What will you create?</text>
+  <text name="subtitle" left="20" top="68" width="430" height="22" font="SansSerifSmall">World context → proposal → your approval</text>
+  <line_editor name="request" left="20" top="98" width="352" height="30" font="SansSerif" max_length_bytes="2048" label="Ask about nearby objects or create a home…" select_on_focus="true"/>
+  <button name="ask" label="Plan" left="380" top="98" width="70" height="30"/>
+  <text_editor name="activity" left="20" top="145" width="430" height="228" follows="all" font="SansSerif" read_only="true" word_wrap="true" bg_readonly_color="Transparent" border_visible="false" max_length="16000"/>
+  <button name="inspect" label="Nearby" left="20" top="388" width="100" height="26"/>
+  <button name="history" label="History" left="128" top="388" width="100" height="26"/>
+  <button name="undo" label="Undo last" left="236" top="388" width="100" height="26"/>
+  <button name="cancel" label="Cancel" left="248" top="430" width="96" height="28"/>
+  <button name="build" label="Build / Apply" left="352" top="430" width="98" height="28"/>
+</floater>

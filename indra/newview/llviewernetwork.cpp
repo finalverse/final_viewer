@@ -197,6 +197,9 @@ void LLGridManager::initialize(const std::string& grid_file)
         if(mGrid.empty())
         {
             LL_WARNS("GridManager")<<"Unknown grid '"<<cmd_line_grid<<"'"<<LL_ENDL;
+            // Credentials supplied for an explicit grid must never fall back to another grid.
+            gSavedSettings.setLLSD("UserLoginInfo", LLSD());
+            gSavedSettings.setBOOL("AutoLogin", false);
         }
         else
         {

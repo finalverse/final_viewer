@@ -3,6 +3,11 @@
  bg_visible="false"
  follows="left|top|right"
  name="Main Menu">
+    <menu name="Finalverse" label="Finalverse" tear_off="true">
+      <menu_item_call name="FinalverseCreate" label="Ask / Create…" shortcut="control|shift|K">
+        <menu_item_call.on_click function="Floater.ToggleOrBringToFront" parameter="finalverse_ai" />
+      </menu_item_call>
+    </menu>
     <menu
      create_jump_keys="true"
      label="Me"
