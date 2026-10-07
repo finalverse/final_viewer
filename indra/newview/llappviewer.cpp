@@ -4356,9 +4356,9 @@ void LLAppViewer::processMarkerFiles()
         // may take a while to trigger crash report so it has a special file.
         // Remove .crash file if exists
         std::string old_log_file = gDirUtilp->getExpandedFilename(LL_PATH_LOGS,
-            "SecondLife.old");
+            "Finalverse.old");
         std::string crash_log_file = gDirUtilp->getExpandedFilename(LL_PATH_LOGS,
-            "SecondLife.crash");
+            "Finalverse.crash");
         LLFile::remove(crash_log_file);
         // Rename ".old" log file to ".crash"
         LLFile::rename(old_log_file, crash_log_file);

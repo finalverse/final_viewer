@@ -15,7 +15,7 @@ jobs:
           fetch-depth: 0
       - name: Report upstream changes for manual review
         run: |
-          git fetch --no-tags https://github.com/secondlife/viewer.git development
+          git fetch --no-tags https://github.com/qwy16/secondlife_viewer.git contribute
           git log --oneline HEAD..FETCH_HEAD
           git diff --stat HEAD...FETCH_HEAD
 # Upstream integration is reviewed locally. This workflow never merges or pushes.
