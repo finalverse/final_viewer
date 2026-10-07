@@ -28,6 +28,10 @@
 
 #include <boost/bind.hpp>
 
+#if LL_LINUX && defined(__GLIBC__) && defined(__GLIBCXX__)
+#include <cxxabi.h>
+#endif
+
 #include "_httpoperation.h"
 #include "_httprequestqueue.h"
 #include "_httppolicy.h"
@@ -310,6 +314,13 @@ void HttpService::threadRun(LLCoreInt::HttpThread * thread)
                 ms_sleep(HTTP_SERVICE_LOOP_SLEEP_NORMAL_MS);
             }
         }
+#if LL_LINUX && defined(__GLIBC__) && defined(__GLIBCXX__)
+        catch (const __cxxabiv1::__forced_unwind&)
+        {
+            // pthread_cancel must unwind to the thread boundary, not the error handler.
+            throw;
+        }
+#endif
         catch (const LLContinueError&)
         {
             LOG_UNHANDLED_EXCEPTION("");
