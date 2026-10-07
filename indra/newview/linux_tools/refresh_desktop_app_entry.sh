@@ -3,7 +3,7 @@
 SCRIPTSRC=`readlink -f "$0" || echo "$0"`
 RUN_PATH=`dirname "${SCRIPTSRC}" || echo .`
 
-install_prefix=${RUN_PATH}/..
+install_prefix="$(realpath -- "${RUN_PATH}/..")"
 
 function install_desktop_entry()
 {
@@ -18,8 +18,9 @@ Exec=\"${installation_prefix}/finalverse\" %u\n\
 Icon=${installation_prefix}/finalverse_icon.png\n\
 Terminal=false\n\
 Type=Application\n\
-Categories=Application;Network;\n\
+Categories=Game;Simulation;\n\
 StartupNotify=true\n\
+StartupWMClass=com.finalverse.viewer\n\
 MimeType=x-scheme-handler/finalverse;\n\
 X-Desktop-File-Install-Version=3.0"
 

@@ -39,7 +39,7 @@ def verify(bundle, bundle_id="com.finalverse.viewer"):
         ["git", "diff", "--name-only", "aec8eaf022e0b67b415727cf512d62c396132811"],
         cwd=ROOT, text=True,
     ).splitlines():
-        if file.endswith(".xml"):
+        if file.endswith(".xml") and (ROOT / file).is_file():
             ET.parse(ROOT / file)
     checks.append("product strings and modified XML")
     assets = json.loads((VIEWER / "branding/asset-manifest.json").read_text())

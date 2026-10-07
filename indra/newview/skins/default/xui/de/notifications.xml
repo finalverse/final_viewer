@@ -1128,7 +1128,6 @@ Sign in with an account from the selected grid. For a private world, ask its ope
 		Ihr Avatar erscheint jeden Moment.
 
 Benutzen Sie die Pfeiltasten, um sich fortzubewegen.
-Drücken Sie F1 für Hilfe oder für weitere Informationen über [SECOND_LIFE].
 Bitte wählen Sie einen männlichen oder weiblichen Avatar.
 Sie können sich später noch umentscheiden.
 		<usetemplate name="okcancelbuttons" notext="Weiblich" yestext="Männlich"/>
