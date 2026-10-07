@@ -1,5 +1,7 @@
 # AI architecture and integration seams
 
+This file records the Phase 0 source audit and proposals. The implemented Phase 2 design is [ai-world-architecture.md](ai-world-architecture.md): the authoritative adapter/executor is an opt-in MutSea module, the viewer adds one C++/XUI shell, and the first provider is a separate local Ollama gateway. [phase2-ai-world-creation.md](phase2-ai-world-creation.md) records measured acceptance and outstanding gates.
+
 There is no OpenAI/Anthropic/Ollama provider router, Finalverse action validator or WorldLine journal in the audited C++ source. The relevant existing asset is structured event dispatch, not AI orchestration.
 
 ## Reuse points

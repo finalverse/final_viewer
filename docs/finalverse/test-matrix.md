@@ -1,5 +1,7 @@
 # Test coverage and product verification matrix
 
+Phase 2 adds 38 kernel tests, 14 planner/schema tests and real model/capability/UDP restart/undo probes. The final macOS build reports 678 passes and four inherited skips; the visual Create workflow remains blocked by a locked Mac. See [the measured Phase 2 report](phase2-ai-world-creation.md) for evidence and the remaining release gate. The original matrix below remains the broader programme target.
+
 ## Existing test architecture
 
 `LL_TESTS` defaults OFF. CMake creates TUT unit targets and test-success stamp commands; integration tests run after linking. CTest registration is commented out. Relevant suites include LLSD/events/UUID/work queues/serialization, vector/quaternion/volume math, message/permissions/inventory, primitive/media/glTF material, HTTP local-peer integration, login/security/grid/settings and viewer helper/map/asset statistics. Some entries are commented out; test source file presence is not an enabled test count.

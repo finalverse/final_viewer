@@ -39,3 +39,17 @@ No proposed Finalverse module above is implemented by this audit. Build deviatio
 | D024 | Use supplied Finalverse logo/icons/Lumi; preserve MutSea server identity | User explicitly selected existing brand materials and confirmed server naming; record asset hashes, preserve original files and existing rights |
 
 See [rebranding.md](rebranding.md) for actual implementation and measured verification.
+
+## Phase 2 decisions
+
+| ID | Decision | Reason / consequence |
+|---|---|---|
+| D025 | Adopt the user-supplied AI world-creation vertical slice as Phase 2 | Bundle inspection, action policy, one shell, persistent home and Lumi semantics; defer broad porting/facelift work |
+| D026 | Use opt-in authoritative MutSea Seed capability/module | Reuse authenticated avatar lifecycle, server permissions, scene APIs, backup and UDP; no second world runtime |
+| D027 | Keep the first planner in a separate Python service with a provider protocol | Small loopback development service, no new viewer FFI or cloud key; local Ollama supplies actual live inference |
+| D028 | Treat intent/compensation as logical transactions | Durable file and simulator database are separate stores; interrupted operations stop AI writes; no atomicity claim |
+| D029 | Generate a home from 17 inherited primitives | Deterministic bounded geometry with real apertures and furniture; no external asset generator or renderer change |
+| D030 | Project semantics/Lumi from private WorldLine | Keep object layouts compatible; human owns geometry, Lumi has a semantic binding; citizen autonomy deferred |
+| D031 | Isolate Phase 2 in viewer/server worktrees | Preserve 9,332 primary viewer status entries and 27 deferred Linux changes; no primary integration before visual gate |
+| D032 | Disable automatic login for unknown explicit grids | Source-verified grid keys and one-session settings prevent generated credentials falling back to another service |
+| D033 | Keep visual acceptance as a separate required gate | Real model/capability/UDP/restart tests and compilation pass; a locked Mac prevents claiming a completed UI demonstration |

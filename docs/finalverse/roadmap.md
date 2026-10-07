@@ -1,5 +1,7 @@
 # Roadmap and recommended next milestone
 
+Phase 2 follows the later user-supplied **AI world-creation vertical slice**, superseding the original split below. The implemented candidate combines inspection, trusted actions, WorldLine, local inference, one Create panel, a 17-component Lumi home and restart/undo. See [phase2-ai-world-creation.md](phase2-ai-world-creation.md) for measured results and the outstanding visual release gate. Complete that gate and harden recovery before beginning persistent citizen memory/navigation. The remaining text preserves the Phase 0 roadmap rationale.
+
 The product direction is an AI-native persistent world client using the mature viewer as bootstrap runtime. The audited source supplies streaming, avatars, camera, chat/voice, editing, inventory, materials and networking; it does not supply a Finalverse brain, policy kernel, semantic sidecar or action journal.
 
 ## Critical path
