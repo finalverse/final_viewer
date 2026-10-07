@@ -92,6 +92,8 @@ def verify(bundle, bundle_id="com.finalverse.viewer"):
     forbidden = (r"\Roaming\SecondLife", r"\Local\SecondLife", r"\SecondLifeViewer2", 'FindWindow $0 "Second Life"')
     active = "\n".join(line for line in nsis.splitlines() if not line.lstrip().startswith((";", "#")))
     require(not any(value in active for value in forbidden), "Installer touches another viewer's data or process")
+    require('sWindowClass = "Finalverse";' in (VIEWER / "llappviewer.h").read_text(),
+            "Native window class must agree with independent installer process checks")
     require('"SOFTWARE\\Finalverse"' in nsis, "Installer vendor namespace")
     require('ReadRegStr $0 HKEY_CLASSES_ROOT "${URLNAME}\\shell\\open\\command"' in nsis, "Uninstall must check current protocol owner")
     require('"x-grid-location-info"' not in active, "Installer takes over a shared scheme")
@@ -109,6 +111,10 @@ def verify(bundle, bundle_id="com.finalverse.viewer"):
             manifest.split("version_vars =", 1)[1].split("inst_vars_template", 1)[0],
             "Installer product macros must precede language includes")
     checks.append("Windows installer ownership constraints (source only)")
+    registration = (VIEWER / "linux_tools/register_secondlifeprotocol.sh").read_text()
+    require("x-scheme-handler/secondlife" not in registration and
+            "x-scheme-handler/finalverse" in registration,
+            "Explicit Linux registration takes over another viewer's protocol")
 
     baseline_license = subprocess.check_output(["git", "show", "218de297a4a2cc286aba54e5df40e5e9e69caf43:LICENSE"], cwd=ROOT)
     require((ROOT / "LICENSE").read_bytes() == baseline_license, "Inherited source license changed")

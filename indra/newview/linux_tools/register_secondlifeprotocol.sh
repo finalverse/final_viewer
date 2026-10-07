@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Register a protocol handler (default: handle_secondlifeprotocol.sh) for
-# URLs of the form secondlife://...
+# Finalverse URLs. The inherited helper filename remains for packaging compatibility.
 #
 
 HANDLER="$1"
@@ -24,26 +24,26 @@ function install_desktop_entry()
 
     local desktop_entry="\
 [Desktop Entry]\n\
-Name=Second Life SLURL handler\n\
+Name=Finalverse world link handler\n\
 Path=${installation_prefix}\n\
-Exec=${HANDLER} %u\n\
-Icon=${installation_prefix}/secondlife_icon.png\n\
+Exec=\"${HANDLER}\" %u\n\
+Icon=${installation_prefix}/finalverse_icon.png\n\
 Terminal=false\n\
 Type=Application\n\
 StartupNotify=true\n\
 StartupWMClass="com.finalverse.viewer"\n\
 NoDisplay=true\n\
-MimeType=x-scheme-handler/secondlife\n\
+MimeType=x-scheme-handler/finalverse;\n\
 X-Desktop-File-Install-Version=3.0"
 
     echo " - Installing protocol entries in ${desktop_entries_dir}"
     WORK_DIR=`mktemp -d`
-    PROTOCOL_HANDLER="secondlife-protocol.desktop"
+    PROTOCOL_HANDLER="finalverse-protocol.desktop"
     echo -e $desktop_entry > "${WORK_DIR}/${PROTOCOL_HANDLER}" || "Failed to create desktop file!"
     desktop-file-install --dir="${desktop_entries_dir}" "${WORK_DIR}/${PROTOCOL_HANDLER}" || "Failed to install desktop file!"
     rm -r $WORK_DIR
 
-    xdg-mime default "${desktop_entries_dir}/${PROTOCOL_HANDLER}" x-scheme-handler/secondlife
+    xdg-mime default "${PROTOCOL_HANDLER}" x-scheme-handler/finalverse
 
     update-desktop-database "${desktop_entries_dir}"
 }

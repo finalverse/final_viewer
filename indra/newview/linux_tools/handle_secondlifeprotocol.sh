@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Send a URL of the form secondlife://... to Second Life.
+# Send a world URL to Finalverse; the inherited filename is a packaging interface.
 #
 
 URL="$1"
@@ -13,5 +13,4 @@ fi
 RUN_PATH=`dirname "$0" || echo .`
 cd "${RUN_PATH}/.."
 
-exec ./finalverse -url \'"${URL}"\'
-
+exec ./finalverse --url "${URL}"
