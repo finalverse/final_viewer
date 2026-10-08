@@ -93,5 +93,10 @@ if (LL_TESTS)
       )
 
     set_property(SOURCE llprimitive.cpp PROPERTY LL_TEST_ADDITIONAL_LIBRARIES llmessage)
+    # The primitive fixture stubs texture lists. Exercise the real implementation
+    # alongside the material fixture, which supplies the glTF implementation.
+    set_property(SOURCE llgltfmaterial.cpp PROPERTY LL_TEST_ADDITIONAL_SOURCE_FILES
+      llprimtexturelist.cpp lltextureentry.cpp llmaterialid.cpp llmediaentry.cpp
+      tests/llprimtexturelist_test.cpp)
     LL_ADD_PROJECT_UNIT_TESTS(llprimitive "${llprimitive_TEST_SOURCE_FILES}")
 endif (LL_TESTS)

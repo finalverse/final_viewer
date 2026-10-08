@@ -222,18 +222,6 @@ namespace tut
     }
 
     template<> template<>
-    void llprimitive_object_t::test<7>()
-    {
-        set_test_name("Texture entry self-copy preserves the owned entry");
-        LLPrimTextureList textures;
-        textures.setSize(1);
-        const LLUUID id = LLUUID::generateNewID();
-        textures.setID(0, id);
-        ensure_equals(textures.copyTexture(0, *textures.getTexture(0)), TEM_CHANGE_TEXTURE);
-        ensure_equals(textures.getTexture(0)->getID(), id);
-    }
-
-    template<> template<>
     void llprimitive_object_t::test<6>()
     {
         set_test_name("Test setVolume creation of new NOT-unique volume.");
