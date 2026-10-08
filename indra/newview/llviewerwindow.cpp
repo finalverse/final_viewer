@@ -2484,11 +2484,15 @@ void LLViewerWindow::initWorldUI()
             LL_INFOS() << "Preloading cef instances" << LL_ENDL;
 
             LLFloaterReg::getInstance("destinations");
-            LLFloaterReg::getInstance("avatar_welcome_pack");
+            if (LLGridManager::getInstance()->isSystemGrid())
+            {
+                LLFloaterReg::getInstance("avatar_welcome_pack");
+            }
             LLFloaterReg::getInstance("search");
             LLFloaterReg::getInstance("marketplace");
         }
-        else if (gSavedSettings.getBOOL("FirstLoginThisInstall"))
+        else if (gSavedSettings.getBOOL("FirstLoginThisInstall") &&
+                 LLGridManager::getInstance()->isSystemGrid())
         {
             // Preload the welcome pack for first-time login even on low end hardware
             LLFloaterReg::getInstance("avatar_welcome_pack");

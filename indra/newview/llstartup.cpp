@@ -2620,7 +2620,8 @@ bool idle_startup()
 
         // Display Avatar Welcome Pack the first time a user logs in
         // (or clears their settings....)
-        if (gSavedSettings.getBOOL("FirstLoginThisInstall"))
+        if (gSavedSettings.getBOOL("FirstLoginThisInstall") &&
+            LLGridManager::getInstance()->isSystemGrid())
         {
             LLFloater* avatar_welcome_pack_floater = LLFloaterReg::findInstance("avatar_welcome_pack");
             if (avatar_welcome_pack_floater != nullptr)

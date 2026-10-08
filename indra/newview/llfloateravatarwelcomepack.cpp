@@ -31,6 +31,7 @@
 #include "llmediactrl.h"
 #include "lluictrlfactory.h"
 #include "llviewercontrol.h"
+#include "llviewernetwork.h"
 #include "llweb.h"
 
 LLFloaterAvatarWelcomePack::LLFloaterAvatarWelcomePack(const LLSD& key)
@@ -54,6 +55,11 @@ bool LLFloaterAvatarWelcomePack::postBuild()
     if (mAvatarPicker)
     {
         mAvatarPicker->clearCache();
+        if (!LLGridManager::getInstance()->isSystemGrid())
+        {
+            mAvatarPicker->navigateToLocalPage("welcome", "index.html");
+            return true;
+        }
         mAvatarPicker->setErrorPageURL(gSavedSettings.getString("GenericErrorPageURL"));
         std::string url = gSavedSettings.getString("AvatarWelcomePack");
         url = LLWeb::expandURLSubstitutions(url, LLSD());
