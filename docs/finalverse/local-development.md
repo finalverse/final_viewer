@@ -1,12 +1,13 @@
 # Local development and account management
 
-The active AI world-creation candidate uses three separate repositories. MutSea remains the simulator brand. The original source checkouts retain unrelated work; build the candidate worktrees for the current feature.
+The active Phase 3 persistent-citizen candidate uses four separate repositories. MutSea remains the simulator brand. The original source checkouts retain unrelated work; build the candidate worktrees for the current feature.
 
 | Component | Local source | Branch |
 |---|---|---|
-| Finalverse viewer | `~/Finalverse/dev/worktrees/viewer-ai-world` | `main` |
-| MutSea with world operations | `~/Finalverse/dev/worktrees/mutsea-worldops` | `main` |
-| AI planner gateway | `~/Finalverse/services/ai-gateway` | `main` |
+| Finalverse viewer | `~/Finalverse/dev/worktrees/viewer-ai-world` | `codex/persistent-ai-citizens` |
+| MutSea with world operations | `~/Finalverse/dev/worktrees/mutsea-worldops` | `codex/persistent-ai-citizens` |
+| AI planner gateway | `~/Finalverse/services/ai-gateway` | `codex/persistent-ai-citizens` |
+| Agent Runtime | `~/Finalverse/services/agent-runtime` | `main` (independent new service) |
 
 Recommended gateway repository name: **`ai-gateway`**, under the Finalverse organization (`finalverse/ai-gateway`). It currently has no remote; no GitHub repository or push is claimed. The existing viewer repository remains `finalverse/final_viewer`.
 
@@ -18,18 +19,18 @@ The original Phase 2 app was Intel x86-64 through Rosetta. The synchronized sour
 
 ```sh
 cd "$HOME/Finalverse/dev/worktrees/viewer-ai-world"
-python3 -m venv "$HOME/Finalverse/dev/tooling/viewer-venv"
+python3.13 -m venv "$HOME/Finalverse/dev/tooling/viewer-venv"
 "$HOME/Finalverse/dev/tooling/viewer-venv/bin/pip" install -r docs/finalverse/toolchain-python.lock
 export PATH="$HOME/Finalverse/dev/tooling/viewer-venv/bin:$PATH"
 export AUTOBUILD_VARIABLES_FILE="$HOME/Finalverse/dev/baseline-macos/tooling/variables"
-export AUTOBUILD_CPU_COUNT=5 AUTOBUILD_ADDRSIZE=64 AUTOBUILD_BUILD_ID=262810008
+export AUTOBUILD_CPU_COUNT=5 AUTOBUILD_ADDRSIZE=64 AUTOBUILD_BUILD_ID=262810009
 export PYTHON="$HOME/Finalverse/dev/tooling/viewer-venv/bin/python"
 export CC=/usr/bin/clang CXX=/usr/bin/clang++
 autobuild configure -c RelWithDebInfoOS -- \
   -DLL_TESTS=ON -DUSE_OPENAL=ON -DUSE_VELOPACK=OFF \
   -DPython3_EXECUTABLE="$PYTHON" \
   -DCMAKE_OSX_SYSROOT="$(xcrun --show-sdk-path)" \
-  -DFINALVERSE_BUNDLE_ID=com.finalverse.viewer.sync \
+  -DFINALVERSE_BUNDLE_ID=com.finalverse.viewer.citizens \
   -DVIEWER_CHANNEL="Finalverse Test"
 autobuild build -c RelWithDebInfoOS --no-configure
 autobuild build -c RelWithDebInfoOS --no-configure -- --target BUILD_TESTS
@@ -55,7 +56,7 @@ From the viewer source directory, use the same Python environment:
 ```sh
 "$PYTHON" scripts/finalverse/verify_branding.py \
   --bundle "build-darwin-universal/newview/RelWithDebInfo/Finalverse Test.app" \
-  --bundle-id com.finalverse.viewer.sync
+  --bundle-id com.finalverse.viewer.citizens
 PYTHONPATH=indra/lib/python "$PYTHON" -m unittest discover \
   -s indra/test -p test_llmanifest.py -v
 ```
@@ -73,7 +74,7 @@ docker build -f deploy/worldops/Dockerfile \
   --build-arg MUTSEA_IMAGE=mutsea:verify -t mutsea:worldops-verify .
 ```
 
-The current add-on source runs 40 kernel tests; the previously verified image ran the then-current 38. Building these images does not replace the running fixture. Do not start two simulators against the same database/volume. Configuration and opt-in module instructions are in the server's `Finalverse/World/README.md`; standalone deployment instructions are in `deploy/standalone/`.
+The current add-on source runs 51 world/navigation tests, including the original Phase 2 kernel suite. Building these images does not replace the running fixture. Do not start two simulators against the same database/volume. Configuration and opt-in module instructions are in the server's `Finalverse/World/README.md`; standalone deployment instructions are in `deploy/standalone/`.
 
 On this development machine the existing isolated fixture is `mutsea-finalverse-phase2`. Its read-only configuration is `~/Finalverse/dev/phase2/harbor-config`, persistent data is Docker volume `finalverse-phase2-data`, and its module is `~/Finalverse/dev/phase2/server-module/Finalverse.World.dll`. The original Harbor starter-scene volume is mounted read-only. These are development resources outside Git. To start a stopped fixture and check the grid:
 
@@ -171,3 +172,24 @@ DOTNET_ROLL_FORWARD=Major dotnet \
 ```
 
 Use `verify` with that same receipt after normal simulator shutdown/restart. After viewer composite Undo, use `verify_undo` after another restart. They check the original component IDs, full transforms, semantic relationships and retained history. `capture` refuses to overwrite a receipt. `DOTNET_ROLL_FORWARD=Major` is only needed when this Mac's newer host SDK runs the .NET 8-targeted probe; the deployed server remains native .NET 8. For a fresh protocol SDK build, follow `tools/MutSea.ProtocolSmoke/build.py` and use its actual output assembly directory.
+
+
+## Current Phase 3 citizen sandbox
+
+The new service source is `~/Finalverse/services/agent-runtime`; intended repository name **finalverse/agent-runtime**. It has no remote. Its source-matched README and `docs/finalverse/agents/` describe build, private configuration, restart and bounded tool behavior. Gateway now also supplies read-only citizen conversation; its model has no simulator authority.
+
+Current independent sandbox: grid alias **MutSeaCitizens**, login URI **http://127.0.0.1:18094/**, region **MutSea Harbor**, account **MutSea Developer**. Read its password locally from `~/Finalverse/dev/phase3/config/account.json`; do not reuse Phase 2 credentials for this separate world. Account creation/inspection/password management still uses the inherited simulator console described above. There is no new public signup endpoint.
+
+The verified container is `mutsea-finalverse-citizens-phase3-v4-20261008`; its independent persistent data volume is `finalverse-phase3-data-20261008`. Keep Phase 2 containers and data unchanged. Start a stopped sandbox with `docker start` and stop normally with console `shutdown`. Both TCP and UDP are loopback 18094. The runtime/gateway listen on loopback 18766/18765, respectively.
+
+Current native universal package: `~/Finalverse/dev/phase3/Finalverse Citizens.app`, identifier `com.finalverse.viewer.citizens`, separate profile `~/Finalverse/dev/phase3/profile`. Do not register backup `.app` copies with the same identifier. Start the viewer with an explicit profile and grid:
+
+```sh
+CFFIXED_USER_HOME="$HOME/Finalverse/dev/phase3/profile" \
+  "$HOME/Finalverse/dev/phase3/Finalverse Citizens.app/Contents/MacOS/Finalverse Test" \
+  --grid MutSeaCitizens --set AutoLogin false
+```
+
+A fresh profile needs the same LLSD grid record format shown above with authority/login URI `127.0.0.1:18094` and `grid_login_id` `MutSeaCitizens`. Existing private profile already has it. Open AI, enable **Talk to Lumi**, ask identity/home/memory questions and **Lumi, go home**. Inspector, Pause/Resume/Cancel and separately approved garden controls are in the same floater. See [phase3-persistent-citizens.md](phase3-persistent-citizens.md).
+
+The Python lock requires modern Python; on this Mac use Python 3.13.6 (`~/.pyenv/versions/3.13.6/bin/python`) explicitly if `python3.13` is unavailable. Xcode's bundled Python 3.9 cannot install this lock. The durable environment at `~/Finalverse/dev/tooling/viewer-venv` was created with that interpreter and used for the Phase 3 build/tests, replacing the temporary Phase 0 environment.

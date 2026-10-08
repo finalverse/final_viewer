@@ -8,6 +8,7 @@
 #include "lllineeditor.h"
 #include "lltexteditor.h"
 #include "llbutton.h"
+#include "llcheckboxctrl.h"
 #include "llcoros.h"
 #include "llcorehttputil.h"
 #include <iomanip>
@@ -68,13 +69,24 @@ void describe(std::ostringstream& text, const LLSD& value)
 
 bool LLFloaterFinalverseAI::postBuild()
 {
-    getChild<LLButton>("ask")->setCommitCallback([this](LLUICtrl*, const LLSD&) { run("plan"); });
+    getChild<LLButton>("ask")->setCommitCallback([this](LLUICtrl*, const LLSD&) { run(getChild<LLCheckBoxCtrl>("citizen_mode")->get() ? "citizen_say" : "plan"); });
     getChild<LLButton>("inspect")->setCommitCallback([this](LLUICtrl*, const LLSD&) { run("inspect"); });
     getChild<LLButton>("build")->setCommitCallback([this](LLUICtrl*, const LLSD&) { run("commit"); });
     getChild<LLButton>("cancel")->setCommitCallback([this](LLUICtrl*, const LLSD&) { cancel(); });
     getChild<LLButton>("undo")->setCommitCallback([this](LLUICtrl*, const LLSD&) { run("undo"); });
     getChild<LLButton>("history")->setCommitCallback([this](LLUICtrl*, const LLSD&) { run("journal"); });
-    getChild<LLLineEditor>("request")->setCommitCallback([this](LLUICtrl*, const LLSD&) { run("plan"); });
+    getChild<LLLineEditor>("request")->setCommitCallback([this](LLUICtrl*, const LLSD&) { run(getChild<LLCheckBoxCtrl>("citizen_mode")->get() ? "citizen_say" : "plan"); });
+    for (const auto& binding : {std::pair<const char*, const char*>{"citizen_inspect", "inspect"}, {"citizen_pause", "pause"}, {"citizen_resume", "resume"}, {"citizen_cancel", "cancel"}, {"citizen_approve", "approve"}, {"citizen_undo", "undo"}})
+    {
+        const std::string operation = std::string("citizen_") + binding.second;
+        getChild<LLButton>(binding.first)->setCommitCallback([this, operation](LLUICtrl*, const LLSD&) { run(operation); });
+    }
+    getChild<LLCheckBoxCtrl>("citizen_mode")->setCommitCallback([this](LLUICtrl*, const LLSD&) {
+        cancel();
+        const bool citizen = getChild<LLCheckBoxCtrl>("citizen_mode")->get();
+        getChild<LLButton>("ask")->setLabel(citizen ? "Send" : "Plan");
+        show(citizen ? "Talk to Lumi. Ask who she is, what she remembers, or say 'Lumi, go home.' Garden creation needs separate approval." : "Ask about the world or propose an approved world change.");
+    });
     show("Ask about the world, select an owned object to edit, or stand on clear ground to create Lumi's home. Every change needs your approval.");
     busy(false);
     return true;
@@ -83,11 +95,14 @@ void LLFloaterFinalverseAI::show(const std::string& text) { getChild<LLTextEdito
 void LLFloaterFinalverseAI::busy(bool active, bool mutation)
 {
     mBusy = active; mMutation = active && mutation;
-    for (const char* name : {"ask", "inspect", "history"}) getChild<LLButton>(name)->setEnabled(!active);
+    for (const char* name : {"ask", "inspect", "history", "citizen_inspect", "citizen_pause", "citizen_resume", "citizen_cancel", "citizen_approve", "citizen_undo"}) getChild<LLButton>(name)->setEnabled(!active);
+    // Human overrides can interrupt reasoning without waiting for the model.
+    for (const char* name : {"citizen_pause", "citizen_cancel"}) getChild<LLButton>(name)->setEnabled(!mMutation);
     getChild<LLButton>("build")->setEnabled(!active && mPrepared.has("plan_id"));
     getChild<LLButton>("undo")->setEnabled(!active && !mLastPlan.empty());
     getChild<LLButton>("cancel")->setEnabled(!mMutation);
     getChild<LLLineEditor>("request")->setEnabled(!active);
+    getChild<LLCheckBoxCtrl>("citizen_mode")->setEnabled(!active);
 }
 void LLFloaterFinalverseAI::cancel()
 {
@@ -97,7 +112,8 @@ void LLFloaterFinalverseAI::cancel()
 }
 void LLFloaterFinalverseAI::run(const std::string& operation)
 {
-    if (mBusy) return;
+    const bool override = operation == "citizen_pause" || operation == "citizen_cancel";
+    if (mBusy && (!override || mMutation)) return;
     // A proposal is actionable only while its own preview is displayed.
     if (operation != "commit") { mPrepared = LLSD(); busy(false); }
     auto region = gAgent.getRegion();
@@ -107,14 +123,17 @@ void LLFloaterFinalverseAI::run(const std::string& operation)
     const LLUUID region_id = region->getRegionID();
     const std::string prompt = getChild<LLLineEditor>("request")->getText();
     if (operation == "plan" && (prompt.empty() || prompt.size() > 2048)) { show("Enter a request of up to 2048 characters."); return; }
-    LLSD body; body["op"] = operation == "plan" ? "inspect" : operation;
+    const bool citizen = operation.compare(0, 8, "citizen_") == 0;
+    if (citizen && operation == "citizen_say" && (prompt.empty() || prompt.size() > 2048)) { show("Enter a message for Lumi of up to 2048 characters."); return; }
+    LLSD body; body["op"] = citizen ? "citizen" : operation == "plan" ? "inspect" : operation;
+    if (citizen) { body["command"] = operation.substr(8); body["text"] = prompt; }
     if (auto object = LLSelectMgr::getInstance()->getSelection()->getFirstRootObject()) body["selected_id"] = object->getID().asString();
     if (operation == "commit") body["plan_id"] = mPrepared["plan_id"];
     if (operation == "undo") body["plan_id"] = mLastPlan;
     const U32 generation = ++mGeneration;
     const LLHandle<LLFloater> handle = getHandle();
-    busy(true, operation == "commit" || operation == "undo");
-    show(operation == "plan" ? "Reading the world and planning…" : "Waiting for the world service…");
+    busy(true, operation == "commit" || operation == "undo" || operation == "citizen_approve" || operation == "citizen_undo");
+    show(operation == "plan" ? "Reading the world and planning…" : operation == "citizen_say" ? "Lumi is considering your message… You can pause or cancel while she thinks." : "Waiting for the world service…");
     LLCoros::instance().launch("FinalverseWorld", [handle, generation, region_id, capability, operation, body, prompt]()
     {
         auto current = [&]() -> LLFloaterFinalverseAI*
@@ -128,6 +147,43 @@ void LLFloaterFinalverseAI::run(const std::string& operation)
         LLSD reply = post(capability, body);
         auto self = current(); if (!self) return;
         if (reply.has("error")) { self->mPrepared = LLSD(); self->busy(false); self->show(reply["error"].asString()); return; }
+        if (operation.compare(0, 8, "citizen_") == 0)
+        {
+            const LLSD result = reply["result"];
+            std::ostringstream display;
+            display << "Lumi: " << result["answer"].asString() << "\n\n";
+            if (operation == "citizen_inspect")
+            {
+                const LLSD identity = result["citizen"]["identity"];
+                display << "Status: " << identity["lifecycle"].asString() << " · Autonomy " << identity["autonomy_level"].asInteger() << "\n";
+                display << "Home: " << identity["home_entity_id"].asString() << "\n";
+                display << "Capabilities: ";
+                for (const auto& capability : llsd::inArray(identity["capabilities"])) display << capability.asString() << " ";
+                display << "\n";
+                const LLSD goals = result["citizen"]["goals"];
+                if (goals.size())
+                {
+                    const LLSD goal = goals[goals.size() - 1];
+                    display << "Goal: " << goal["description"].asString() << " · " << goal["status"].asString() << "\n";
+                    display << "Intention: " << goal["intention"].asString() << "\n";
+                    if (!goal["reason"].asString().empty()) display << "Reason: " << goal["reason"].asString() << "\n";
+                }
+            }
+            if (result["preview"].isMap())
+            {
+                display << "\nGarden preview · approval required\n";
+                for (const auto& step : llsd::inArray(result["preview"]["steps"]))
+                { display << "• " << step["after"]["name"].asString() << "\n"; describe(display, step["after"]); }
+            }
+            if (operation == "citizen_inspect")
+            {
+                display << "\nPersistent memories\n";
+                for (const auto& memory : llsd::inArray(result["memories"])) display << "• " << memory["content"].asString() << "\n";
+                display << "\nRecent agent events\n";
+                for (const auto& entry : llsd::inArray(result["recent_events"])) display << "• " << entry["kind"].asString() << "\n";
+            }
+            self->show(display.str()); self->busy(false); return;
+        }
         if (operation == "inspect" || operation == "plan") self->mLastPlan = reply["result"]["undoable_plan_id"].asString();
         if (operation == "plan")
         {
