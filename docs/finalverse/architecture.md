@@ -1,5 +1,7 @@
 # Finalverse architecture: Phase 0
 
+Current direction (2026-10-08): [MutSea spatial platform](mutsea-platform.md) separates canonical runtime, consumer experience and authoring. The following remains the Phase 0 source audit. Phase 2 now executes authorized world operations in the server module; Phase 3 adds the separate persistent citizen runtime; [Phase 4A](ux/phase4a-validation.md) supplies the verified desktop facade. Proposed viewer-side execution below is historical and is superseded by the implemented authoritative MutSea path.
+
 Audit date: 2026-10-07 (Asia/Shanghai). Source baseline: `218de297a4a2cc286aba54e5df40e5e9e69caf43`, branch `contribute`, repository `finalverse/final_viewer`.
 
 ## Existing runtime

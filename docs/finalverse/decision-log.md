@@ -1,5 +1,19 @@
 # Phase 0 decision log
 
+## Platform/content decisions — 2026-10-08
+
+| ID | Decision | Reason / consequence |
+|---|---|---|
+| P001 | MutSea is the canonical spatial platform; Finalverse is the consumer experience | Authoring, third parties and communities share authority/policy rather than duplicate runtimes |
+| P002 | Every Phase 4B content item is evaluated for reusable Starter Library packaging | Avoid one-off Harbor content; require semantics, exact dependencies, hashes, rights and budgets |
+| P003 | Insert 4B.1 provisioning before public 4C | Operator account creation currently tolerates partial inventory/appearance failure; public entry must require readiness |
+| P004 | Blender is an authoring IDE; WorldSync is editor-neutral and planned | MutSea retains IDs, permissions, versions, runtime state and WorldLine; no direct editor mutation bypass |
+| P005 | Preserve verified Phase 4A/3 branches and develop content on a new local branch | Viewer starts at f0b70e89; MutSea starts at e7cd5f9b; unrelated dirty checkouts remain untouched |
+| P006 | Restore advertised client baking using the inherited compositor/protocol | MutSea advertises client baking; modern viewer server-bake assumptions left ordinary avatars unresolved. Narrow grid/region gate preserves server-bake behavior |
+| P007 | Acknowledge actual wearable asset saves before appearance reload | Non-AIS save uploaded a wearable but never updated its inventory asset reference. Existing authenticated transaction and server reply now complete the save |
+
+See [mutsea-platform.md](mutsea-platform.md). The tables below preserve earlier decisions and their historical phase context.
+
 Date: 2026-10-07 (Asia/Shanghai).
 
 | ID | Decision | Source reason / consequence |

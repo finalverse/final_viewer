@@ -1,13 +1,31 @@
 # Local development and account management
 
-The active Phase 4A macOS facade uses the Phase 3 persistent-citizen services in four separate repositories. MutSea remains the simulator brand. The original source checkouts retain unrelated work; build the candidate worktrees for the current feature.
+The active Phase 4B candidate preserves the Phase 4A facade and Phase 3 persistent-citizen services. MutSea remains the spatial platform/runtime brand. The original source checkouts retain unrelated work; build the candidate worktrees for the current feature. Earlier Phase 2/3 instructions below describe preserved fixtures, not the current Phase 4B instance.
 
 | Component | Local source | Branch |
 |---|---|---|
-| Finalverse viewer | `~/Finalverse/dev/worktrees/viewer-ai-world` | `codex/experience-facelift` |
-| MutSea with world operations | `~/Finalverse/dev/worktrees/mutsea-worldops` | `codex/persistent-ai-citizens` |
+| Finalverse viewer | `~/Finalverse/dev/worktrees/viewer-ai-world` | `codex/starter-library-foundation` |
+| MutSea with world operations | `~/Finalverse/dev/worktrees/mutsea-worldops` | `codex/starter-library-foundation` |
 | AI planner gateway | `~/Finalverse/services/ai-gateway` | `codex/persistent-ai-citizens` |
 | Agent Runtime | `~/Finalverse/services/agent-runtime` | `main` (independent new service) |
+| Finalverse Studio authoring seed | `~/Finalverse/studio` | `main` (no remote) |
+
+## Current isolated Phase 4B test
+
+The running loopback grid is `http://127.0.0.1:18094/`, alias `MutSeaCitizens`, container `mutsea-finalverse-phase4b-20261008`. Its data and configuration are separate clones of the preserved Phase 3 fixture. Use the ordinary account **MutSea FirstLook**; its private credential file is `~/Finalverse/dev/phase4b/firstlook-account.json`. The Phase 3 Developer account is reserved as a different-client observer during acceptance; simultaneous logins must use different accounts.
+
+The packaged candidate is `~/Finalverse/dev/phase4b/Finalverse FirstLook.app`, profile `~/Finalverse/dev/phase4b/profile-fresh-retest`. Launch after closing an existing candidate:
+
+```sh
+open --env CFFIXED_USER_HOME="$HOME/Finalverse/dev/phase4b/profile-fresh-retest" \
+  "$HOME/Finalverse/dev/phase4b/Finalverse FirstLook.app" --args \
+  --grid MutSeaCitizens --set AutoLogin false \
+  --set RememberPassword false --set RememberUser false
+```
+
+Enter the password from the private account file. Development acceptance also uses a private one-session settings file; do not copy it into Git or distribute it. The historical Phase 4A app remains intact. Appearance/save findings and limits are in [avatar-appearance-audit.md](art/avatar-appearance-audit.md).
+
+Current original procedural Starter Library packages are under `~/Finalverse/studio/exports/starter-v0.1`: pavilion, bench, coastal tree, beacon and lantern. They have Blender sources, glTF/Collada payloads, semantic/hash/budget manifests and pass the offline validator. They are authoring seeds; live Harbor import, LOD/collision review, rigged avatars and public provisioning remain pending.
 
 Recommended gateway repository name: **`ai-gateway`**, under the Finalverse organization (`finalverse/ai-gateway`). It currently has no remote; no GitHub repository or push is claimed. The existing viewer repository remains `finalverse/final_viewer`.
 

@@ -1,5 +1,19 @@
 # Roadmap and recommended next milestone
 
+## Current plan — 2026-10-08
+
+Phase 2 world creation and Phase 3 persistent Lumi are implemented development slices; Phase 4A has passed packaged macOS engineering acceptance. Its UI is retained. The Phase 0 ordering below is historical, not the current execution plan.
+
+1. **4B — First impression:** repair appearance compatibility/provisioning, then produce inviting Harbor/Lumi content as reusable semantic, provenance-checked Starter Library seeds. Verify in the actual viewer, preserve identity/history and measure performance.
+2. **4B.1 — MutSea Starter Library:** versioned World/Avatar/Outfit/Asset/Experience packages, dependency validation and recoverable account/community provisioning; reusable Harbor and Lumi Home.
+3. **4B.5 — First-time study:** 3–5 new people, five-minute observation, address major confusion.
+4. **4C — Growth loop:** create/invite/share/join/remix/return over reliable starter provisioning.
+5. **5A–5H — MutSea Platform:** communities; world/experience templates; WorldSync and Blender Live; creator hub; third-party SDK; spatial commerce; enterprise; creator economy. Gate expansion on observed growth, not architectural diagrams.
+
+See [platform boundaries](mutsea-platform.md), [updated 4B prompt](prompts/phase4b.md) and [deferred 4C prompt](prompts/phase4c.md). MutSea is the spatial platform/runtime; Finalverse is the consumer experience; Studio is authoring. Renderer migration, public deployment and multi-platform work remain separately gated.
+
+## Historical Phase 0 plan
+
 Phase 2 follows the later user-supplied **AI world-creation vertical slice**, superseding the original split below. The implemented candidate combines inspection, trusted actions, WorldLine, local inference, one Create panel, a 17-component Lumi home and restart/undo. See [phase2-ai-world-creation.md](phase2-ai-world-creation.md) for measured results and the completed visual workflow and normal restart/cleanup evidence. All 15 practical gates pass. Next harden recovery and semantic reconciliation before persistent citizen memory/navigation; no Phase 3 implementation was started. The remaining text preserves the Phase 0 roadmap rationale.
 
 The product direction is an AI-native persistent world client using the mature viewer as bootstrap runtime. The audited source supplies streaming, avatars, camera, chat/voice, editing, inventory, materials and networking; it does not supply a Finalverse brain, policy kernel, semantic sidecar or action journal.
