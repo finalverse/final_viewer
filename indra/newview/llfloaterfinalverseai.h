@@ -8,15 +8,21 @@ class LLFloaterFinalverseAI : public LLFloater
 public:
     explicit LLFloaterFinalverseAI(const LLSD& key) : LLFloater(key) {}
     bool postBuild() override;
+    static void openRequest(const std::string& text, bool citizen, bool submit = false);
 private:
     void run(const std::string& operation);
     void cancel();
     void busy(bool active, bool mutation = false);
-    void show(const std::string& text);
+    void show(const std::string& text, const std::string& details = "");
+    void renderActivity();
     U32 mGeneration = 0;
     bool mBusy = false;
     bool mMutation = false;
     LLSD mPrepared;
+    LLSD mCitizenPrepared;
+    LLUUID mPlanSelection;
+    std::string mHumanText;
+    std::string mTechnicalText;
     std::string mLastPlan;
 };
 #endif

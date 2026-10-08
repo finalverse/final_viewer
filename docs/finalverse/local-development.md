@@ -1,10 +1,10 @@
 # Local development and account management
 
-The active Phase 3 persistent-citizen candidate uses four separate repositories. MutSea remains the simulator brand. The original source checkouts retain unrelated work; build the candidate worktrees for the current feature.
+The active Phase 4A macOS facade uses the Phase 3 persistent-citizen services in four separate repositories. MutSea remains the simulator brand. The original source checkouts retain unrelated work; build the candidate worktrees for the current feature.
 
 | Component | Local source | Branch |
 |---|---|---|
-| Finalverse viewer | `~/Finalverse/dev/worktrees/viewer-ai-world` | `codex/persistent-ai-citizens` |
+| Finalverse viewer | `~/Finalverse/dev/worktrees/viewer-ai-world` | `codex/experience-facelift` |
 | MutSea with world operations | `~/Finalverse/dev/worktrees/mutsea-worldops` | `codex/persistent-ai-citizens` |
 | AI planner gateway | `~/Finalverse/services/ai-gateway` | `codex/persistent-ai-citizens` |
 | Agent Runtime | `~/Finalverse/services/agent-runtime` | `main` (independent new service) |
@@ -23,14 +23,14 @@ python3.13 -m venv "$HOME/Finalverse/dev/tooling/viewer-venv"
 "$HOME/Finalverse/dev/tooling/viewer-venv/bin/pip" install -r docs/finalverse/toolchain-python.lock
 export PATH="$HOME/Finalverse/dev/tooling/viewer-venv/bin:$PATH"
 export AUTOBUILD_VARIABLES_FILE="$HOME/Finalverse/dev/baseline-macos/tooling/variables"
-export AUTOBUILD_CPU_COUNT=5 AUTOBUILD_ADDRSIZE=64 AUTOBUILD_BUILD_ID=262810009
+export AUTOBUILD_CPU_COUNT=5 AUTOBUILD_ADDRSIZE=64 AUTOBUILD_BUILD_ID=262810010
 export PYTHON="$HOME/Finalverse/dev/tooling/viewer-venv/bin/python"
 export CC=/usr/bin/clang CXX=/usr/bin/clang++
 autobuild configure -c RelWithDebInfoOS -- \
   -DLL_TESTS=ON -DUSE_OPENAL=ON -DUSE_VELOPACK=OFF \
   -DPython3_EXECUTABLE="$PYTHON" \
   -DCMAKE_OSX_SYSROOT="$(xcrun --show-sdk-path)" \
-  -DFINALVERSE_BUNDLE_ID=com.finalverse.viewer.citizens \
+  -DFINALVERSE_BUNDLE_ID=com.finalverse.viewer.experience \
   -DVIEWER_CHANNEL="Finalverse Test"
 autobuild build -c RelWithDebInfoOS --no-configure
 autobuild build -c RelWithDebInfoOS --no-configure -- --target BUILD_TESTS
@@ -56,7 +56,7 @@ From the viewer source directory, use the same Python environment:
 ```sh
 "$PYTHON" scripts/finalverse/verify_branding.py \
   --bundle "build-darwin-universal/newview/RelWithDebInfo/Finalverse Test.app" \
-  --bundle-id com.finalverse.viewer.citizens
+  --bundle-id com.finalverse.viewer.experience
 PYTHONPATH=indra/lib/python "$PYTHON" -m unittest discover \
   -s indra/test -p test_llmanifest.py -v
 ```
@@ -193,3 +193,22 @@ CFFIXED_USER_HOME="$HOME/Finalverse/dev/phase3/profile" \
 A fresh profile needs the same LLSD grid record format shown above with authority/login URI `127.0.0.1:18094` and `grid_login_id` `MutSeaCitizens`. Existing private profile already has it. Open AI, enable **Talk to Lumi**, ask identity/home/memory questions and **Lumi, go home**. Inspector, Pause/Resume/Cancel and separately approved garden controls are in the same floater. See [phase3-persistent-citizens.md](phase3-persistent-citizens.md).
 
 The Python lock requires modern Python; on this Mac use Python 3.13.6 (`~/.pyenv/versions/3.13.6/bin/python`) explicitly if `python3.13` is unavailable. Xcode's bundled Python 3.9 cannot install this lock. The durable environment at `~/Finalverse/dev/tooling/viewer-venv` was created with that interpreter and used for the Phase 3 build/tests, replacing the temporary Phase 0 environment.
+
+
+## Current Phase 4A macOS experience
+
+Viewer source: `/Users/wenyan/Finalverse/dev/worktrees/viewer-ai-world`, branch `codex/experience-facelift`. MutSea source: `/Users/wenyan/Finalverse/dev/worktrees/mutsea-worldops`, branch `codex/persistent-ai-citizens`. Gateway source: `/Users/wenyan/Finalverse/services/ai-gateway`. Runtime source: `/Users/wenyan/Finalverse/services/agent-runtime`. The services, account and MutSeaCitizens grid above are unchanged. MutSea retains its server brand.
+
+Current tested bundle: `/Users/wenyan/Finalverse/dev/phase4a/Finalverse Experience.app`, identifier `com.finalverse.viewer.experience`. Its separate profile is `/Users/wenyan/Finalverse/dev/phase4a/profile`. The preserved Phase 3 Citizens app remains available. Close an existing viewer before launching another copy with the same test account. A plain app double-click does not select this isolated profile.
+
+```sh
+open --env CFFIXED_USER_HOME="$HOME/Finalverse/dev/phase4a/profile" \
+  "$HOME/Finalverse/dev/phase4a/Finalverse Experience.app" --args \
+  --grid MutSeaCitizens \
+  --sessionsettings "$HOME/Finalverse/dev/phase4a/session-settings.xml" \
+  --set AutoLogin false --set UIScaleFactor 1.0
+```
+
+A private local convenience launcher is `~/Finalverse/dev/phase4a/run-experience.sh`. Login is **MutSea Developer** on **http://127.0.0.1:18094/**; read the password locally from `~/Finalverse/dev/phase3/config/account.json`. Manage users through `docker attach --sig-proxy=false mutsea-finalverse-citizens-phase3-v4-20261008` using the inherited interactive `create user`, `show account` and `reset user password` commands described above. There is no public signup page.
+
+Start here teaches movement and directs the user to Lumi, Create and Friends. My Stuff is under Me. Select retains an object and exposes Ask AI/Edit/Clear. Plan → review → Apply → History/Undo is the approved world-edit path. Tools → Full interface restores advanced controls; Back to Finalverse returns. The supported recipes are home/garden and bounded primitive operations. Avatar/scene asset quality, unrestricted generation and public multi-session release gates remain open. See [Phase 4A validation](ux/phase4a-validation.md) for the actual build, test, screenshots and performance evidence.

@@ -26,6 +26,7 @@
 
 #include "llviewerprecompiledheaders.h"
 #include "llviewerwindow.h"
+#include "llpanelfinalverse.h"
 
 
 // system library includes
@@ -2467,6 +2468,13 @@ void LLViewerWindow::initWorldUI()
         gToolBarView->loadToolbars();
         gToolBarView->setVisible(true);
     }
+
+    // The facade lives behind floaters and does not intercept world input.
+    LLPanel* experience_holder = getRootView()->getChild<LLPanel>("finalverse_hud_holder");
+    LLPanelFinalverse* experience = new LLPanelFinalverse();
+    experience->setShape(experience_holder->getLocalRect());
+    experience->setFollowsAll();
+    experience_holder->addChild(experience);
 
     // Don't preload cef instances on low end hardware
     const F32Gigabytes MIN_PHYSICAL_MEMORY(8);

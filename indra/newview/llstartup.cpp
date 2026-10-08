@@ -158,6 +158,7 @@
 
 #include "llagent.h"
 #include "llagentbenefits.h"
+#include "llfinalversepresentation.h"
 #include "llagentcamera.h"
 #include "llagentpicksinfo.h"
 #include "llagentwearables.h"
@@ -323,6 +324,7 @@ static LLVector3 gAgentStartLookAt(1.0f, 0.f, 0.f);
 static std::string gAgentStartLocation = "safe";
 static bool mLoginStatePastUI = false;
 static bool mBenefitsSuccessfullyInit = false;
+static bool mBenefitsExpected = true;
 
 const F32 STATE_AGENT_WAIT_TIMEOUT = 240; //seconds
 const S32 MAX_SEED_CAP_ATTEMPTS_BEFORE_ABORT = 4; // Give region 4 chances
@@ -2532,7 +2534,7 @@ bool idle_startup()
         set_startup_status(1.0, "", "");
         do_startup_frame();
 
-        if (!mBenefitsSuccessfullyInit)
+        if (!mBenefitsSuccessfullyInit && mBenefitsExpected)
         {
             LLNotificationsUtil::add("FailedToGetBenefits", LLSD(), LLSD(), boost::bind(on_benefits_failed_callback, _1, _2));
         }
@@ -3783,6 +3785,7 @@ bool process_login_success_response()
 {
     LLSD response = LLLoginInstance::getInstance()->getResponse();
 
+    mBenefitsExpected = llfinalverseBenefitsExpected(LLGridManager::getInstance()->isSystemGrid(), response);
     mBenefitsSuccessfullyInit = init_benefits(response);
 
     std::string text(response["udp_blacklist"]);

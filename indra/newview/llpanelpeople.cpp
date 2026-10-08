@@ -42,6 +42,7 @@
 #include "lluictrlfactory.h"
 
 #include "llpanelpeople.h"
+#include "llviewernetwork.h"
 
 // newview
 #include "llaccordionctrl.h"
@@ -772,6 +773,9 @@ void LLPanelPeople::updateFriendListHelpText()
         const std::string& filter = mSavedOriginalFilters[mTabContainer->getCurrentPanelIndex()];
 
         std::string message_name = filter.empty() ? "no_friends_msg" : "no_filtered_friends_msg";
+        // Other grids do not provide the vendor's curated destination service.
+        if (!LLGridManager::getInstance()->isSystemGrid())
+            message_name = filter.empty() ? "finalverse_no_friends_msg" : "finalverse_no_filtered_friends_msg";
         LLStringUtil::format_map_t args;
         args["[SEARCH_TERM]"] = LLURI::escape(filter);
         no_friends_text->setText(getString(message_name, args));

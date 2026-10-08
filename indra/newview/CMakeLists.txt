@@ -188,6 +188,9 @@ set(viewer_SOURCE_FILES
     llflexibleobject.cpp
     llfloater360capture.cpp
     llfloaterfinalverseai.cpp
+    llfloaterfinalverseexperience.cpp
+    llpanelfinalverse.cpp
+    llfinalversepresentation.cpp
     llfloaterabout.cpp
     llfloateravatarwelcomepack.cpp
     llfloaterbvhpreview.cpp
@@ -874,6 +877,9 @@ set(viewer_HEADER_FILES
     llflexibleobject.h
     llfloater360capture.h
     llfloaterfinalverseai.h
+    llfloaterfinalverseexperience.h
+    llpanelfinalverse.h
+    llfinalversepresentation.h
     llfloaterabout.h
     llfloateravatarwelcomepack.h
     llfloaterbvhpreview.h
@@ -2424,6 +2430,7 @@ if (LL_TESTS)
   include(LLAddBuildTest)
   SET(viewer_TEST_SOURCE_FILES
     llagentaccess.cpp
+    llfinalversepresentation.cpp
     lldateutil.cpp
 #    llmediadataclient.cpp
     lllogininstance.cpp

@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <colors>
+    <!-- Finalverse facade tokens; inherited surface colors remain independent. -->
+    <color name="FinalverseBackground" value="0.035 0.065 0.105 1"/>
+    <color name="FinalversePanel" value="0.065 0.105 0.155 0.97"/>
+    <color name="FinalverseSurface" value="0.12 0.18 0.24 1"/>
+    <color name="FinalverseText" value="0.98 0.96 0.92 1"/>
+    <color name="FinalverseSecondary" value="0.72 0.79 0.83 1"/>
+    <color name="FinalverseAccent" value="0.96 0.77 0.48 1"/>
+    <color name="FinalverseAI" value="0.58 0.85 0.77 1"/>
+    <color name="FinalverseSuccess" value="0.58 0.85 0.67 1"/>
+    <color name="FinalverseWarning" value="0.98 0.72 0.38 1"/>
+    <color name="FinalverseDanger" value="1 0.57 0.54 1"/>
+    <color name="FinalverseSelection" value="0.55 0.78 0.95 1"/>
 
 	<!-- Named Colors -->
 	<color

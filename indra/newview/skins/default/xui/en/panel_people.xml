@@ -42,6 +42,14 @@ Looking for places with more people?
      name="no_filtered_friends_msg">
          Didn't find what you're looking for? Try [secondlife:///app/search/people/[SEARCH_TERM] Search].
     </string>
+    <string name="finalverse_no_friends_msg">
+Meet someone in your world, then right-click their avatar or name to add them as a friend.
+
+Use Nearby to find people around you. You can also talk to Lumi from the Finalverse bar.
+    </string>
+    <string name="finalverse_no_filtered_friends_msg">
+No friends match this search. Try another name or clear the search.
+    </string>
      <!--
      *WORKAROUND: for group_list.no_items_msg & group_list.no_filtered_items_msg attributes.
      They are not defined as translatable in VLT. See EXT-5931

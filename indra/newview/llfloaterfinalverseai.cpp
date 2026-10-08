@@ -1,6 +1,10 @@
 // Copyright (c) 2026 Finalverse contributors. SPDX-License-Identifier: LGPL-2.1-only
 #include "llviewerprecompiledheaders.h"
 #include "llfloaterfinalverseai.h"
+#include "llfinalversepresentation.h"
+#include "llfloaterreg.h"
+#include "lltextbox.h"
+#include "llviewercontrol.h"
 #include "llagent.h"
 #include "llviewerregion.h"
 #include "llselectmgr.h"
@@ -87,18 +91,50 @@ bool LLFloaterFinalverseAI::postBuild()
         getChild<LLButton>("ask")->setLabel(citizen ? "Send" : "Plan");
         show(citizen ? "Talk to Lumi. Ask who she is, what she remembers, or say 'Lumi, go home.' Garden creation needs separate approval." : "Ask about the world or propose an approved world change.");
     });
+    getChild<LLCheckBoxCtrl>("details")->setCommitCallback([this](LLUICtrl*, const LLSD&) { renderActivity(); });
     show("Ask about the world, select an owned object to edit, or stand on clear ground to create Lumi's home. Every change needs your approval.");
     busy(false);
     return true;
 }
-void LLFloaterFinalverseAI::show(const std::string& text) { getChild<LLTextEditor>("activity")->setText(text); }
+void LLFloaterFinalverseAI::openRequest(const std::string& text, bool citizen, bool submit)
+{
+    LLTimer timer;
+    auto self = dynamic_cast<LLFloaterFinalverseAI*>(LLFloaterReg::showInstance("finalverse_ai"));
+    if (!self || self->mBusy) return;
+    self->mPrepared = LLSD(); self->mCitizenPrepared = LLSD();
+    self->getChild<LLCheckBoxCtrl>("citizen_mode")->set(citizen);
+    self->getChild<LLButton>("ask")->setLabel(citizen ? "Send" : "Plan");
+    self->getChild<LLLineEditor>("request")->setText(text);
+    self->show(citizen ? "Talk to Lumi. Ask about her home, memories, or what she is doing." : "Ask about nearby objects or describe a change. Review and approve before anything is built.");
+    self->busy(false);
+    self->getChild<LLLineEditor>("request")->setFocus(true);
+    if (gSavedSettings.getBOOL("FinalverseUXMetrics")) LL_INFOS("FinalverseUX") << "ai_open_ms=" << timer.getElapsedTimeF64().value()*1000 << LL_ENDL;
+    if (submit) self->run(citizen ? "citizen_say" : "plan");
+}
+void LLFloaterFinalverseAI::renderActivity()
+{
+    getChild<LLTextEditor>("activity")->setText(mHumanText + (getChild<LLCheckBoxCtrl>("details")->get() && !mTechnicalText.empty() ? "\n\nTechnical details\n" + mTechnicalText : ""));
+}
+void LLFloaterFinalverseAI::show(const std::string& text, const std::string& details)
+{
+    mHumanText = text; mTechnicalText = details; renderActivity();
+    auto object = LLSelectMgr::getInstance()->getSelection()->getFirstRootObject();
+    auto node = LLSelectMgr::getInstance()->getSelection()->getFirstRootNode();
+    const std::string name = object ? node && !node->mName.empty() ? node->mName : "Selected object" : "No object selected";
+    getChild<LLTextBox>("context")->setText((gAgent.getRegion() ? gAgent.getRegion()->getName() : "Enter a world") + " · " + name);
+}
 void LLFloaterFinalverseAI::busy(bool active, bool mutation)
 {
     mBusy = active; mMutation = active && mutation;
-    for (const char* name : {"ask", "inspect", "history", "citizen_inspect", "citizen_pause", "citizen_resume", "citizen_cancel", "citizen_approve", "citizen_undo"}) getChild<LLButton>(name)->setEnabled(!active);
+    for (const char* name : {"ask", "inspect", "history", "citizen_inspect", "citizen_pause", "citizen_resume", "citizen_cancel", "citizen_undo"}) getChild<LLButton>(name)->setEnabled(!active);
     // Human overrides can interrupt reasoning without waiting for the model.
     for (const char* name : {"citizen_pause", "citizen_cancel"}) getChild<LLButton>(name)->setEnabled(!mMutation);
+    const bool citizen = getChild<LLCheckBoxCtrl>("citizen_mode")->get();
+    getChild<LLButton>("build")->setVisible(!citizen);
     getChild<LLButton>("build")->setEnabled(!active && mPrepared.has("plan_id"));
+    getChild<LLButton>("citizen_approve")->setVisible(citizen);
+    getChild<LLButton>("citizen_approve")->setEnabled(!active && mCitizenPrepared.has("plan_id"));
+    for (const char* name : {"citizen_inspect", "citizen_pause", "citizen_resume", "citizen_cancel", "citizen_undo"}) getChild<LLButton>(name)->setVisible(citizen);
     getChild<LLButton>("undo")->setEnabled(!active && !mLastPlan.empty());
     getChild<LLButton>("cancel")->setEnabled(!mMutation);
     getChild<LLLineEditor>("request")->setEnabled(!active);
@@ -107,15 +143,26 @@ void LLFloaterFinalverseAI::busy(bool active, bool mutation)
 void LLFloaterFinalverseAI::cancel()
 {
     if (mMutation) return;
-    ++mGeneration; mPrepared = LLSD(); busy(false);
+    if (mCitizenPrepared.has("plan_id")) { run("citizen_cancel"); return; }
+    ++mGeneration; mPrepared = LLSD(); mCitizenPrepared = LLSD(); busy(false);
     show("Proposal canceled. No world changes were requested.");
 }
 void LLFloaterFinalverseAI::run(const std::string& operation)
 {
     const bool override = operation == "citizen_pause" || operation == "citizen_cancel";
     if (mBusy && (!override || mMutation)) return;
+    if (operation == "commit")
+    {
+        if (!mPrepared.has("plan_id")) return;
+        auto selected = LLSelectMgr::getInstance()->getSelection()->getFirstRootObject();
+        if ((selected ? selected->getID() : LLUUID::null) != mPlanSelection)
+        { cancel(); show("Your selection changed. Plan again for the current object."); return; }
+    }
+    if (operation == "citizen_approve" && !mCitizenPrepared.has("plan_id")) return;
     // A proposal is actionable only while its own preview is displayed.
-    if (operation != "commit") { mPrepared = LLSD(); busy(false); }
+    if (operation != "commit") mPrepared = LLSD();
+    if (operation != "citizen_approve") mCitizenPrepared = LLSD();
+    busy(false);
     auto region = gAgent.getRegion();
     if (!region) { show("Enter MutSea Harbor first."); return; }
     const std::string capability = region->getCapability("FinalverseWorld");
@@ -133,7 +180,7 @@ void LLFloaterFinalverseAI::run(const std::string& operation)
     const U32 generation = ++mGeneration;
     const LLHandle<LLFloater> handle = getHandle();
     busy(true, operation == "commit" || operation == "undo" || operation == "citizen_approve" || operation == "citizen_undo");
-    show(operation == "plan" ? "Reading the world and planning…" : operation == "citizen_say" ? "Lumi is considering your message… You can pause or cancel while she thinks." : "Waiting for the world service…");
+    show(operation == "plan" ? "Looking around and planning…" : operation == "citizen_say" ? "Lumi is considering your message… You can pause or cancel while she thinks." : "Waiting for the world service…");
     LLCoros::instance().launch("FinalverseWorld", [handle, generation, region_id, capability, operation, body, prompt]()
     {
         auto current = [&]() -> LLFloaterFinalverseAI*
@@ -141,24 +188,25 @@ void LLFloaterFinalverseAI::run(const std::string& operation)
             auto self = dynamic_cast<LLFloaterFinalverseAI*>(handle.get());
             if (!self || self->mGeneration != generation) return nullptr;
             if (!gAgent.getRegion() || gAgent.getRegion()->getRegionID() != region_id)
-            { self->mPrepared = LLSD(); self->mLastPlan.clear(); self->busy(false); self->show("Your region changed. Please inspect and plan again."); return nullptr; }
+            { self->mPrepared = LLSD(); self->mCitizenPrepared = LLSD(); self->mLastPlan.clear(); self->busy(false); self->show("Your region changed. Please inspect and plan again."); return nullptr; }
             return self;
         };
         LLSD reply = post(capability, body);
         auto self = current(); if (!self) return;
-        if (reply.has("error")) { self->mPrepared = LLSD(); self->busy(false); self->show(reply["error"].asString()); return; }
+        if (reply.has("error")) { self->mPrepared = LLSD(); self->mCitizenPrepared = LLSD(); self->busy(false); self->show(reply["error"].asString()); return; }
         if (operation.compare(0, 8, "citizen_") == 0)
         {
             const LLSD result = reply["result"];
-            std::ostringstream display;
+            self->mCitizenPrepared = LLSD();
+            std::ostringstream display, technical;
             display << "Lumi: " << result["answer"].asString() << "\n\n";
             if (operation == "citizen_inspect")
             {
                 const LLSD identity = result["citizen"]["identity"];
-                display << "Status: " << identity["lifecycle"].asString() << " · Autonomy " << identity["autonomy_level"].asInteger() << "\n";
-                display << "Home: " << identity["home_entity_id"].asString() << "\n";
-                display << "Capabilities: ";
-                for (const auto& capability : llsd::inArray(identity["capabilities"])) display << capability.asString() << " ";
+                display << "Activity: " << identity["lifecycle"].asString() << "\n";
+                technical << "Home: " << identity["home_entity_id"].asString() << "\n";
+                technical << "Capabilities: ";
+                for (const auto& capability : llsd::inArray(identity["capabilities"])) technical << capability.asString() << " ";
                 display << "\n";
                 const LLSD goals = result["citizen"]["goals"];
                 if (goals.size())
@@ -171,18 +219,19 @@ void LLFloaterFinalverseAI::run(const std::string& operation)
             }
             if (result["preview"].isMap())
             {
-                display << "\nGarden preview · approval required\n";
+                self->mCitizenPrepared = result["preview"];
+                display << "\n" << llfinalversePlanSummary(result["preview"]) << "\n";
                 for (const auto& step : llsd::inArray(result["preview"]["steps"]))
-                { display << "• " << step["after"]["name"].asString() << "\n"; describe(display, step["after"]); }
+                { technical << "• " << step["after"]["name"].asString() << "\n"; describe(technical, step["after"]); }
             }
             if (operation == "citizen_inspect")
             {
                 display << "\nPersistent memories\n";
                 for (const auto& memory : llsd::inArray(result["memories"])) display << "• " << memory["content"].asString() << "\n";
-                display << "\nRecent agent events\n";
-                for (const auto& entry : llsd::inArray(result["recent_events"])) display << "• " << entry["kind"].asString() << "\n";
+                technical << "\nRecent agent events\n";
+                for (const auto& entry : llsd::inArray(result["recent_events"])) technical << "• " << entry["kind"].asString() << "\n";
             }
-            self->show(display.str()); self->busy(false); return;
+            self->show(display.str(), technical.str()); self->busy(false); return;
         }
         if (operation == "inspect" || operation == "plan") self->mLastPlan = reply["result"]["undoable_plan_id"].asString();
         if (operation == "plan")
@@ -193,11 +242,13 @@ void LLFloaterFinalverseAI::run(const std::string& operation)
             if (generated.has("error")) { self->busy(false); self->show(generated["error"].asString()); return; }
             self->mPrepared = LLSD();
             if (!generated["plan"].isMap()) { self->busy(false); self->show(generated["answer"].asString()); return; }
+            self->show("Checking placement and permissions…");
             LLSD prepare; prepare["op"] = "prepare"; prepare["plan"] = generated["plan"];
             LLSD validated = post(capability, prepare);
             self = current(); if (!self) return;
             if (validated.has("error")) { self->busy(false); self->show(validated["error"].asString()); return; }
             self->mPrepared = validated["result"];
+            self->mPlanSelection = LLUUID(body["selected_id"].asString());
             std::ostringstream preview;
             preview << generated["answer"].asString() << "\n\n" << self->mPrepared["summary"].asString() << "\n"
                     << "Region: " << region_id.asString() << "\n\n";
@@ -214,9 +265,12 @@ void LLFloaterFinalverseAI::run(const std::string& operation)
                 describe(preview, value);
             }
             preview << "\nModel: " << generated["plan"]["provider"].asString() << " / " << generated["plan"]["model"].asString() << "\nApprove within two minutes. Build applies this exact proposal.";
-            self->show(preview.str()); self->busy(false); return;
+            // The validated steps determine the approval copy. The model's
+            // answer can describe a different stage or imply an unmade change.
+            preview << "\nPlanner answer: " << generated["answer"].asString();
+            self->show(llfinalversePlanSummary(self->mPrepared), preview.str()); self->busy(false); return;
         }
-        std::ostringstream text;
+        std::ostringstream text, technical;
         if (operation == "inspect")
         {
             text << "Nearby world objects\n\n";
@@ -233,13 +287,13 @@ void LLFloaterFinalverseAI::run(const std::string& operation)
         else
         {
             const std::string status = reply["result"]["status"].asString();
-            text << "World operation: " << status << "\n";
+            text << (status == "committed" ? "Done. Your world has changed. Use Undo last to restore it." : status == "undone" ? "Undone. The previous world state was restored." : "World operation: " + status) << "\n";
             if (status == "committed") self->mLastPlan = reply["result"]["plan_id"].asString();
             if (status == "undone") self->mLastPlan.clear();
-            text << "Operation: " << reply["result"]["operation_id"].asString() << "\n";
+            technical << "Operation: " << reply["result"]["operation_id"].asString() << "\n";
             if (reply["result"]["error"].isString()) text << reply["result"]["error"].asString();
             self->mPrepared = LLSD();
         }
-        self->show(text.str()); self->busy(false);
+        self->show(text.str(), technical.str()); self->busy(false);
     });
 }

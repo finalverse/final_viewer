@@ -83,6 +83,8 @@
                   height="500"
                   name="DebugView"
                   width="1024"/>
+      <panel name="finalverse_hud_holder" follows="all" height="500" width="1024" top="0" left="0"
+             mouse_opaque="false" tab_stop="false"/>
       <floater_view follows="all"
                     height="500"
                     left="0"
