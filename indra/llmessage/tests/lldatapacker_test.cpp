@@ -473,6 +473,8 @@ namespace tut
         std::ostringstream ostr;
         LLDataPackerAsciiFile lldp(ostr,2);
         lldp.packFixed( f_val, "linden_lab", FALSE, 8, 8);
+        ensure("ASCII file fields retain their requested indentation",
+               ostr.str().find("\t\tlinden_lab\t") == 0);
 
         std::istringstream istr(ostr.str());
         LLDataPackerAsciiFile lldp1(istr,2);
