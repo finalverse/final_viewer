@@ -4,8 +4,8 @@ The active AI world-creation candidate uses three separate repositories. MutSea 
 
 | Component | Local source | Branch |
 |---|---|---|
-| Finalverse viewer | `~/Finalverse/dev/worktrees/viewer-ai-world` | `codex/finalverse-ai-world` |
-| MutSea with world operations | `~/Finalverse/dev/worktrees/mutsea-worldops` | `codex/mutsea-worldops` |
+| Finalverse viewer | `~/Finalverse/dev/worktrees/viewer-ai-world` | `main` |
+| MutSea with world operations | `~/Finalverse/dev/worktrees/mutsea-worldops` | `main` |
 | AI planner gateway | `~/Finalverse/services/ai-gateway` | `main` |
 
 Recommended gateway repository name: **`ai-gateway`**, under the Finalverse organization (`finalverse/ai-gateway`). It currently has no remote; no GitHub repository or push is claimed. The existing viewer repository remains `finalverse/final_viewer`.
@@ -14,7 +14,7 @@ Original checkouts: `~/Finalverse/viewer` and `~/Finalverse/classic/mutsea-o`. D
 
 ## Build the macOS viewer
 
-The verified configuration is Intel x86-64 through Rosetta on this Apple Silicon Mac. Native ARM64 viewer support is not yet verified. Use Xcode's Clang, the pinned Python dependency lock and the preserved build-variable file. These commands create a durable tooling environment outside Git:
+The original Phase 2 app was Intel x86-64 through Rosetta. The synchronized source now configures a universal ARM64/Intel build; see [upstream-sync-20261008.md](upstream-sync-20261008.md) for fresh verification rather than assuming the earlier app proves this revision. Use Xcode's Clang, the pinned Python dependency lock and the preserved build-variable file. These commands create a durable tooling environment outside Git:
 
 ```sh
 cd "$HOME/Finalverse/dev/worktrees/viewer-ai-world"
@@ -22,20 +22,23 @@ python3 -m venv "$HOME/Finalverse/dev/tooling/viewer-venv"
 "$HOME/Finalverse/dev/tooling/viewer-venv/bin/pip" install -r docs/finalverse/toolchain-python.lock
 export PATH="$HOME/Finalverse/dev/tooling/viewer-venv/bin:$PATH"
 export AUTOBUILD_VARIABLES_FILE="$HOME/Finalverse/dev/baseline-macos/tooling/variables"
-export AUTOBUILD_CPU_COUNT=2 AUTOBUILD_ADDRSIZE=64 AUTOBUILD_BUILD_ID=262800003
+export AUTOBUILD_CPU_COUNT=5 AUTOBUILD_ADDRSIZE=64 AUTOBUILD_BUILD_ID=262810008
 export PYTHON="$HOME/Finalverse/dev/tooling/viewer-venv/bin/python"
 export CC=/usr/bin/clang CXX=/usr/bin/clang++
 autobuild configure -c RelWithDebInfoOS -- \
-  -DCMAKE_OSX_ARCHITECTURES=x86_64 -DLL_TESTS=ON -DUSE_OPENAL=ON \
-  -DLL_SKIP_REQUIRE_SYSROOT=ON -DCMAKE_OSX_SYSROOT="$(xcrun --show-sdk-path)" \
-  -DFINALVERSE_BUNDLE_ID=com.finalverse.viewer.phase2 \
+  -DLL_TESTS=ON -DUSE_OPENAL=ON -DUSE_VELOPACK=OFF \
+  -DPython3_EXECUTABLE="$PYTHON" \
+  -DCMAKE_OSX_SYSROOT="$(xcrun --show-sdk-path)" \
+  -DFINALVERSE_BUNDLE_ID=com.finalverse.viewer.sync \
   -DVIEWER_CHANNEL="Finalverse Test"
 autobuild build -c RelWithDebInfoOS --no-configure
+autobuild build -c RelWithDebInfoOS --no-configure -- --target BUILD_TESTS
+ctest --test-dir build-darwin-universal -C RelWithDebInfo -j4 --timeout 120 --output-on-failure
 ```
 
-For an already configured tree, use the environment above and only the final build command. `LL_SKIP_REQUIRE_SYSROOT` is the recorded adaptation to the installed SDK, not a claim that all SDK versions work. See [upstream-baseline.md](upstream-baseline.md) for baseline provenance and dependency-cache reproduction.
+For an already configured tree, use the environment above and only the final build command. Upstream now chooses universal architectures and determines the SDK's deployment floor. See [upstream-baseline.md](upstream-baseline.md) for the historical Intel baseline and [upstream-sync-20261008.md](upstream-sync-20261008.md) for the current configuration.
 
-Built app: `build-darwin-x86_64/newview/RelWithDebInfo/Finalverse Test.app`. The tested copy is `~/Finalverse/dev/phase2/Finalverse AI.app`. Close the existing test viewer before relaunching. The isolated profile already contains the local grid entry; launch it without saving a password:
+Current build output: `build-darwin-universal/newview/RelWithDebInfo/Finalverse Test.app`. The previously tested copy remains `~/Finalverse/dev/phase2/Finalverse AI.app`, with its own identifier and profile. Close an existing test viewer before relaunching that prior app; its isolated profile already contains the local grid entry:
 
 The Phase 2 bundle uses `com.finalverse.viewer.phase2` to distinguish it from the regular client in macOS app selection. `FINALVERSE_BUNDLE_ID` defaults to the regular client's `com.finalverse.viewer`; the profile still requires the explicit isolated path below. Keep one registered copy of each development identifier when using app automation.
 
@@ -51,8 +54,8 @@ From the viewer source directory, use the same Python environment:
 
 ```sh
 "$PYTHON" scripts/finalverse/verify_branding.py \
-  --bundle "build-darwin-x86_64/newview/RelWithDebInfo/Finalverse Test.app" \
-  --bundle-id com.finalverse.viewer.phase2
+  --bundle "build-darwin-universal/newview/RelWithDebInfo/Finalverse Test.app" \
+  --bundle-id com.finalverse.viewer.sync
 PYTHONPATH=indra/lib/python "$PYTHON" -m unittest discover \
   -s indra/test -p test_llmanifest.py -v
 ```
@@ -145,9 +148,9 @@ Source evidence: `MutSea/Services/UserAccountService/UserAccountService.cs` regi
 
 ## Try the AI slice
 
-Open **Finalverse → Ask / Create** (Command-Shift-K). Ask “What objects are around me?” Select an owned practice object using the inherited Edit tool, then request a supported change. **Plan** reads the authoritative world and prepares a bounded proposal. Review it before **Build / Apply**. **History** shows recorded operations; **Undo last** performs guarded restoration when the objects still match the recorded result.
+Open **Finalverse → Ask / Create** (Command-Shift-K). Ask “What objects are around me?” Select an owned practice object using the inherited Edit tool, then request a supported change. **Plan** reads the authoritative world and prepares a bounded proposal. Review it before **Build / Apply**. **History** shows recorded operations; **Undo last** performs guarded restoration when the objects still match the recorded result. After reopening the floater, select **Nearby** to refresh the authoritative undoable plan; **History** alone does not refresh it.
 
-Supported creation is currently box/sphere primitives and a deterministic 17-component Lumi home. A general request such as “a table please” is not a validated furniture-generation workflow. This remains a development slice; public deployment, avatar appearance, native Apple Silicon viewer and other platform clients have separate gates.
+Supported creation is currently box/sphere primitives and a deterministic 17-component Lumi home. A general request such as “a table please” is not a validated furniture-generation workflow. This remains a development slice; the synchronized universal viewer now runs natively on Apple Silicon. Public deployment, avatar appearance, Intel runtime and other platform clients have separate gates.
 
 For the Harbor home test, use the World Map to teleport to `(172,156,27)`, then wait for the avatar to settle. The earlier site near `(172,153.45)` is correctly refused by conservative lake-path clearance. Inspect the actual preview location and 17 components before applying. After building, view from south of the home, for example `(172,146,27)`. Do not change placement policy to force an invalid site to pass.
 

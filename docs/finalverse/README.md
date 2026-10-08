@@ -1,5 +1,7 @@
 # Finalverse engineering record
 
+[2026-10-08 upstream synchronization](upstream-sync-20261008.md) records the current `main` integration, upstream revisions, architecture changes and fresh verification. The earlier phase reports and generated maps are historical snapshots of their recorded commits. See [the upstream merge watch list](upstream-sync.md) for future integrations.
+
 [Phase 1 product identity](rebranding.md) records the subsequent Finalverse branding implementation, profile and update isolation, build and runtime checks. Phase 0 findings below describe the inherited starting revision and remain historical evidence.
 
 ## Phase 0 audit
