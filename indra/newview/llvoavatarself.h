@@ -221,6 +221,8 @@ public:
     LLAvatarAppearanceDefines::ETextureIndex getBakedTE(const LLViewerTexLayerSet* layerset ) const;
     // SUNSHINE CLEANUP - dead? or update to just call request appearance update?
     void                forceBakeAllTextures(bool slam_for_debug = false);
+    // Enable the inherited compositor only for an advertised client-baking grid.
+    void                enableClientBaking();
 protected:
     /*virtual*/ void    removeMissingBakedTextures();
 

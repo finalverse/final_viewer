@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "llfinalverselegacyappearance.h"
 
 #include "llpaneleditwearable.h"
 #include "llpanel.h"
@@ -1127,7 +1128,7 @@ void LLPanelEditWearable::saveChanges(bool force_save_as)
                 // Make another copy of this link, with the same
                 // description.  This is needed to bump the COF
                 // version so texture baking service knows appearance has changed.
-                if (link_item)
+                if (link_item && !llfinalverseLegacyAppearanceEnabled())
                 {
                         // Create new link
                         LL_DEBUGS("Avatar") << "link refresh, creating new link to " << link_item->getLinkedUUID()

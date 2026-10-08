@@ -1,6 +1,7 @@
 // Copyright (c) 2026 Finalverse contributors. SPDX-License-Identifier: LGPL-2.1-only
 #include "../llviewerprecompiledheaders.h"
 #include "../llfinalversepresentation.h"
+#include "../llfinalverselegacyappearance.h"
 #include "../test/lltut.h"
 namespace tut
 {
@@ -8,6 +9,13 @@ struct finalverse_presentation_data {};
 typedef test_group<finalverse_presentation_data> group_t;
 typedef group_t::object object_t;
 group_t finalverse_presentation_group("finalverse_presentation");
+template<> template<> void object_t::test<6>()
+{
+    ensure("declared legacy region", llfinalverseClientBakingRequired(true, false, false));
+    ensure("no region is not legacy", !llfinalverseClientBakingRequired(false, false, false));
+    ensure("server baking cannot be downgraded", !llfinalverseClientBakingRequired(true, true, false));
+    ensure("system grid cannot be downgraded", !llfinalverseClientBakingRequired(true, false, true));
+}
 template<> template<> void object_t::test<1>()
 {
     LLSD plan, step;

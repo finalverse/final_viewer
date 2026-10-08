@@ -27,6 +27,7 @@
 #include "llviewerprecompiledheaders.h"
 
 #include "llviewertexlayer.h"
+#include "llfinalverselegacyappearance.h"
 
 #include "llagent.h"
 #include "llimagej2c.h"
@@ -98,6 +99,8 @@ void LLViewerTexLayerSetBuffer::dumpTotalByteCount()
 
 void LLViewerTexLayerSetBuffer::requestUpdate()
 {
+    if (isAgentAvatarValid())
+        llfinalverseInvalidateLegacyBake(gAgentAvatarp->getBakedTE(getViewerTexLayerSet()));
     restartUpdateTimer();
     mNeedsUpdate = true;
     mNumLowresUpdates = 0;
@@ -163,6 +166,9 @@ void LLViewerTexLayerSetBuffer::midRenderTexLayerSet(bool success)
     const bool update_now = mNeedsUpdate && isReadyToUpdate();
     if (update_now)
     {
+        if (success && getViewerTexLayerSet()->isLocalTextureDataFinal())
+            llfinalverseUploadLegacyBake(getViewerTexLayerSet(), mOrigin.mX, mOrigin.mY,
+                                        mFullWidth, mFullHeight, mBoundTarget);
         doUpdate();
     }
 
@@ -200,6 +206,8 @@ bool LLViewerTexLayerSetBuffer::isReadyToUpdate() const
 
 bool LLViewerTexLayerSetBuffer::requestUpdateImmediate()
 {
+    if (isAgentAvatarValid())
+        llfinalverseInvalidateLegacyBake(gAgentAvatarp->getBakedTE(getViewerTexLayerSet()));
     mNeedsUpdate = true;
     bool result = false;
 

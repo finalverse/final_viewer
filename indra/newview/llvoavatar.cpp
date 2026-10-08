@@ -25,6 +25,8 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "llfinalverselegacyappearance.h"
+#include "llviewernetwork.h"
 
 #include "llvoavatar.h"
 
@@ -2637,6 +2639,10 @@ LLViewerFetchedTexture *LLVOAvatar::getBakedTextureImage(const U8 te, const LLUU
     }
     if (!result)
     {
+        if (getRegion() && getRegion()->getCentralBakeVersion() == 0 &&
+            !LLGridManager::getInstance()->isSystemGrid())
+            return LLViewerTextureManager::getFetchedTexture(uuid, FTT_DEFAULT, true,
+                LLGLTexture::BOOST_NONE, LLViewerTexture::LOD_TEXTURE);
         const std::string url = getImageURL(te,uuid);
 
         if (url.empty())
@@ -9776,6 +9782,9 @@ void LLVOAvatar::processAvatarAppearance( LLMessageSystem* mesgsys )
 
     LLPointer<LLAppearanceMessageContents> contents(new LLAppearanceMessageContents);
     parseAppearanceMessage(mesgsys, *contents);
+    // Unversioned client-baked updates are not server COF updates. Our own
+    // wearables/composites are authoritative in that declared protocol mode.
+    if (isSelf() && llfinalverseLegacyAppearanceEnabled()) return;
     if (enable_verbose_dumps)
     {
         dumpAppearanceMsgParams(dump_prefix + "appearance_msg", *contents);
@@ -9787,7 +9796,7 @@ void LLVOAvatar::processAvatarAppearance( LLMessageSystem* mesgsys )
         LL_WARNS() << "bad appearance version info, discarding" << LL_ENDL;
         return;
     }
-    llassert(appearance_version > 0);
+    llassert(appearance_version >= 0);
     if (appearance_version > 1)
     {
         LL_WARNS() << "unsupported appearance version " << appearance_version << ", discarding appearance message" << LL_ENDL;

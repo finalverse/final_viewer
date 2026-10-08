@@ -26,6 +26,7 @@
 
 #include "llviewerprecompiledheaders.h"
 #include "llagentwearables.h"
+#include "llfinalverselegacyappearance.h"
 
 #include "llattachmentsmgr.h"
 #include "llaccordionctrltab.h"
@@ -830,6 +831,7 @@ void LLAgentWearables::createStandardWearables()
 // remove this function once the SH-3455 changesets are universally deployed.
 void LLAgentWearables::sendDummyAgentWearablesUpdate()
 {
+    if (llfinalverseLegacyAppearanceEnabled() && !areWearablesLoaded()) return;
     LL_DEBUGS("Avatar") << "sendAgentWearablesUpdate()" << LL_ENDL;
 
     // Send the AgentIsNowWearing
@@ -838,6 +840,19 @@ void LLAgentWearables::sendDummyAgentWearablesUpdate()
     gMessageSystem->nextBlockFast(_PREHASH_AgentData);
     gMessageSystem->addUUIDFast(_PREHASH_AgentID, gAgent.getID());
     gMessageSystem->addUUIDFast(_PREHASH_SessionID, gAgent.getSessionID());
+
+    if (llfinalverseLegacyAppearanceEnabled())
+    {
+        for (S32 type = 0; type < LLWearableType::WT_COUNT; ++type)
+        {
+            gMessageSystem->nextBlockFast(_PREHASH_WearableData);
+            gMessageSystem->addU8Fast(_PREHASH_WearableType, U8(type));
+            gMessageSystem->addUUIDFast(_PREHASH_ItemID,
+                getWearableItemID((LLWearableType::EType)type, 0));
+        }
+        gAgent.sendReliableMessage();
+        return;
+    }
 
     // Send 4 standardized nonsense item ids (same as returned by the modified sim, not that it especially matters).
     gMessageSystem->nextBlockFast(_PREHASH_WearableData);
@@ -1147,6 +1162,7 @@ void LLAgentWearables::setWearableOutfit(const LLInventoryItem::item_array_t& it
     gAgentAvatarp->updateVisualParams();
 
     gAgentAvatarp->dumpAvatarTEs("setWearableOutfit");
+    llfinalverseStartLegacyAppearance();
 
     LL_DEBUGS("Avatar") << "setWearableOutfit() end" << LL_ENDL;
 }

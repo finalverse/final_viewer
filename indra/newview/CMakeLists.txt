@@ -191,6 +191,7 @@ set(viewer_SOURCE_FILES
     llfloaterfinalverseexperience.cpp
     llpanelfinalverse.cpp
     llfinalversepresentation.cpp
+    llfinalverselegacyappearance.cpp
     llfloaterabout.cpp
     llfloateravatarwelcomepack.cpp
     llfloaterbvhpreview.cpp
@@ -880,6 +881,7 @@ set(viewer_HEADER_FILES
     llfloaterfinalverseexperience.h
     llpanelfinalverse.h
     llfinalversepresentation.h
+    llfinalverselegacyappearance.h
     llfloaterabout.h
     llfloateravatarwelcomepack.h
     llfloaterbvhpreview.h

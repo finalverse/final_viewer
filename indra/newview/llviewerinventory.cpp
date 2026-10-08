@@ -73,6 +73,8 @@
 #include "llsettingsvo.h"
 #include "llinventorylistener.h"
 #include "llviewerassetupload.h"
+#include "llviewernetwork.h"
+#include "lleventtimer.h"
 
 LLInventoryListener sInventoryListener;
 
@@ -432,6 +434,24 @@ void LLViewerInventoryItem::updateServer(bool is_new) const
     }
     LLInventoryModel::LLCategoryUpdate up(mParentUUID, is_new ? 1 : 0);
     gInventory.accountForUpdate(up);
+
+    // Restore the inherited viewer protocol for non-system grids without AIS.
+    // Linden Research's pre-AIS implementation used this same authenticated
+    // transaction message; the simulator resolves the uploaded asset ID.
+    if (!AISAPI::isAvailable() && !LLGridManager::getInstance()->isSystemGrid())
+    {
+        LLMessageSystem* msg = gMessageSystem;
+        msg->newMessageFast(_PREHASH_UpdateInventoryItem);
+        msg->nextBlockFast(_PREHASH_AgentData);
+        msg->addUUIDFast(_PREHASH_AgentID, gAgent.getID());
+        msg->addUUIDFast(_PREHASH_SessionID, gAgent.getSessionID());
+        msg->addUUIDFast(_PREHASH_TransactionID, mTransactionID);
+        msg->nextBlockFast(_PREHASH_InventoryData);
+        msg->addU32Fast(_PREHASH_CallbackID, 0);
+        packMessage(msg);
+        gAgent.sendReliableMessage();
+        return;
+    }
 
     LLSD updates = asLLSD();
     // Replace asset_id and/or shadow_id with transaction_id (hash_id)
@@ -1452,11 +1472,74 @@ void move_inventory_item(
 // Should call this with an update_item that's been copied and
 // modified from an original source item, rather than modifying the
 // source item directly.
+namespace
+{
+// MutSea's inherited UpdateCreateInventoryItem reply has callback ID zero.
+// Observe the real returned asset instead of reporting a successful local save.
+class LLLegacyInventorySaveObserver final : public LLInventoryObserver, public LLEventTimer
+{
+public:
+    LLLegacyInventorySaveObserver(LLViewerInventoryItem* item, LLPointer<LLInventoryCallback> cb)
+        : LLEventTimer(1.f), mExpected(new LLViewerInventoryItem(item)), mCallback(cb),
+          mAgent(gAgent.getID()), mSession(gAgent.getSessionID())
+    { gInventory.addObserver(this); }
+    ~LLLegacyInventorySaveObserver() override { gInventory.removeObserver(this); }
+    void changed(U32 mask) override
+    {
+        if (!(mask & UPDATE_CREATE) ||
+            !gInventory.getChangedIDs().count(mExpected->getUUID())) return;
+        const auto item = gInventory.getItem(mExpected->getUUID());
+        mConfirmed = item && item->getAssetUUID() == mExpected->getAssetUUID() &&
+            item->getName() == mExpected->getName();
+    }
+    bool tick() override
+    {
+        if (!gAgent.getRegion() || mAgent != gAgent.getID() ||
+            mSession != gAgent.getSessionID()) return true;
+        if (mConfirmed)
+        {
+            LL_INFOS("Inventory") << "Legacy inventory asset save acknowledged" << LL_ENDL;
+            gAgentWearables.sendDummyAgentWearablesUpdate();
+            doInventoryCb(mCallback, mExpected->getUUID());
+            return true;
+        }
+        if (mElapsed.getElapsedTimeF32() < 60.f) return false;
+        LL_WARNS("Inventory") << "Legacy inventory save acknowledgement timed out" << LL_ENDL;
+        LLSD args;
+        args["NAME"] = mExpected->getName();
+        LLNotificationsUtil::add("CannotSaveToAssetStore", args);
+        return true;
+    }
+private:
+    LLPointer<LLViewerInventoryItem> mExpected;
+    LLPointer<LLInventoryCallback> mCallback;
+    LLUUID mAgent, mSession;
+    LLTimer mElapsed;
+    bool mConfirmed = false;
+};
+}
+
 void update_inventory_item(
     LLViewerInventoryItem *update_item,
     LLPointer<LLInventoryCallback> cb)
 {
     const LLUUID& item_id = update_item->getUUID();
+
+    // Transaction-backed asset saves receive UpdateCreateInventoryItem.
+    // Ordinary metadata updates need not receive that reply on legacy grids.
+    if (update_item->getTransactionID().notNull() && !AISAPI::isAvailable() &&
+        !LLGridManager::getInstance()->isSystemGrid())
+    {
+        if (!gAgent.getRegion() || !update_item->isFinished() ||
+            update_item->getPermissions().getOwner() != gAgent.getID())
+        {
+            LL_WARNS("Inventory") << "Cannot save incomplete or unowned legacy inventory item" << LL_ENDL;
+            return;
+        }
+        new LLLegacyInventorySaveObserver(update_item, cb);
+        update_item->updateServer(false);
+        return;
+    }
 
     LLSD updates = update_item->asLLSD();
     // Replace asset_id and/or shadow_id with transaction_id (hash_id)

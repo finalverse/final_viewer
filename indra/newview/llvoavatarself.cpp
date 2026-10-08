@@ -27,6 +27,7 @@
 #include "llviewerprecompiledheaders.h"
 
 #include "llvoavatarself.h"
+#include "llfinalverselegacyappearance.h"
 #include "llvoavatar.h"
 
 #include "pipeline.h"
@@ -2632,6 +2633,11 @@ void LLVOAvatarSelf::reportAvatarRezTime() const
 }
 
 // SUNSHINE CLEANUP - not clear we need any of this, may be sufficient to request server appearance in llviewermenu.cpp:handle_rebake_textures()
+void LLVOAvatarSelf::enableClientBaking()
+{
+    if (llfinalverseLegacyAppearanceEnabled()) mUseLocalAppearance = true;
+}
+
 void LLVOAvatarSelf::forceBakeAllTextures(bool slam_for_debug)
 {
     LL_INFOS() << "TAT: forced full rebake. " << LL_ENDL;

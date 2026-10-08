@@ -4748,6 +4748,15 @@ void callAfterCOFFetch(nullary_func_t cb)
         // Special case, startup should have marked cof as FETCH_RECURSIVE
         // to prevent dupplicate request, remove that
         cat->setFetching(LLViewerInventoryCategory::FETCH_NONE);
+        if (!gInventory.isCategoryComplete(cat_id))
+        {
+            // Startup marked the COF recursive before choosing the inventory
+            // protocol. Clearing that state does not expire its request timer;
+            // cat->fetch() can therefore do nothing while its observer waits
+            // indefinitely. Explicitly queue the existing HTTP fallback.
+            cat->setVersion(LLViewerInventoryCategory::VERSION_UNKNOWN);
+            LLInventoryModelBackgroundFetch::instance().scheduleFolderFetch(cat_id);
+        }
         callAfterCategoryFetch(cat_id, cb);
     }
 }
