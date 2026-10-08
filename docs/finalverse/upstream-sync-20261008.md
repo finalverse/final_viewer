@@ -1,6 +1,6 @@
 # Upstream synchronization — 2026-10-08
 
-`main` is the product integration branch. All mandatory pre-publication gates pass; the next step is a normal `main` push and setting GitHub's default branch to `main`. `contribute` remains available as the direct-parent tracking branch. Normal clones receive the Finalverse AI integration. Previous Phase 0/1/2 reports remain evidence for their recorded commits, rather than test results for this much larger upstream update.
+`main` is the product integration branch. All mandatory gates pass. Integrated `main` was published with a normal push; GitHub's default branch is now `main`. `contribute` remains available as the direct-parent tracking branch. Normal clones receive the Finalverse AI integration. Previous Phase 0/1/2 reports remain evidence for their recorded commits, rather than test results for this much larger upstream update.
 
 ## Source and history
 
@@ -86,6 +86,12 @@ Avatar appearance remains a cloud, as before this sync; it did not prevent walki
 | 17 Destination guard | PASS | Out-of-scope pavilion refused. |
 | 18 Secret scan | PASS | Final changed-file scan has no credential-pattern or private-password matches; private artifacts excluded. |
 | 19 Documentation | PASS | Current build, merge decisions, test totals, live/logout results and future merge watch list recorded. |
-| 20 Publication | PENDING | Normal main push follows completion of mandatory gates. |
+| 20 Publication | PASS | Integrated main published without force; GitHub default is main and contribute is retained. |
+
+## Publication record
+
+The validated source tip is `d68da8d871e59a7500616ad4dbc8ea92cbe8702e`. The first normal `main` publication was documentation commit `4b43fbe968a4b794ca60c80300da3e60f2c1cb66`. GitHub API verification returned default branch `main`; remote `contribute` remains `02d76c98b3f909d065b591b336b652d5121c989f`. This follow-up records publication without changing the validated executable. No branch was deleted, no force push was used, and no gateway or deployment changes were published.
+
+MutSea's already published `main` remains `0c9e8756d05c2820deeda4c0c0d5bb8c30bb4a22`, default branch `main`. Its synchronization was not repeated during this viewer continuation.
 
 Next focused milestone after publication: **Phase 3 — Persistent AI Citizens**, building on the validated semantic/action/history boundary. Do not begin it as part of this sync.
